@@ -6,7 +6,7 @@
         <style>:root
 {
     --markdown-font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif;
-    --markdown-font-size: 14px;
+    --markdown-font-size: 16px;
     --markdown-line-height: 1.6;
     --vscode-font-family:"Segoe WPC", "Segoe UI", sans-serif;
     --vscode-font-weight:normal;
@@ -25,7 +25,7 @@
     --vscode-textPreformat-foreground:#a31515;
     --vscode-textBlockQuote-background:rgba(127, 127, 127, 0.1);
     --vscode-textBlockQuote-border:rgba(0, 122, 204, 0.5);
-    --vscode-textCodeBlock-background:rgba(220, 220, 220, 0.4);
+    --vscode-textCodeBlock-background:#fae4de;
     --vscode-widget-shadow:#a8a8a8;
     --vscode-input-background:#ffffff;
     --vscode-input-foreground:#616161;
@@ -1029,9 +1029,9 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
   <li>
     <a href="API.html">API</a>
     <ul>
-      <li><a href="API.html#class-rltune">Class RLTune</a></li>
-      <li><a href="API.html#class-causalrl">Class CausalRL</a></li>
-      <li><a href="API.html#class-rl-params">Class RLParams</a></li>
+      <li><a href="API.html#class-rltune">RLTune</a></li>
+      <li><a href="API.html#class-causalrl">CausalRL</a></li>
+      <li><a href="API.html#class-rl-params">RLParams</a></li>
     </ul>
   </li>
   <li>
@@ -1152,7 +1152,7 @@ And the class sets up three key networks: Critic, Actor, Reverse-Environment net
 </li>
 </ul>
 <h2 data-line="142" class="code-line" dir="auto" id="class-rl-params" tabindex="-1">Class RL Params</h2>
-<h3 data-line="144" class="code-line" dir="auto" id="class-trainingparameters" tabindex="-1">class TrainingParameters</h3>
+<h3 data-line="144" class="code-line" dir="auto" id="class-trainingparameters" tabindex="-1">Class TrainingParameters</h3>
 <ul data-line="145" class="code-line" dir="auto">
 <li data-line="145" class="code-line" dir="auto"><code>trainer_name</code>: Specifies the type of trainer algorithm. (default: <code>causal_rl</code>)</li>
 <li data-line="146" class="code-line" dir="auto"><code>trainer_variant</code>: Specifies a variant of <code>CausalRL</code>. (default: <code>classic</code>)</li>
@@ -1161,7 +1161,7 @@ And the class sets up three key networks: Critic, Actor, Reverse-Environment net
 <li data-line="149" class="code-line" dir="auto"><code>replay_ratio</code>: Ratio foe how often past experiences are reused. (default: <code>1</code>)</li>
 <li data-line="150" class="code-line" dir="auto"><code>train_interval</code>: Frequency of thraining updates. (default: <code>1</code>)</li>
 </ul>
-<h3 data-line="153" class="code-line" dir="auto" id="class-algorithmparameters" tabindex="-1">class AlgorithmParameters</h3>
+<h3 data-line="153" class="code-line" dir="auto" id="class-algorithmparameters" tabindex="-1">Class AlgorithmParameters</h3>
 <ul data-line="154" class="code-line" dir="auto">
 <li data-line="154" class="code-line" dir="auto"><code>min_seq_length</code>: Minimum sequence length during exploration. (default: <code>1</code>)</li>
 <li data-line="155" class="code-line" dir="auto"><code>max_seq_length</code>: Maximum sequence length for training and exploration. (default: <code>16</code>)</li>
@@ -1169,7 +1169,7 @@ And the class sets up three key networks: Critic, Actor, Reverse-Environment net
 <li data-line="157" class="code-line" dir="auto"><code>advantage_lambda</code>: Weighting advantages in policy optimization. (default: <code>0.98</code>)</li>
 <li data-line="158" class="code-line" dir="auto"><code>use_gae_advantage</code>: Automatically set in <code>rl_trainer</code>.py. It's determined based on weather the policy is off-policy or on-policy. (default: <code>None</code>)</li>
 </ul>
-<h3 data-line="161" class="code-line" dir="auto" id="class-networkparameters" tabindex="-1">class NetworkParameters</h3>
+<h3 data-line="161" class="code-line" dir="auto" id="class-networkparameters" tabindex="-1">Class NetworkParameters</h3>
 <ul data-line="162" class="code-line" dir="auto">
 <li data-line="162" class="code-line" dir="auto"><code>critic_network</code>: Specifies the type of model-based network for the critic network</li>
 <li data-line="163" class="code-line" dir="auto"><code>actor_network</code>: Specifies the type of model-based network for the actor network</li>
@@ -1178,7 +1178,7 @@ And the class sets up three key networks: Critic, Actor, Reverse-Environment net
 <li data-line="166" class="code-line" dir="auto"><code>actor_params</code>: Parameters for the actor network.</li>
 <li data-line="167" class="code-line" dir="auto"><code>rev_env_params</code>: Parameters for the rev-env network.</li>
 </ul>
-<h3 data-line="170" class="code-line" dir="auto" id="class-optimizationparameters" tabindex="-1">class OptimizationParameters</h3>
+<h3 data-line="170" class="code-line" dir="auto" id="class-optimizationparameters" tabindex="-1">Class OptimizationParameters</h3>
 <ul data-line="171" class="code-line" dir="auto">
 <li data-line="171" class="code-line" dir="auto"><code>lr</code>: Learning rate for the optimiztion algorithm. (default: <code>5e-5</code>)</li>
 <li data-line="172" class="code-line" dir="auto"><code>lr_decay_ratio</code>: The ratio for learning rate decay throughout the training. (default: <code>2e-1</code>)</li>
@@ -1187,17 +1187,17 @@ And the class sets up three key networks: Critic, Actor, Reverse-Environment net
 <li data-line="175" class="code-line" dir="auto"><code>use_target_network</code>: Indicate whether to use target network or not. (default: <code>True</code>)</li>
 <li data-line="176" class="code-line" dir="auto"><code>clip_grad_range</code>: The range within which gradients are clipped. To prevent the issue of exploding gradients. (default: <code>2.0</code>)</li>
 </ul>
-<h3 data-line="179" class="code-line" dir="auto" id="class-explorationparameters" tabindex="-1">class ExplorationParameters</h3>
+<h3 data-line="179" class="code-line" dir="auto" id="class-explorationparameters" tabindex="-1">Class ExplorationParameters</h3>
 <ul data-line="180" class="code-line" dir="auto">
 <li data-line="180" class="code-line" dir="auto"><code>noise_type</code>: Type of exploration noise used to encourage exploration in the agent. (default: <code>None</code>)</li>
 <li data-line="181" class="code-line" dir="auto"><code>max_steps</code>: Maximum number of steps for the exploration phase. (default: <code>100000</code>)</li>
 </ul>
-<h3 data-line="184" class="code-line" dir="auto" id="class-memoryparameters" tabindex="-1">class MemoryParameters.</h3>
+<h3 data-line="184" class="code-line" dir="auto" id="class-memoryparameters" tabindex="-1">Class MemoryParameters.</h3>
 <ul data-line="185" class="code-line" dir="auto">
 <li data-line="185" class="code-line" dir="auto"><code>buffer_size</code>: Total size of the memory buffer, This determines the capacity for storing past experiences. (default: <code>256000</code>)</li>
 <li data-line="186" class="code-line" dir="auto"><code>early_training_start_step</code>: An optional parameter that allows training to commence before the replay buffer is completely filled. (default: <code>None</code>)</li>
 </ul>
-<h3 data-line="189" class="code-line" dir="auto" id="class-normalizationparameters" tabindex="-1">class NormalizationParameters</h3>
+<h3 data-line="189" class="code-line" dir="auto" id="class-normalizationparameters" tabindex="-1">Class NormalizationParameters</h3>
 <ul data-line="190" class="code-line" dir="auto">
 <li data-line="190" class="code-line" dir="auto">
 <p data-line="190" class="code-line" dir="auto"><code>state_normalizer</code>: Determines the method used for normalizing state valeus. (default: <code>running_mean_std</code>)</p>
