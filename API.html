@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-        <title>Introduction</title>
+        <title>API</title>
         <style>:root
 {
     --markdown-font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif;
@@ -1009,17 +1009,15 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
     </head>
     <body class="vscode-body vscode-light">
         <div data-line="0" class="code-line" dir="auto"></div>
-<link rel="stylesheet" href="path/to/your-stylesheet.css">
-<div data-line="2" class="code-line" dir="auto"></div>
 <nav class="navbar">
-<div  data-line="4" class="code-line" dir="auto"></div>
+<div data-line="2" class="code-line" dir="auto"></div>
   <a class="header-link" href="index.html">  
     <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/48ef4091-6cef-4e51-be87-6a0d7df416ad" alt="CCNets Logo" class="logo">
     <h1 class="page-name">CausalRL Documentation</h1>
   </a>
-<div data-line="7" class="code-line" dir="auto"></div>
+<div data-line="5" class="code-line" dir="auto"></div>
 </nav>
-<div data-line="9" class="code-line" dir="auto"></div>
+<div data-line="7" class="code-line" dir="auto"></div>
 <div class="sidebar">
   <ul>
   <li>
@@ -1060,165 +1058,291 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
 </ul>
 </div>
 <div data-line="61" class="code-line" dir="auto"></div>
-<!-- content -->
-<div data-line="62" class="code-line" dir="auto"></div>
 <div class="main-content">
-  <!-- <div class="main-header"> -->
-    <!-- <img class="main-logo" src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/48ef4091-6cef-4e51-be87-6a0d7df416ad" alt="CCNets Logo" class="logo"> -->
-    <h1><div class="main-title" style="text-align: center;">Causal Reinforcement Learning</div></h1>
-  <!-- </div> -->
-  <h2><div class="main-text" style="text-align: center;">A powerful and robust RL algorithm that allows for network customization and the ability to learn causal relationships.</div></h2>
-  <div class="centered">
-    <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/e7a82edc-c6c4-43d5-b283-e521ada6a108" alt="Description" width="700">
-  </div>
-<h1 data-line="72" class="code-line" dir="auto" id="introduction" tabindex="-1">Introduction</h1>
-<pre data-line="74" class="code-line" dir="auto"><code>Causal RL is an innovative Reinforcement Learning framework that utilizes three networks: Actor, Critic, and Reverse Environment, to learn the causal relationships between states, actions, and values while maximizing cumulative rewards. This introduction provides detailed descriptions of the framework's key features to help users leverage the full potential of Causal RL.
+<h1 data-line="63" class="code-line" dir="auto" id="api" tabindex="-1">API</h1>
+<h2 data-line="65" class="code-line" dir="auto" id="class-rltune" tabindex="-1">Class RLTune</h2>
+<pre><code data-line="66" class="code-line language-python" dir="auto"><span class="hljs-keyword">class</span> <span class="hljs-title class_">RLTune</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config: EnvConfig, rl_params: RLParameters, device, use_graphics=<span class="hljs-literal">False</span>, use_print=<span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">False</span></span>):
 </code></pre>
-<h1 data-line="76" class="code-line" dir="auto" id="basic-usage" tabindex="-1">Basic Usage</h1>
-<pre><code data-line="78" class="code-line language-python" dir="auto"><span class="hljs-comment"># main.ipynb</span>
-<span class="hljs-keyword">import</span> torch
-<span class="hljs-keyword">from</span> utils.setting.env_settings <span class="hljs-keyword">import</span> analyze_env
-<span class="hljs-keyword">from</span> rl_tune <span class="hljs-keyword">import</span> RLTune
-
-device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hljs-keyword">if</span> (torch.cuda.is_available() <span class="hljs-keyword">and</span> ngpu &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">else</span> <span class="hljs-string">"cpu"</span>)
-
-env_config, rl_params = analyze_env(env_name = <span class="hljs-string">"Humanoid-v4"</span>)
-
-<span class="hljs-keyword">with</span> RLTune(env_config, rl_params, device, use_graphics = <span class="hljs-literal">False</span>, use_print = <span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">True</span>) <span class="hljs-keyword">as</span> rl_tune:
-    rl_tune.train(resume_training = <span class="hljs-literal">False</span>)
+<p data-line="70" class="code-line" dir="auto">The RLTune class is designed for tuning and training reinforcement learning models, using a specified trainer.</p>
+<h3 data-line="72" class="code-line" dir="auto" id="parameters" tabindex="-1">Parameters:</h3>
+<ul data-line="73" class="code-line" dir="auto">
+<li data-line="73" class="code-line" dir="auto"><code>env_config</code> (EnvConfig): Configuration for the environment.</li>
+<li data-line="74" class="code-line" dir="auto"><code>trainer</code> (Trainer): Trainer object for the reinforcement learning algorithm.</li>
+<li data-line="75" class="code-line" dir="auto"><code>device</code> (Device): Computational device (e.g., CPU, GPU).</li>
+<li data-line="76" class="code-line" dir="auto"><code>use_graphics</code> (bool, optional): Whether to use graphics during training/testing. Default is False.</li>
+<li data-line="77" class="code-line" dir="auto"><code>use_print</code> (bool, optional): Whether to print training/testing logs. Default is False.</li>
+</ul>
+<h3 data-line="79" class="code-line" dir="auto" id="functions" tabindex="-1">Functions</h3>
+<ul data-line="81" class="code-line" dir="auto">
+<li data-line="81" class="code-line" dir="auto">
+<p data-line="81" class="code-line" dir="auto"><code>__init__():</code>
+Accepts environment configuration (EnvConfig), RL parameters (RLParameters), computational device (device), and options for graphics, printing, and WandB integration.</p>
+</li>
+<li data-line="84" class="code-line" dir="auto">
+<p data-line="84" class="code-line" dir="auto"><code>_end_environments():</code>
+If the environment exists, shut down both the training and testing environments of a reinforcement learning setup.</p>
+</li>
+<li data-line="87" class="code-line" dir="auto">
+<p data-line="87" class="code-line" dir="auto"><code>train():</code>
+The main method of this class. To train the model based on the provided policy.</p>
+<ul data-line="90" class="code-line" dir="auto">
+<li data-line="90" class="code-line" dir="auto">setup(training=True): To prepare the training environment using this method</li>
+</ul>
+</li>
+<li data-line="92" class="code-line" dir="auto">
+<p data-line="92" class="code-line" dir="auto"><code>test():</code>
+To evaluate a reinforcement learning algorithm over specified of episodes(default: max_episode=100)</p>
+<ul data-line="94" class="code-line" dir="auto">
+<li data-line="94" class="code-line" dir="auto">setup(training=False): To prepare the test environment using this method</li>
+</ul>
+</li>
+<li data-line="96" class="code-line" dir="auto">
+<p data-line="96" class="code-line" dir="auto"><code>_train_step_logic():</code>
+The core method of the training process in a reinforcement learning environment.</p>
+<ul data-line="99" class="code-line" dir="auto">
+<li data-line="99" class="code-line" dir="auto"><code>helper.init_step():</code> initializes the training/testing step</li>
+<li data-line="100" class="code-line" dir="auto"><code>process_test_environmemt():</code> to handle interactions with an environment and for test interactions(<code>if 'training' == False</code>), the trajectories are not pushed to memory, which is a step reserved for training interaction.</li>
+</ul>
+</li>
+<li data-line="102" class="code-line" dir="auto">
+<p data-line="102" class="code-line" dir="auto"><code>_test_step_logic():</code>
+The logic for each step during the testing phase of a reinforcement learning algorithm.</p>
+</li>
+<li data-line="105" class="code-line" dir="auto">
+<p data-line="105" class="code-line" dir="auto"><code>train_on_policy():</code>
+To train a model using on-policy reinforcement learning algorithm.</p>
+<ul data-line="108" class="code-line" dir="auto">
+<li data-line="108" class="code-line" dir="auto"><code>process_train_environment():</code> Interacts with the training environment and collect data based on the current policy.</li>
+<li data-line="109" class="code-line" dir="auto"><code>should_update_strategy():</code> check if strategy should be updated.</li>
+<li data-line="110" class="code-line" dir="auto"><code>_update_strategy_from_samples():</code> to enhance the strategy used in the training of a reinforcement learning.</li>
+<li data-line="111" class="code-line" dir="auto"><code>reset_memory_and_train():</code> reset the memory buffer and then performs a seies of training steps. It iterates over a predefined number of on-policy iterations(<code>train_step</code>)</li>
+</ul>
+</li>
+<li data-line="113" class="code-line" dir="auto">
+<p data-line="113" class="code-line" dir="auto"><code>train_off_policy():</code>
+To train a model using off-policy reinforcement learning alrorithm.</p>
+<ul data-line="116" class="code-line" dir="auto">
+<li data-line="116" class="code-line" dir="auto"><code>process_train_environment():</code> Interacts with the training environment and collect data based on the current policy.</li>
+<li data-line="117" class="code-line" dir="auto"><code>should_update_strategy():</code> check if strategy should be updated.</li>
+<li data-line="118" class="code-line" dir="auto"><code>_update_strategy_from_samples():</code> to enhance the strategy used in the training of a reinforcement learning.</li>
+<li data-line="119" class="code-line" dir="auto"><code>train_step():</code> a single step of training in a reinforcement learning include Sample Trajectory, Model Training, TD Errors and Record Metrics</li>
+</ul>
+</li>
+<li data-line="122" class="code-line" dir="auto">
+<p data-line="122" class="code-line" dir="auto"><code>interact_environment():</code> This function progresses the environmentstate, retrieves the resulting trajectories, and the records these trajectories using the helper.record method.</p>
+</li>
+</ul>
+<h2 data-line="125" class="code-line" dir="auto" id="class-causalrl" tabindex="-1">Class CausalRL</h2>
+<pre><code data-line="126" class="code-line language-python" dir="auto"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CausalRL</span>(<span class="hljs-title class_ inherited__">BaseTrainer</span>):
+	<span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config, rl_params, device</span>):
 </code></pre>
-<div data-line="93" class="code-line" dir="auto"></div>
-  <div align="left">
-    Copyright © 2024 CCNets
-  </div>
-<div data-line="97" class="code-line" dir="auto"></div>
-  <div class="footer-links">
-    <a href="https://ccnets.org/" target="_blank">
-      <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/42f10f53-0262-4203-9c6f-618e4841adb2" alt="Website" style="width: 20px; height: 20px;">
-    </a>
-    <a href="https://github.com/ccnets-team/rl-tune" target="_blank">
-      <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/5183f887-1263-408b-8c2f-9eeefafbce48" alt="GitHub" style="width: 20px; height: 20px;">
-    </a>
-    <a href="https://www.linkedin.com/company/ccnets/" target="_blank">
-      <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/fe1f76f2-a407-4f58-ad28-92a9ac9efa3f" alt="LinkedIn" style="width: 20px; height: 20px;">
-    </a>
-  </div>
+<p data-line="131" class="code-line" dir="auto">This class is specialized trainer for reinforcement learning. It initailizes with environment configuration('env_config'), RLparameters('rl_params'), and the computational device('device').
+And the class sets up three key networks: Critic, Actor, Reverse-Environment networks, each configured based on the provided RL parameters.</p>
+<h3 data-line="134" class="code-line" dir="auto" id="funtions" tabindex="-1">Funtions</h3>
+<ul data-line="135" class="code-line" dir="auto">
+<li data-line="135" class="code-line" dir="auto">
+<p data-line="135" class="code-line" dir="auto"><code>get_action()</code> method is responsible for determining the action to be taken by an agent in a given state. When <code>training == True</code>, it uses Actor's <code>sample_action</code> method else, it uses <code>select_action</code> method.</p>
+</li>
+<li data-line="137" class="code-line" dir="auto">
+<p data-line="137" class="code-line" dir="auto"><code>train_model()</code> method is a core method of CausalRL approach. It involves a cooperative setup among three networks: Critic, Actor, Reverse-Environment, which learn from the environment's transitions. These method include computing various costs, errors, losses and these losses are used for backpropagation to adjust network parameters.</p>
+</li>
+<li data-line="139" class="code-line" dir="auto">
+<p data-line="139" class="code-line" dir="auto"><code>backwards()</code> method  conducts backpropagation for multiple neural networks in a reinforcement learning framework, each targeting a specific part of the causal relationship graph. It first disables, then selectively enables gradients for each network during the error backpropagation process to ensure targeted learning. Finally, it resets the networks to allow gradient updates, preparing them for future forward passes.</p>
+</li>
+</ul>
+<h2 data-line="142" class="code-line" dir="auto" id="class-rl-params" tabindex="-1">Class RL Params</h2>
+<h3 data-line="144" class="code-line" dir="auto" id="class-trainingparameters" tabindex="-1">class TrainingParameters</h3>
+<ul data-line="145" class="code-line" dir="auto">
+<li data-line="145" class="code-line" dir="auto"><code>trainer_name</code>: Specifies the type of trainer algorithm. (default: <code>causal_rl</code>)</li>
+<li data-line="146" class="code-line" dir="auto"><code>trainer_variant</code>: Specifies a variant of <code>CausalRL</code>. (default: <code>classic</code>)</li>
+<li data-line="147" class="code-line" dir="auto"><code>use_on_policy</code>: Set whether the training is <code>on-policy</code> or <code>off-policy</code>. (default: <code>False</code>)</li>
+<li data-line="148" class="code-line" dir="auto"><code>batch_size</code>: Number of samples processed before model update. Larger batch szie can lead to more stable but slower training. (batch size / samples per step, default: <code>64</code>)</li>
+<li data-line="149" class="code-line" dir="auto"><code>replay_ratio</code>: Ratio foe how often past experiences are reused. (default: <code>1</code>)</li>
+<li data-line="150" class="code-line" dir="auto"><code>train_interval</code>: Frequency of thraining updates. (default: <code>1</code>)</li>
+</ul>
+<h3 data-line="153" class="code-line" dir="auto" id="class-algorithmparameters" tabindex="-1">class AlgorithmParameters</h3>
+<ul data-line="154" class="code-line" dir="auto">
+<li data-line="154" class="code-line" dir="auto"><code>min_seq_length</code>: Minimum sequence length during exploration. (default: <code>1</code>)</li>
+<li data-line="155" class="code-line" dir="auto"><code>max_seq_length</code>: Maximum sequence length for training and exploration. (default: <code>16</code>)</li>
+<li data-line="156" class="code-line" dir="auto"><code>discount_factor</code>: To reduce the value of future rewards in the calculation of expected returns. (default: <code>0.99</code>)</li>
+<li data-line="157" class="code-line" dir="auto"><code>advantage_lambda</code>: Weighting advantages in policy optimization. (default: <code>0.98</code>)</li>
+<li data-line="158" class="code-line" dir="auto"><code>use_gae_advantage</code>: Automatically set in <code>rl_trainer</code>.py. It's determined based on weather the policy is off-policy or on-policy. (default: <code>None</code>)</li>
+</ul>
+<h3 data-line="161" class="code-line" dir="auto" id="class-networkparameters" tabindex="-1">class NetworkParameters</h3>
+<ul data-line="162" class="code-line" dir="auto">
+<li data-line="162" class="code-line" dir="auto"><code>critic_network</code>: Specifies the type of model-based network for the critic network</li>
+<li data-line="163" class="code-line" dir="auto"><code>actor_network</code>: Specifies the type of model-based network for the actor network</li>
+<li data-line="164" class="code-line" dir="auto"><code>rev_env_network</code>: Specifies the type of model-based network for the rev_env</li>
+<li data-line="165" class="code-line" dir="auto"><code>critic_params</code>: Parameters for the critic network.</li>
+<li data-line="166" class="code-line" dir="auto"><code>actor_params</code>: Parameters for the actor network.</li>
+<li data-line="167" class="code-line" dir="auto"><code>rev_env_params</code>: Parameters for the rev-env network.</li>
+</ul>
+<h3 data-line="170" class="code-line" dir="auto" id="class-optimizationparameters" tabindex="-1">class OptimizationParameters</h3>
+<ul data-line="171" class="code-line" dir="auto">
+<li data-line="171" class="code-line" dir="auto"><code>lr</code>: Learning rate for the optimiztion algorithm. (default: <code>5e-5</code>)</li>
+<li data-line="172" class="code-line" dir="auto"><code>lr_decay_ratio</code>: The ratio for learning rate decay throughout the training. (default: <code>2e-1</code>)</li>
+<li data-line="173" class="code-line" dir="auto"><code>scheduler_type</code>: Specifies the type of learning rate scheduler. (default: <code>cyclic</code>)</li>
+<li data-line="174" class="code-line" dir="auto"><code>tau</code>: How quickly the target network is updated with the main network's weights. (default: <code>1e-1</code>)</li>
+<li data-line="175" class="code-line" dir="auto"><code>use_target_network</code>: Indicate whether to use target network or not. (default: <code>True</code>)</li>
+<li data-line="176" class="code-line" dir="auto"><code>clip_grad_range</code>: The range within which gradients are clipped. To prevent the issue of exploding gradients. (default: <code>2.0</code>)</li>
+</ul>
+<h3 data-line="179" class="code-line" dir="auto" id="class-explorationparameters" tabindex="-1">class ExplorationParameters</h3>
+<ul data-line="180" class="code-line" dir="auto">
+<li data-line="180" class="code-line" dir="auto"><code>noise_type</code>: Type of exploration noise used to encourage exploration in the agent. (default: <code>None</code>)</li>
+<li data-line="181" class="code-line" dir="auto"><code>max_steps</code>: Maximum number of steps for the exploration phase. (default: <code>100000</code>)</li>
+</ul>
+<h3 data-line="184" class="code-line" dir="auto" id="class-memoryparameters" tabindex="-1">class MemoryParameters.</h3>
+<ul data-line="185" class="code-line" dir="auto">
+<li data-line="185" class="code-line" dir="auto"><code>buffer_size</code>: Total size of the memory buffer, This determines the capacity for storing past experiences. (default: <code>256000</code>)</li>
+<li data-line="186" class="code-line" dir="auto"><code>early_training_start_step</code>: An optional parameter that allows training to commence before the replay buffer is completely filled. (default: <code>None</code>)</li>
+</ul>
+<h3 data-line="189" class="code-line" dir="auto" id="class-normalizationparameters" tabindex="-1">class NormalizationParameters</h3>
+<ul data-line="190" class="code-line" dir="auto">
+<li data-line="190" class="code-line" dir="auto">
+<p data-line="190" class="code-line" dir="auto"><code>state_normalizer</code>: Determines the method used for normalizing state valeus. (default: <code>running_mean_std</code>)</p>
+</li>
+<li data-line="191" class="code-line" dir="auto">
+<p data-line="191" class="code-line" dir="auto"><code>reward_normalizer</code>: Determines the method used for normalizing reward values. (default: <code>exponential_moving_mean_var</code>)</p>
+</li>
+<li data-line="192" class="code-line" dir="auto">
+<p data-line="192" class="code-line" dir="auto"><code>advantage_normalizer</code>: Determines the method used for normalizing advantage values. (default: <code>exponential_moving_mean_var</code>)</p>
+</li>
+<li data-line="193" class="code-line" dir="auto">
+<p data-line="193" class="code-line" dir="auto"><code>exponential_moving_alpha</code>: Set the alpha value for exponential moving average calculations. (dafault: <code>1e-4</code>)</p>
+</li>
+<li data-line="194" class="code-line" dir="auto">
+<p data-line="194" class="code-line" dir="auto"><code>clip_norm_range</code>: The range within which normalized values are clipped. (default: <code>10.0</code>)</p>
+<div data-line="196" class="code-line" dir="auto"></div>
+<div align="left">
+  Copyright © 2024 CCNets
 </div>
-<div data-line="110" class="code-line" dir="auto"></div>
-<!-- content end -->
-<div data-line="111" class="code-line" dir="auto"></div>
-<!-- css -->
-<div data-line="113" class="code-line" dir="auto"></div>
+<div data-line="200" class="code-line" dir="auto"></div>
+<div class="footer-links">
+  <a href="https://ccnets.org/" target="_blank">
+    <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/42f10f53-0262-4203-9c6f-618e4841adb2" alt="Website" style="width: 20px; height: 20px;">
+  </a>
+  <a href="https://github.com/ccnets-team/rl-tune" target="_blank">
+    <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/5183f887-1263-408b-8c2f-9eeefafbce48" alt="GitHub" style="width: 20px; height: 20px;">
+  </a>
+  <a href="https://www.linkedin.com/company/ccnets/" target="_blank">
+    <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/fe1f76f2-a407-4f58-ad28-92a9ac9efa3f" alt="LinkedIn" style="width: 20px; height: 20px;">
+  </a>
+</div>
+</li>
+</ul>
+<div data-line="213" class="code-line" dir="auto"></div>
+</div>
+<div data-line="215" class="code-line" dir="auto"></div>
 <style>
-  .navbar {
-  display: flex;
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  width: 100%;
-  align-items: center;
-  background-color: #d7d7d7;
-  font-family: 'ARLRDBD.TTF', sans-serif;
-  padding: 10px;
-  }
-
-  .navbar .page-name {
-  width: 100%;
-  font-size: 25px; 
-  text-decoration: none !important;
-  }
-  .main-content {
-  margin-top: 70px;
-  margin-left: 200px;
-  }
-  .main-header {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  }
-
-  .main-logo {
-  width: 50px; 
-  height: auto;
-  margin-right: 10px;
-  }
-
-  .main-title {
-    font-size: 32px; 
-    margin-bottom: 30px;
-  }
-  .logo {
-    width: 50px; 
-    height: auto;
-    margin-right: 5px;
-  }
-  .header-link {
+.navbar {
     display: flex;
-    align-items: center;
-  }
-  .page-name {
-    text-decoration: none;
-    color: rgb(5, 5, 5);
-    margin-top: auto; 
-    margin-bottom: auto; 
-    font-size: 30px; 
-  }  
-  .footer-links {
-    /* position: fixed; */
-    bottom: 10px;
-    right: 10px;
-    text-align: right;
-  }
-  .footer-links a {
-    display: inline-block;
-    margin-left: 10px;
-  }
-
-  .sidebar {
-    height: 100%;
-    width: 200px;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     left: 0;
+    width: 100%;
+    align-items: center;
     background-color: #d7d7d7;
-    overflow-x: hidden;
-    padding-top: 20px;
+    font-family: 'ARLRDBD.TTF', sans-serif;
+    padding: 10px;
+    }
+  
+    .navbar .page-name {
+    width: 100%;
+    font-size: 25px; 
+    text-decoration: none !important;
+    }
+    .main-content {
+    margin-top: 70px;
+    margin-left: 200px;
+    }
+    .main-header {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    }
+  
+    .main-logo {
+    width: 50px; 
+    height: auto;
+    margin-right: 10px;
+    }
+  
+    .main-title {
+      font-size: 32px; 
+      margin-bottom: 30px;
+    }
+    .logo {
+      width: 50px; 
+      height: auto;
+      margin-right: 5px;
+    }
+    .header-link {
+      display: flex;
+      align-items: center;
+    }
+    .page-name {
+      text-decoration: none;
+      color: rgb(5, 5, 5);
+      margin-top: auto; 
+      margin-bottom: auto; 
+      font-size: 30px; 
+    }  
+    .footer-links {
+      /* position: fixed; */
+      bottom: 10px;
+      right: 10px;
+      text-align: right;
+    }
+    .footer-links a {
+      display: inline-block;
+      margin-left: 10px;
+    }
+  
+    .sidebar {
+      height: 100%;
+      width: 200px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #d7d7d7;
+      overflow-x: hidden;
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .sidebar ul {
+    list-style-type: none; 
+    padding-left: 0; 
+    }
+  
+    .sidebar li a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-family: 'ARIAL.TTF', sans-serif;
+      font-size: 25px;
+      color: #0F0F0F;
+      display: block;
+    }
+    .sidebar li li a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-family: 'arial.ttf', sans-serif;
+      font-size: 15px;
+      color: #0F0F0F;
+      display: block;
+    }
+  
+    .centered {
+    display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
   }
-  .sidebar ul {
-  list-style-type: none; 
-  padding-left: 0; 
-  }
-
-  .sidebar li a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-family: 'ARIAL.TTF', sans-serif;
-    font-size: 25px;
-    color: #0F0F0F;
-    display: block;
-  }
-  .sidebar li li a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-family: 'arial.ttf', sans-serif;
-    font-size: 15px;
-    color: #0F0F0F;
-    display: block;
-  }
-
-  .centered {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
 </style>
         <script>var Be=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports);var Me=Be((Lt,Ne)=>{var xe="Expected a function",Ae=NaN,Qe="[object Symbol]",Ze=/^\s+|\s+$/g,et=/^[-+]0x[0-9a-f]+$/i,tt=/^0b[01]+$/i,nt=/^0o[0-7]+$/i,rt=parseInt,it=typeof global=="object"&&global&&global.Object===Object&&global,at=typeof self=="object"&&self&&self.Object===Object&&self,ot=it||at||Function("return this")(),st=Object.prototype,lt=st.toString,ct=Math.max,ut=Math.min,ue=function(){return ot.Date.now()};function dt(e,t,n){var r,i,a,s,u,m,d=0,p=!1,b=!1,T=!0;if(typeof e!="function")throw new TypeError(xe);t=Le(t)||0,te(n)&&(p=!!n.leading,b="maxWait"in n,a=b?ct(Le(n.maxWait)||0,t):a,T="trailing"in n?!!n.trailing:T);function E(v){var A=r,_=i;return r=i=void 0,d=v,s=e.apply(_,A),s}function N(v){return d=v,u=setTimeout(L,t),p?E(v):s}function g(v){var A=v-m,_=v-d,h=t-A;return b?ut(h,a-_):h}function S(v){var A=v-m,_=v-d;return m===void 0||A>=t||A<0||b&&_>=a}function L(){var v=ue();if(S(v))return U(v);u=setTimeout(L,g(v))}function U(v){return u=void 0,T&&r?E(v):(r=i=void 0,s)}function R(){u!==void 0&&clearTimeout(u),d=0,r=m=i=u=void 0}function Y(){return u===void 0?s:U(ue())}function I(){var v=ue(),A=S(v);if(r=arguments,i=this,m=v,A){if(u===void 0)return N(m);if(b)return u=setTimeout(L,t),E(m)}return u===void 0&&(u=setTimeout(L,t)),s}return I.cancel=R,I.flush=Y,I}function ft(e,t,n){var r=!0,i=!0;if(typeof e!="function")throw new TypeError(xe);return te(n)&&(r="leading"in n?!!n.leading:r,i="trailing"in n?!!n.trailing:i),dt(e,t,{leading:r,maxWait:t,trailing:i})}function te(e){var t=typeof e;return!!e&&(t=="object"||t=="function")}function mt(e){return!!e&&typeof e=="object"}function gt(e){return typeof e=="symbol"||mt(e)&&lt.call(e)==Qe}function Le(e){if(typeof e=="number")return e;if(gt(e))return Ae;if(te(e)){var t=typeof e.valueOf=="function"?e.valueOf():e;e=te(t)?t+"":t}if(typeof e!="string")return e===0?e:+e;e=e.replace(Ze,"");var n=tt.test(e);return n||nt.test(e)?rt(e.slice(2),n?2:8):et.test(e)?Ae:+e}Ne.exports=ft});var pe="code-line",F=class{constructor(t,n,r){this.element=t;this.line=n;this.codeElement=r;this._detailParentElements=Array.from(Re(t,"DETAILS"))}get isVisible(){return!this._detailParentElements.some(t=>!t.open)}},ae=(()=>{let e,t=-1;return n=>{if(!e||n!==t){t=n,e=[new F(document.body,-1)];for(let r of document.getElementsByClassName(pe)){if(!(r instanceof HTMLElement))continue;let i=+r.getAttribute("data-line");isNaN(i)||(r.tagName==="CODE"&&r.parentElement&&r.parentElement.tagName==="PRE"?e.push(new F(r.parentElement,i,r)):r.tagName==="UL"||r.tagName==="OL"||e.push(new F(r,i)))}}return e}})();function oe(e,t){let n=Math.floor(e),r=ae(t),i=r[0]||null;for(let a of r){if(a.line===n)return{previous:a,next:void 0};if(a.line>n)return{previous:i,next:a};i=a}return{previous:i}}function He(e,t){let n=ae(t).filter(m=>m.isVisible),r=e-window.scrollY,i=-1,a=n.length-1;for(;i+1<a;){let m=Math.floor((i+a)/2),d=W(n[m]);d.top+d.height>=r?a=m:i=m}let s=n[a],u=W(s);return a>=1&&u.top>r?{previous:n[i],next:s}:a>1&&a<n.length&&u.top+u.height>r?{previous:s,next:n[a+1]}:{previous:s}}function W({element:e}){let t=e.getBoundingClientRect(),n=e.querySelector(`.${pe}`);if(n){let r=n.getBoundingClientRect(),i=Math.max(1,r.top-t.top);return{top:t.top,height:i}}return t}function K(e,t,n){if(!n.settings?.scrollPreviewWithEditor)return;if(e<=0){window.scroll(window.scrollX,0);return}let{previous:r,next:i}=oe(e,t);if(!r)return;let a=0,s=W(r),u=s.top;if(i&&i.line!==r.line){let m=(e-r.line)/(i.line-r.line),d=u+s.height,p=i.element.getBoundingClientRect().top-d;a=d+m*p}else{let m=e-Math.floor(e);a=u+s.height*m}a=Math.abs(a)<1?Math.sign(a):a,window.scroll(window.scrollX,Math.max(1,window.scrollY+a))}function se(e,t){let{previous:n,next:r}=He(e,t);if(n){if(n.line<0)return 0;let i=W(n),a=e-window.scrollY-i.top;if(r){let s=a/(W(r).top-i.top);return n.line+s*(r.line-n.line)}else{let s=a/i.height;return n.line+s}}return null}function ve(e,t){return ae(t).find(n=>n.element.id===e)}function*Re(e,t){for(let n=e.parentElement;n;n=n.parentElement)n.tagName===t&&(yield n)}var J=class{onDidChangeTextEditorSelection(t,n){let{previous:r}=oe(t,n);this._update(r&&(r.codeElement||r.element))}_update(t){this._unmarkActiveElement(this._current),this._markActiveElement(t),this._current=t}_unmarkActiveElement(t){t&&t.classList.toggle("code-active-line",!1)}_markActiveElement(t){t&&t.classList.toggle("code-active-line",!0)}};function he(e){document.readyState==="loading"||document.readyState==="uninitialized"?document.addEventListener("DOMContentLoaded",e):e()}var be=(e,t)=>({postMessage(n,r){e.postMessage({type:n,source:t.settings.source,...r})}});function le(e){let t=document.getElementById("vscode-markdown-preview-data");if(t){let n=t.getAttribute(e);if(n)return JSON.parse(n)}throw new Error(`Could not load data for ${e}`)}var Q=class{constructor(){this._settings=le("data-settings")}get settings(){return this._settings}updateSettings(t){this._settings=t}};var ye=11;function ke(e,t){var n=t.attributes,r,i,a,s,u;if(!(t.nodeType===ye||e.nodeType===ye)){for(var m=n.length-1;m>=0;m--)r=n[m],i=r.name,a=r.namespaceURI,s=r.value,a?(i=r.localName||i,u=e.getAttributeNS(a,i),u!==s&&(r.prefix==="xmlns"&&(i=r.name),e.setAttributeNS(a,i,s))):(u=e.getAttribute(i),u!==s&&e.setAttribute(i,s));for(var d=e.attributes,p=d.length-1;p>=0;p--)r=d[p],i=r.name,a=r.namespaceURI,a?(i=r.localName||i,t.hasAttributeNS(a,i)||e.removeAttributeNS(a,i)):t.hasAttribute(i)||e.removeAttribute(i)}}var Z,Ue="http://www.w3.org/1999/xhtml",w=typeof document>"u"?void 0:document,Fe=!!w&&"content"in w.createElement("template"),We=!!w&&w.createRange&&"createContextualFragment"in w.createRange();function Ve(e){var t=w.createElement("template");return t.innerHTML=e,t.content.childNodes[0]}function je(e){Z||(Z=w.createRange(),Z.selectNode(w.body));var t=Z.createContextualFragment(e);return t.childNodes[0]}function qe(e){var t=w.createElement("body");return t.innerHTML=e,t.childNodes[0]}function Xe(e){return e=e.trim(),Fe?Ve(e):We?je(e):qe(e)}function ee(e,t){var n=e.nodeName,r=t.nodeName,i,a;return n===r?!0:(i=n.charCodeAt(0),a=r.charCodeAt(0),i<=90&&a>=97?n===r.toUpperCase():a<=90&&i>=97?r===n.toUpperCase():!1)}function Ye(e,t){return!t||t===Ue?w.createElement(e):w.createElementNS(t,e)}function ze(e,t){for(var n=e.firstChild;n;){var r=n.nextSibling;t.appendChild(n),n=r}return t}function ce(e,t,n){e[n]!==t[n]&&(e[n]=t[n],e[n]?e.setAttribute(n,""):e.removeAttribute(n))}var Te={OPTION:function(e,t){var n=e.parentNode;if(n){var r=n.nodeName.toUpperCase();r==="OPTGROUP"&&(n=n.parentNode,r=n&&n.nodeName.toUpperCase()),r==="SELECT"&&!n.hasAttribute("multiple")&&(e.hasAttribute("selected")&&!t.selected&&(e.setAttribute("selected","selected"),e.removeAttribute("selected")),n.selectedIndex=-1)}ce(e,t,"selected")},INPUT:function(e,t){ce(e,t,"checked"),ce(e,t,"disabled"),e.value!==t.value&&(e.value=t.value),t.hasAttribute("value")||e.removeAttribute("value")},TEXTAREA:function(e,t){var n=t.value;e.value!==n&&(e.value=n);var r=e.firstChild;if(r){var i=r.nodeValue;if(i==n||!n&&i==e.placeholder)return;r.nodeValue=n}},SELECT:function(e,t){if(!t.hasAttribute("multiple")){for(var n=-1,r=0,i=e.firstChild,a,s;i;)if(s=i.nodeName&&i.nodeName.toUpperCase(),s==="OPTGROUP")a=i,i=a.firstChild;else{if(s==="OPTION"){if(i.hasAttribute("selected")){n=r;break}r++}i=i.nextSibling,!i&&a&&(i=a.nextSibling,a=null)}e.selectedIndex=n}}},V=1,Ge=11,we=3,Ee=8;function B(){}function $e(e){if(e)return e.getAttribute&&e.getAttribute("id")||e.id}function Ke(e){return function(n,r,i){if(i||(i={}),typeof r=="string")if(n.nodeName==="#document"||n.nodeName==="HTML"||n.nodeName==="BODY"){var a=r;r=w.createElement("html"),r.innerHTML=a}else r=Xe(r);var s=i.getNodeKey||$e,u=i.onBeforeNodeAdded||B,m=i.onNodeAdded||B,d=i.onBeforeElUpdated||B,p=i.onElUpdated||B,b=i.onBeforeNodeDiscarded||B,T=i.onNodeDiscarded||B,E=i.onBeforeElChildrenUpdated||B,N=i.childrenOnly===!0,g=Object.create(null),S=[];function L(c){S.push(c)}function U(c,l){if(c.nodeType===V)for(var o=c.firstChild;o;){var f=void 0;l&&(f=s(o))?L(f):(T(o),o.firstChild&&U(o,l)),o=o.nextSibling}}function R(c,l,o){b(c)!==!1&&(l&&l.removeChild(c),T(c),U(c,o))}function Y(c){if(c.nodeType===V||c.nodeType===Ge)for(var l=c.firstChild;l;){var o=s(l);o&&(g[o]=l),Y(l),l=l.nextSibling}}Y(n);function I(c){m(c);for(var l=c.firstChild;l;){var o=l.nextSibling,f=s(l);if(f){var x=g[f];x&&ee(l,x)?(l.parentNode.replaceChild(x,l),A(x,l)):I(l)}else I(l);l=o}}function v(c,l,o){for(;l;){var f=l.nextSibling;(o=s(l))?L(o):R(l,c,!0),l=f}}function A(c,l,o){var f=s(l);f&&delete g[f],!(!o&&(d(c,l)===!1||(e(c,l),p(c),E(c,l)===!1)))&&(c.nodeName!=="TEXTAREA"?_(c,l):Te.TEXTAREA(c,l))}function _(c,l){var o=l.firstChild,f=c.firstChild,x,P,k,G,O;e:for(;o;){for(G=o.nextSibling,x=s(o);f;){if(k=f.nextSibling,o.isSameNode&&o.isSameNode(f)){o=G,f=k;continue e}P=s(f);var $=f.nodeType,D=void 0;if($===o.nodeType&&($===V?(x?x!==P&&((O=g[x])?k===O?D=!1:(c.insertBefore(O,f),P?L(P):R(f,c,!0),f=O):D=!1):P&&(D=!1),D=D!==!1&&ee(f,o),D&&A(f,o)):($===we||$==Ee)&&(D=!0,f.nodeValue!==o.nodeValue&&(f.nodeValue=o.nodeValue))),D){o=G,f=k;continue e}P?L(P):R(f,c,!0),f=k}if(x&&(O=g[x])&&ee(O,o))c.appendChild(O),A(O,o);else{var ie=u(o);ie!==!1&&(ie&&(o=ie),o.actualize&&(o=o.actualize(c.ownerDocument||w)),c.appendChild(o),I(o))}o=G,f=k}v(c,f,P);var ge=Te[c.nodeName];ge&&ge(c,l)}var h=n,z=h.nodeType,me=r.nodeType;if(!N){if(z===V)me===V?ee(n,r)||(T(n),h=ze(n,Ye(r.nodeName,r.namespaceURI))):h=r;else if(z===we||z===Ee){if(me===z)return h.nodeValue!==r.nodeValue&&(h.nodeValue=r.nodeValue),h;h=r}}if(h===r)T(n);else{if(r.isSameNode&&r.isSameNode(h))return;if(A(h,r,N),S)for(var ne=0,_e=S.length;ne<_e;ne++){var re=g[S[ne]];re&&R(re,re.parentNode,!1)}}return!N&&h!==n&&n.parentNode&&(h.actualize&&(h=h.actualize(n.ownerDocument||w)),n.parentNode.replaceChild(h,n)),h}}var Je=Ke(ke),Se=Je;var Ce=Me(),H=0,Pe=new J,y=new Q,M=0,j=y.settings.source,q=acquireVsCodeApi(),de=q.getState()??{},C={...de,...le("data-state")};typeof de.scrollProgress<"u"&&de?.resource!==C.resource&&(C.scrollProgress=0);q.setState(C);var X=be(q,y);window.cspAlerter.setPoster(X);window.styleLoadingMonitor.setPoster(X);function fe(e){let t=document.getElementsByTagName("img");if(t.length>0){let n=Array.from(t,r=>r.complete?Promise.resolve():new Promise(i=>{r.addEventListener("load",()=>i()),r.addEventListener("error",()=>i())}));Promise.all(n).then(()=>setTimeout(e,0))}else setTimeout(e,0)}he(()=>{let e=C.scrollProgress;if(Oe(),typeof e=="number"&&!y.settings.fragment){fe(()=>{H+=1;let t=Math.max(1,e*document.body.clientHeight);window.scrollTo(0,t)});return}y.settings.scrollPreviewWithEditor&&fe(()=>{if(y.settings.fragment){let t;try{t=encodeURIComponent(y.settings.fragment)}catch{t=y.settings.fragment}C.fragment=void 0,q.setState(C);let n=ve(t,M);n&&(H+=1,K(n.line,M,y))}else isNaN(y.settings.line)||(H+=1,K(y.settings.line,M,y))}),typeof y.settings.selectedLine=="number"&&Pe.onDidChangeTextEditorSelection(y.settings.selectedLine,M)});var pt=(()=>{let e=Ce(t=>{H+=1,fe(()=>K(t,M,y))},50);return t=>{isNaN(t)||(C.line=t,e(t))}})();window.addEventListener("resize",()=>{H+=1,Ie()},!0);function Oe(){let e=document.getElementsByTagName("img"),t=0;for(let n of e)n.id="image-"+t,t+=1,n.setAttribute("data-vscode-context",JSON.stringify({webviewSection:"image",id:n.id,preventDefaultContextMenuItems:!0,resource:j}))}async function De(e,t=5){if(!document.hasFocus()&&t>0){setTimeout(()=>{De(e,t-1)},20);return}try{await navigator.clipboard.write([new ClipboardItem({"image/png":new Promise(n=>{let r=document.createElement("canvas");r!==null&&(r.width=e.naturalWidth,r.height=e.naturalHeight,r.getContext("2d")?.drawImage(e,0,0)),r.toBlob(i=>{i&&n(i),r.remove()},"image/png")})})])}catch(n){console.error(n)}}window.addEventListener("message",async e=>{let t=e.data;switch(t.type){case"copyImage":{let n=document.getElementById(t.id);n instanceof HTMLImageElement&&De(n);return}case"onDidChangeTextEditorSelection":t.source===j&&Pe.onDidChangeTextEditorSelection(t.line,M);return;case"updateView":t.source===j&&pt(t.line);return;case"updateContent":{let n=document.querySelector(".markdown-body"),i=new DOMParser().parseFromString(t.content,"text/html");for(let a of Array.from(i.querySelectorAll("meta")))a.hasAttribute("http-equiv")&&a.remove();if(t.source!==j)n.replaceWith(i.querySelector(".markdown-body")),j=t.source;else{let a=["open"],s=(d,p)=>{if(d.isEqualNode(p))return!0;if(d.tagName!==p.tagName||d.textContent!==p.textContent)return!1;let b=[...d.attributes].filter(g=>!a.includes(g.name)),T=[...p.attributes].filter(g=>!a.includes(g.name));if(b.length!==T.length)return!1;for(let g=0;g<b.length;++g){let S=b[g],L=T[g];if(S.name!==L.name||S.value!==L.value&&S.name!=="data-line")return!1}let E=Array.from(d.children),N=Array.from(p.children);return E.length===N.length&&E.every((g,S)=>s(g,N[S]))},u=i.querySelector(".markdown-body"),m=u.querySelectorAll("link");for(let d of m)d.remove();u.prepend(...m),Se(n,u,{childrenOnly:!0,onBeforeElUpdated:(d,p)=>{if(s(d,p)){let b=d.querySelectorAll("[data-line]"),T=p.querySelectorAll("[data-line]");b.length!==T.length&&console.log("unexpected line number change");for(let E=0;E<b.length;++E){let N=b[E],g=T[E];g&&N.setAttribute("data-line",g.getAttribute("data-line"))}return!1}return d.tagName==="DETAILS"&&p.tagName==="DETAILS"&&d.hasAttribute("open")&&p.setAttribute("open",""),!0}})}++M,window.dispatchEvent(new CustomEvent("vscode.markdown.updateContent")),Oe();break}}},!1);document.addEventListener("dblclick",e=>{if(!y.settings.doubleClickToSwitchToEditor)return;for(let r=e.target;r;r=r.parentNode)if(r.tagName==="A")return;let t=e.pageY,n=se(t,M);typeof n=="number"&&!isNaN(n)&&X.postMessage("didClick",{line:Math.floor(n)})});var vt=["http:","https:","mailto:","vscode:","vscode-insiders:"];document.addEventListener("click",e=>{if(!e)return;let t=e.target;for(;t;){if(t.tagName&&t.tagName==="A"&&t.href){if(t.getAttribute("href").startsWith("#"))return;let n=t.getAttribute("data-href");if(!n){if(vt.some(r=>t.href.startsWith(r)))return;n=t.getAttribute("href")}if(!/^[a-z\-]+:/i.test(n)){X.postMessage("openLink",{href:n}),e.preventDefault(),e.stopPropagation();return}return}t=t.parentNode}},!0);window.addEventListener("scroll",Ce(()=>{if(Ie(),H>0)H-=1;else{let e=se(window.scrollY,M);typeof e=="number"&&!isNaN(e)&&X.postMessage("revealLine",{line:e})}},50));function Ie(){C.scrollProgress=window.scrollY/document.body.clientHeight,q.setState(C)}
 </script>

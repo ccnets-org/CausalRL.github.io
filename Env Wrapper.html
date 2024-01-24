@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-        <title>Introduction</title>
+        <title>Env Wrapper</title>
         <style>:root
 {
     --markdown-font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif;
@@ -683,7 +683,7 @@ hr {
 	border: 0;
 	height: 1px;
 	border-bottom: 1px solid;
-}
+} 
 
 h1 {
 	font-size: 2em;
@@ -1009,89 +1009,111 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
     </head>
     <body class="vscode-body vscode-light">
         <div data-line="0" class="code-line" dir="auto"></div>
-<link rel="stylesheet" href="path/to/your-stylesheet.css">
-<div data-line="2" class="code-line" dir="auto"></div>
 <nav class="navbar">
-<div  data-line="4" class="code-line" dir="auto"></div>
+<div data-line="2" class="code-line" dir="auto"></div>
   <a class="header-link" href="index.html">  
     <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/48ef4091-6cef-4e51-be87-6a0d7df416ad" alt="CCNets Logo" class="logo">
     <h1 class="page-name">CausalRL Documentation</h1>
   </a>
-<div data-line="7" class="code-line" dir="auto"></div>
+<div data-line="5" class="code-line" dir="auto"></div>
 </nav>
-<div data-line="9" class="code-line" dir="auto"></div>
+<div data-line="7" class="code-line" dir="auto"></div>
 <div class="sidebar">
-  <ul>
-  <li>
-    <a href="index.html">Introduction</a>
     <ul>
-      <li><a href="index.html#basic-usage">Basic Usage</a></li>
-    </ul>
-  </li>
-  <li>
-    <a href="API.html">API</a>
-    <ul>
-      <li><a href="API.html#class-rltune">Class RLTune</a></li>
-      <li><a href="API.html#class-causalrl">Class CausalRL</a></li>
-      <li><a href="API.html#class-rl-params">Class RLParams</a></li>
-    </ul>
-  </li>
-  <li>
-    <a href="Env Wrapper.html">Env Wrapper</a>
-    <ul>
-      <li><a href="Env Wrapper.html#gym-wrapper">Gym Wrapper</a></li>
-      <li><a href="#unity-mlagent-wrapper">Unity MLAgent Wrapper</a></li>
-    </ul>
-  </li>
-  <li>
-    <a href="#">Tutorials</a>
-    <ul>
-      <li><a href="#">Day 1</a></li>
-      <li><a href="#">Day 2</a></li>
-    </ul>
-  </li>
-  <li>
-    <a href="#">Development</a>
-    <ul>
-      <li><a href="https://github.com/ccnets-team/rl-tune">Github</a></li>
-      <li><a href="https://wandb.ai/rl_tune/rl-tune-gym/?workspace">W&amp;B</a></li>
-    </ul>
-  </li>
-</ul>
-</div>
-<div data-line="61" class="code-line" dir="auto"></div>
-<!-- content -->
-<div data-line="62" class="code-line" dir="auto"></div>
-<div class="main-content">
-  <!-- <div class="main-header"> -->
-    <!-- <img class="main-logo" src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/48ef4091-6cef-4e51-be87-6a0d7df416ad" alt="CCNets Logo" class="logo"> -->
-    <h1><div class="main-title" style="text-align: center;">Causal Reinforcement Learning</div></h1>
-  <!-- </div> -->
-  <h2><div class="main-text" style="text-align: center;">A powerful and robust RL algorithm that allows for network customization and the ability to learn causal relationships.</div></h2>
-  <div class="centered">
-    <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/e7a82edc-c6c4-43d5-b283-e521ada6a108" alt="Description" width="700">
+    <li>
+      <a href="index.html">Introduction</a>
+      <ul>
+        <li><a href="index.html#basic-usage">Basic Usage</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="API.html">API</a>
+      <ul>
+        <li><a href="API.html#class-rltune">Class RLTune</a></li>
+        <li><a href="API.html#class-causalrl">Class CausalRL</a></li>
+        <li><a href="API.html#class-rl-params">Class RLParams</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="Env Wrapper.html">Env Wrapper</a>
+      <ul>
+        <li><a href="Env Wrapper.html#gym-wrapper">Gym Wrapper</a></li>
+        <li><a href="#unity-mlagent-wrapper">Unity MLAgent Wrapper</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Tutorials</a>
+      <ul>
+        <li><a href="#">Day 1</a></li>
+        <li><a href="#">Day 2</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Development</a>
+      <ul>
+        <li><a href="https://github.com/ccnets-team/rl-tune">Github</a></li>
+        <li><a href="https://wandb.ai/rl_tune/rl-tune-gym/?workspace">W&amp;B</a></li>
+      </ul>
+    </li>
+  </ul>
   </div>
-<h1 data-line="72" class="code-line" dir="auto" id="introduction" tabindex="-1">Introduction</h1>
-<pre data-line="74" class="code-line" dir="auto"><code>Causal RL is an innovative Reinforcement Learning framework that utilizes three networks: Actor, Critic, and Reverse Environment, to learn the causal relationships between states, actions, and values while maximizing cumulative rewards. This introduction provides detailed descriptions of the framework's key features to help users leverage the full potential of Causal RL.
+<div data-line="59" class="code-line" dir="auto"></div>
+<div class="main-content">
+<h1 data-line="61" class="code-line" dir="auto" id="env-wrapper" tabindex="-1">Env Wrapper</h1>
+<p data-line="62" class="code-line" dir="auto"><strong>Env Wrapper</strong> Modules are a collection of modular components, each offering unique finctionality for reinforcement learning environmens. This modules includes a range of modules like <code>gym_wrapper</code>, <code>ml_agent_wrapper</code>, etc., designed to enhance and simplify the integration and customization of various RL platforms.</p>
+<h2 data-line="64" class="code-line" dir="auto" id="gym-wrapper" tabindex="-1">Gym Wrapper</h2>
+<div data-line="65" class="code-line" dir="auto"></div>
+<div align="center">
+    <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/0b1ad841-da4b-4fb4-a171-a9781c875a38" alt="gymnasium-text" width="400">
+</div>
+<pre><code data-line="70" class="code-line language-python" dir="auto"><span class="hljs-comment"># gym_wrapper.py</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">GymEnvWrapper</span>(<span class="hljs-title class_ inherited__">AgentExperienceCollector</span>):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config, max_seq_length, test_env: <span class="hljs-built_in">bool</span>, use_graphics: <span class="hljs-built_in">bool</span> = <span class="hljs-literal">False</span>, seed: <span class="hljs-built_in">int</span> = <span class="hljs-number">0</span></span>):
+	...
 </code></pre>
-<h1 data-line="76" class="code-line" dir="auto" id="basic-usage" tabindex="-1">Basic Usage</h1>
 <pre><code data-line="78" class="code-line language-python" dir="auto"><span class="hljs-comment"># main.ipynb</span>
-<span class="hljs-keyword">import</span> torch
-<span class="hljs-keyword">from</span> utils.setting.env_settings <span class="hljs-keyword">import</span> analyze_env
-<span class="hljs-keyword">from</span> rl_tune <span class="hljs-keyword">import</span> RLTune
-
-device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hljs-keyword">if</span> (torch.cuda.is_available() <span class="hljs-keyword">and</span> ngpu &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">else</span> <span class="hljs-string">"cpu"</span>)
-
-env_config, rl_params = analyze_env(env_name = <span class="hljs-string">"Humanoid-v4"</span>)
-
-<span class="hljs-keyword">with</span> RLTune(env_config, rl_params, device, use_graphics = <span class="hljs-literal">False</span>, use_print = <span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">True</span>) <span class="hljs-keyword">as</span> rl_tune:
-    rl_tune.train(resume_training = <span class="hljs-literal">False</span>)
+env_config, rl_params = analyze_env(env_name = <span class="hljs-string">"HalfCheetah-v4"</span>)
 </code></pre>
-<div data-line="93" class="code-line" dir="auto"></div>
+<ul data-line="82" class="code-line" dir="auto">
+<li data-line="82" class="code-line" dir="auto">
+<p data-line="82" class="code-line" dir="auto">While most of the environment and parameters are automatically configured based on the environment name set by the user, the primary parameters that users can manually set are as follows:</p>
+<ul data-line="84" class="code-line" dir="auto">
+<li data-line="84" class="code-line" dir="auto"><code>use_graphics</code>: To monitor the model training process in real-time through video, Set <code>use_graphics = True</code>. (default: False)</li>
+<li data-line="85" class="code-line" dir="auto"><code>seed</code>:  To control the randomness in the environment, ensuring reproducibility by initializing the environment in the same way</li>
+<li data-line="86" class="code-line" dir="auto"><code>time_scale</code>: To  adjusts the simulation speed in the Unity environment, enabling faster or slower updates for efficient training or detailed observation.</li>
+</ul>
+</li>
+</ul>
+<p data-line="88" class="code-line" dir="auto">To visit <strong>Gymnasium Official Page</strong> for more details, Click <a href="https://gymnasium.farama.org/api/wrappers/" data-href="https://gymnasium.farama.org/api/wrappers/">here</a>.</p>
+<h2 data-line="91" class="code-line" dir="auto" id="unity-mlagent-wrapper" tabindex="-1">Unity MLAgent Wrapper</h2>
+<div data-line="92" class="code-line" dir="auto"></div>
+<div align="center">
+    <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/ad0760d5-6f70-456f-802f-627cfcbfaa01" alt="unity-wide" width="600">
+</div>
+<pre><code data-line="96" class="code-line language-python" dir="auto"><span class="hljs-comment"># mlagents_wrapper.py</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">MLAgentsEnvWrapper</span>(<span class="hljs-title class_ inherited__">AgentExperienceCollector</span>):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config, max_seq_length, test_env, use_graphics: <span class="hljs-built_in">bool</span>, worker_id, seed = <span class="hljs-number">0</span>, time_scale = <span class="hljs-number">256</span></span>):
+	...
+</code></pre>
+<pre><code data-line="103" class="code-line language-python" dir="auto"><span class="hljs-comment"># main.ipynb</span>
+env_config, rl_params = analyze_env(env_name = <span class="hljs-string">"3DBallHard"</span>)
+</code></pre>
+<ul data-line="107" class="code-line" dir="auto">
+<li data-line="107" class="code-line" dir="auto">
+<p data-line="107" class="code-line" dir="auto">While most of the environment and parameters are automatically configured based on the environment name set by the user, the primary parameters that users can manually set are as follows:</p>
+<ul data-line="109" class="code-line" dir="auto">
+<li data-line="109" class="code-line" dir="auto"><code>use_graphics</code>: To monitor the model training process in real-time through video, Set <code>use_graphics = True</code>. (default: False)</li>
+<li data-line="110" class="code-line" dir="auto"><code>seed</code>:  To control the randomness in the environment, ensuring reproducibility by initializing the environment in the same way</li>
+<li data-line="111" class="code-line" dir="auto"><code>time_scale</code>: To  adjusts the simulation speed in the Unity environment, enabling faster or slower updates for efficient training or detailed observation.</li>
+</ul>
+</li>
+</ul>
+<p data-line="113" class="code-line" dir="auto">To visit <strong>Unity MLAgent Official Page</strong> for more details, Click <a href="https://github.com/gzrjzcx/ML-agents/blob/master/gym-unity/README.md" data-href="https://github.com/gzrjzcx/ML-agents/blob/master/gym-unity/README.md">here</a>.</p>
+<div data-line="115" class="code-line" dir="auto"></div>
   <div align="left">
     Copyright © 2024 CCNets
   </div>
-<div data-line="97" class="code-line" dir="auto"></div>
+<div data-line="119" class="code-line" dir="auto"></div>
   <div class="footer-links">
     <a href="https://ccnets.org/" target="_blank">
       <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/42f10f53-0262-4203-9c6f-618e4841adb2" alt="Website" style="width: 20px; height: 20px;">
@@ -1103,12 +1125,9 @@ env_config, rl_params = analyze_env(env_name = <span class="hljs-string">"Humano
       <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/fe1f76f2-a407-4f58-ad28-92a9ac9efa3f" alt="LinkedIn" style="width: 20px; height: 20px;">
     </a>
   </div>
+<div data-line="132" class="code-line" dir="auto"></div>
 </div>
-<div data-line="110" class="code-line" dir="auto"></div>
-<!-- content end -->
-<div data-line="111" class="code-line" dir="auto"></div>
-<!-- css -->
-<div data-line="113" class="code-line" dir="auto"></div>
+<div data-line="136" class="code-line" dir="auto"></div>
 <style>
   .navbar {
   display: flex;
@@ -1159,7 +1178,7 @@ env_config, rl_params = analyze_env(env_name = <span class="hljs-string">"Humano
   }
   .page-name {
     text-decoration: none;
-    color: rgb(5, 5, 5);
+    color: rgb(0, 0, 0);
     margin-top: auto; 
     margin-bottom: auto; 
     font-size: 30px; 
