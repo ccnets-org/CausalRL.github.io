@@ -10,7 +10,7 @@
 <nav class="navbar">
 <div data-line="2" class="code-line" dir="auto"></div>
   <a class="header-link" href="index.html">  
-    <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/48ef4091-6cef-4e51-be87-6a0d7df416ad" alt="CCNets Logo" class="logo">
+    <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/ade6b575-3634-4ac7-92e8-1dc606b5c586" alt="CCNets Logo" class="logo">
     <h1 class="page-name">CausalRL Documentation</h1>
   </a>
 <div data-line="5" class="code-line" dir="auto"></div>
@@ -152,20 +152,20 @@ And the class sets up three key networks: Critic, Actor, Reverse-Environment net
 <h2 data-line="142" class="code-line" dir="auto" id="class-rl-params" tabindex="-1">Class RL Params</h2>
 <h3 data-line="144" class="code-line" dir="auto" id="class-trainingparameters" tabindex="-1">Class TrainingParameters</h3>
 <ul data-line="145" class="code-line" dir="auto">
-<li data-line="145" class="code-line" dir="auto"><code>trainer_name</code>: Specifies the type of trainer algorithm. (default: <code>causal_rl</code>)</li>
-<li data-line="146" class="code-line" dir="auto"><code>trainer_variant</code>: Specifies a variant of <code>CausalRL</code>. (default: <code>classic</code>)</li>
-<li data-line="147" class="code-line" dir="auto"><code>use_on_policy</code>: Set whether the training is <code>on-policy</code> or <code>off-policy</code>. (default: <code>False</code>)</li>
+<!-- <li data-line="145" class="code-line" dir="auto"><code>trainer_name</code>: Specifies the type of trainer algorithm. (default: <code>causal_rl</code>)</li> -->
+<!-- <li data-line="146" class="code-line" dir="auto"><code>trainer_variant</code>: Specifies a variant of <code>CausalRL</code>. (default: <code>classic</code>)</li> -->
+<!-- <li data-line="147" class="code-line" dir="auto"><code>use_on_policy</code>: Set whether the training is <code>on-policy</code> or <code>off-policy</code>. (default: <code>False</code>)</li> -->
 <li data-line="148" class="code-line" dir="auto"><code>batch_size</code>: Number of samples processed before model update. Larger batch szie can lead to more stable but slower training. (batch size / samples per step, default: <code>64</code>)</li>
 <li data-line="149" class="code-line" dir="auto"><code>replay_ratio</code>: Ratio foe how often past experiences are reused. (default: <code>1</code>)</li>
 <li data-line="150" class="code-line" dir="auto"><code>train_interval</code>: Frequency of thraining updates. (default: <code>1</code>)</li>
 </ul>
 <h3 data-line="153" class="code-line" dir="auto" id="class-algorithmparameters" tabindex="-1">Class AlgorithmParameters</h3>
 <ul data-line="154" class="code-line" dir="auto">
-<li data-line="154" class="code-line" dir="auto"><code>min_seq_length</code>: Minimum sequence length during exploration. (default: <code>1</code>)</li>
-<li data-line="155" class="code-line" dir="auto"><code>max_seq_length</code>: Maximum sequence length for training and exploration. (default: <code>16</code>)</li>
+<!-- <li data-line="154" class="code-line" dir="auto"><code>min_seq_length</code>: Minimum sequence length during exploration. (default: <code>1</code>)</li> -->
+<li data-line="155" class="code-line" dir="auto"><code>gpt_seq_length</code>: Maximum sequence length for training and exploration. (default: <code>16</code>)</li>
 <li data-line="156" class="code-line" dir="auto"><code>discount_factor</code>: To reduce the value of future rewards in the calculation of expected returns. (default: <code>0.99</code>)</li>
-<li data-line="157" class="code-line" dir="auto"><code>advantage_lambda</code>: Weighting advantages in policy optimization. (default: <code>0.98</code>)</li>
-<li data-line="158" class="code-line" dir="auto"><code>use_gae_advantage</code>: Automatically set in <code>rl_trainer</code>.py. It's determined based on weather the policy is off-policy or on-policy. (default: <code>None</code>)</li>
+<li data-line="157" class="code-line" dir="auto"><code>advantage_lambda</code>: Weighting advantages in policy optimization. (default: <code>0.99</code>)</li>
+<!-- <li data-line="158" class="code-line" dir="auto"><code>use_gae_advantage</code>: Automatically set in <code>rl_trainer</code>.py. It's determined based on weather the policy is off-policy or on-policy. (default: <code>None</code>)</li> -->
 </ul>
 <h3 data-line="161" class="code-line" dir="auto" id="class-networkparameters" tabindex="-1">Class NetworkParameters</h3>
 <ul data-line="162" class="code-line" dir="auto">
@@ -178,12 +178,12 @@ And the class sets up three key networks: Critic, Actor, Reverse-Environment net
 </ul>
 <h3 data-line="170" class="code-line" dir="auto" id="class-optimizationparameters" tabindex="-1">Class OptimizationParameters</h3>
 <ul data-line="171" class="code-line" dir="auto">
-<li data-line="171" class="code-line" dir="auto"><code>lr</code>: Learning rate for the optimiztion algorithm. (default: <code>5e-5</code>)</li>
+<li data-line="171" class="code-line" dir="auto"><code>lr</code>: Learning rate for the optimiztion algorithm. (default: <code>2e-5</code>)</li>
 <li data-line="172" class="code-line" dir="auto"><code>lr_decay_ratio</code>: The ratio for learning rate decay throughout the training. (default: <code>2e-1</code>)</li>
-<li data-line="173" class="code-line" dir="auto"><code>scheduler_type</code>: Specifies the type of learning rate scheduler. (default: <code>cyclic</code>)</li>
+<li data-line="173" class="code-line" dir="auto"><code>scheduler_type</code>: Specifies the type of learning rate scheduler. (default: <code>exponential</code>)</li>
 <li data-line="174" class="code-line" dir="auto"><code>tau</code>: How quickly the target network is updated with the main network's weights. (default: <code>1e-1</code>)</li>
 <li data-line="175" class="code-line" dir="auto"><code>use_target_network</code>: Indicate whether to use target network or not. (default: <code>True</code>)</li>
-<li data-line="176" class="code-line" dir="auto"><code>clip_grad_range</code>: The range within which gradients are clipped. To prevent the issue of exploding gradients. (default: <code>2.0</code>)</li>
+<li data-line="176" class="code-line" dir="auto"><code>clip_grad_range</code>: The range within which gradients are clipped. To prevent the issue of exploding gradients. (default: <code>None</code>)</li>
 </ul>
 <h3 data-line="179" class="code-line" dir="auto" id="class-explorationparameters" tabindex="-1">Class ExplorationParameters</h3>
 <ul data-line="180" class="code-line" dir="auto">
@@ -193,24 +193,25 @@ And the class sets up three key networks: Critic, Actor, Reverse-Environment net
 <h3 data-line="184" class="code-line" dir="auto" id="class-memoryparameters" tabindex="-1">Class MemoryParameters.</h3>
 <ul data-line="185" class="code-line" dir="auto">
 <li data-line="185" class="code-line" dir="auto"><code>buffer_size</code>: Total size of the memory buffer, This determines the capacity for storing past experiences. (default: <code>256000</code>)</li>
-<li data-line="186" class="code-line" dir="auto"><code>early_training_start_step</code>: An optional parameter that allows training to commence before the replay buffer is completely filled. (default: <code>None</code>)</li>
+<!-- <li data-line="186" class="code-line" dir="auto"><code>early_training_start_step</code>: An optional parameter that allows training to commence before the replay buffer is completely filled. (default: <code>None</code>)</li> -->
 </ul>
 <h3 data-line="189" class="code-line" dir="auto" id="class-normalizationparameters" tabindex="-1">Class NormalizationParameters</h3>
 <ul data-line="190" class="code-line" dir="auto">
 <li data-line="190" class="code-line" dir="auto">
-<p data-line="190" class="code-line" dir="auto"><code>state_normalizer</code>: Determines the method used for normalizing state valeus. (default: <code>running_mean_std</code>)</p>
+<p data-line="190" class="code-line" dir="auto"><code>state_normalizer</code>: Determines the method used for normalizing state valeus. (default: <code>hybrid_moving_mean_var</code>)</p>
 </li>
 <li data-line="191" class="code-line" dir="auto">
-<p data-line="191" class="code-line" dir="auto"><code>reward_normalizer</code>: Determines the method used for normalizing reward values. (default: <code>exponential_moving_mean_var</code>)</p>
+<p data-line="191" class="code-line" dir="auto"><code>reward_normalizer</code>: Determines the method used for normalizing reward values. (default: <code>hybrid_moving_mean_var</code>)</p>
 </li>
 <li data-line="192" class="code-line" dir="auto">
-<p data-line="192" class="code-line" dir="auto"><code>advantage_normalizer</code>: Determines the method used for normalizing advantage values. (default: <code>exponential_moving_mean_var</code>)</p>
+<p data-line="192" class="code-line" dir="auto"><code>advantage_normalizer</code>: Determines the method used for normalizing advantage values. (default: <code>hybrid_moving_mean_var</code>)</p>
 </li>
-<li data-line="193" class="code-line" dir="auto">
+<!-- <li data-line="193" class="code-line" dir="auto">
 <p data-line="193" class="code-line" dir="auto"><code>exponential_moving_alpha</code>: Set the alpha value for exponential moving average calculations. (dafault: <code>1e-4</code>)</p>
-</li>
-<li data-line="194" class="code-line" dir="auto">
+</li> -->
+<!-- <li data-line="194" class="code-line" dir="auto">
 <p data-line="194" class="code-line" dir="auto"><code>clip_norm_range</code>: The range within which normalized values are clipped. (default: <code>10.0</code>)</p>
+</li> -->
 <div data-line="196" class="code-line" dir="auto"></div>
 <div align="left">
   Copyright © 2024 CCNets
@@ -227,7 +228,6 @@ And the class sets up three key networks: Critic, Actor, Reverse-Environment net
     <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/fe1f76f2-a407-4f58-ad28-92a9ac9efa3f" alt="LinkedIn" style="width: 20px; height: 20px;">
   </a>
 </div>
-</li>
 </ul>
 <div data-line="213" class="code-line" dir="auto"></div>
 </div>
