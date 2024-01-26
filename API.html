@@ -10,8 +10,8 @@
 <nav class="navbar">
 <div data-line="2" class="code-line" dir="auto"></div>
   <a class="header-link" href="index.html">  
-    <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/ade6b575-3634-4ac7-92e8-1dc606b5c586" alt="CCNets Logo" class="logo">
-    <h1 class="page-name">CausalRL Documentation</h1>
+    <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/6db8e929-637b-4d9c-9a61-20910e878d53" alt="CCNets Logo" class="logo">
+    <!-- <h1 class="page-name">CausalRL Documentation</h1> -->
   </a>
 <div data-line="5" class="code-line" dir="auto"></div>
 </nav>
@@ -169,9 +169,10 @@ And the class sets up three key networks: Critic, Actor, Reverse-Environment net
 </ul>
 <h3 data-line="161" class="code-line" dir="auto" id="class-networkparameters" tabindex="-1">Class NetworkParameters</h3>
 <ul data-line="162" class="code-line" dir="auto">
-<li data-line="162" class="code-line" dir="auto"><code>critic_network</code>: Specifies the type of model-based network for the critic network</li>
-<li data-line="163" class="code-line" dir="auto"><code>actor_network</code>: Specifies the type of model-based network for the actor network</li>
-<li data-line="164" class="code-line" dir="auto"><code>rev_env_network</code>: Specifies the type of model-based network for the rev_env</li>
+<li data-line="163" class="code-line" dir="auto"><code>num_layer</code>: Defines the number of layers in the neural network. (default: <code>5</code>)</li>
+<li data-line="164" class="code-line" dir="auto"><code>d_model</code>: Specifies the dimensionality of the input and output of the model layers. (default: <code>256</code>)</li>
+<li data-line="165" class="code-line" dir="auto"><code>dropout</code>: Sets the dropout rate to prevent overfitting. This is a regularization technique where randomly selected neurons are ignored during training. (default: <code>0.01</code>)</li>
+<li data-line="164" class="code-line" dir="auto"><code>network_type</code>:  Determines the type of neural network architecture to use. This parameter allows the selection of different network architectures if needed. (default: <code>GPT</code>)</li>
 <li data-line="165" class="code-line" dir="auto"><code>critic_params</code>: Parameters for the critic network.</li>
 <li data-line="166" class="code-line" dir="auto"><code>actor_params</code>: Parameters for the actor network.</li>
 <li data-line="167" class="code-line" dir="auto"><code>rev_env_params</code>: Parameters for the rev-env network.</li>
