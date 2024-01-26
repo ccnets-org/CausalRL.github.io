@@ -142,39 +142,43 @@ To train a model using off-policy reinforcement learning alrorithm.</p>
 <p data-line="122" class="code-line" dir="auto"><code>interact_environment():</code> This function progresses the environmentstate, retrieves the resulting trajectories, and the records these trajectories using the helper.record method.</p>
 </li>
 </ul>
+<br>
+<br>
 <h2 data-line="125" class="code-line" dir="auto" id="class-causalrl" tabindex="-1">Class CausalRL <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/training/causal_rl.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
 <pre><code data-line="126" class="code-line language-python" dir="auto"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CausalRL</span>(<span class="hljs-title class_ inherited__">BaseTrainer</span>):
 	<span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config, rl_params, device</span>):
 </code></pre>
 <p data-line="131" class="code-line" dir="auto">This class is specialized trainer for reinforcement learning. It initailizes with environment configuration('env_config'), RLparameters('rl_params'), and the computational device('device').
-And the class sets up three key networks: Critic, Actor, Reverse-Environment networks, each configured based on the provided RL parameters.</p>
-<h3 data-line="134" class="code-line" dir="auto" id="funtions" tabindex="-1">Method Overview</h3>
-<ul data-line="135" class="code-line" dir="auto">
-<li data-line="135" class="code-line" dir="auto">
-<p data-line="135" class="code-line" dir="auto"><code>get_action()</code> method is responsible for determining the action to be taken by an agent in a given state. When <code>training == True</code>, it uses Actor's <code>sample_action</code> method else, it uses <code>select_action</code> method.</p>
-</li>
-<li data-line="137" class="code-line" dir="auto">
-<p data-line="137" class="code-line" dir="auto"><code>train_model()</code> method is a core method of CausalRL approach. It involves a cooperative setup among three networks: Critic, Actor, Reverse-Environment, which learn from the environment's transitions. These method include computing various costs, errors, losses and these losses are used for backpropagation to adjust network parameters.</p>
-</li>
-<li data-line="139" class="code-line" dir="auto">
-<p data-line="139" class="code-line" dir="auto"><code>backwards()</code> method  conducts backpropagation for multiple neural networks in a reinforcement learning framework, each targeting a specific part of the causal relationship graph. It first disables, then selectively enables gradients for each network during the error backpropagation process to ensure targeted learning. Finally, it resets the networks to allow gradient updates, preparing them for future forward passes.</p>
-</li>
-</ul>
-<h2 data-line="142" class="code-line" dir="auto" id="class-rl-params" tabindex="-1">Class RLParams <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/utils/setting/rl_params.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
-<p data-line="70" class="code-line" dir="auto">The <code>RLParameters</code> class is designed as a structured approach to manage the settings for Reinforcement Learning (RL) configurations. This class encapsulates and manages multiple subsidiary parameter classes, each representing different components of an RL system.</p>
-<h3 data-line="144" class="code-line" dir="auto" id="class-trainingparameters" tabindex="-1">Class TrainingParameters</h3>
-<ul data-line="145" class="code-line" dir="auto">
-<!-- <li data-line="145" class="code-line" dir="auto"><code>trainer_name</code>: Specifies the type of trainer algorithm. (default: <code>causal_rl</code>)</li> -->
-<!-- <li data-line="146" class="code-line" dir="auto"><code>trainer_variant</code>: Specifies a variant of <code>CausalRL</code>. (default: <code>classic</code>)</li> -->
-<!-- <li data-line="147" class="code-line" dir="auto"><code>use_on_policy</code>: Set whether the training is <code>on-policy</code> or <code>off-policy</code>. (default: <code>False</code>)</li> -->
-<li data-line="148" class="code-line" dir="auto"><code>batch_size</code>: Number of samples processed before model update. Larger batch szie can lead to more stable but slower training. (batch size / samples per step, default: <code>64</code>)</li>
-<li data-line="149" class="code-line" dir="auto"><code>replay_ratio</code>: Ratio foe how often past experiences are reused. (default: <code>1</code>)</li>
-<li data-line="150" class="code-line" dir="auto"><code>train_interval</code>: Frequency of thraining updates. (default: <code>1</code>)</li>
-</ul>
-<h3 data-line="153" class="code-line" dir="auto" id="class-algorithmparameters" tabindex="-1">Class AlgorithmParameters</h3>
-<ul data-line="154" class="code-line" dir="auto">
-<!-- <li data-line="154" class="code-line" dir="auto"><code>min_seq_length</code>: Minimum sequence length during exploration. (default: <code>1</code>)</li> -->
-<li data-line="155" class="code-line" dir="auto"><code>gpt_seq_length</code>: Maximum sequence length for training and exploration. (default: <code>16</code>)</li>
+  And the class sets up three key networks: Critic, Actor, Reverse-Environment networks, each configured based on the provided RL parameters.</p>
+  <h3 data-line="134" class="code-line" dir="auto" id="funtions" tabindex="-1">Method Overview</h3>
+  <ul data-line="135" class="code-line" dir="auto">
+    <li data-line="135" class="code-line" dir="auto">
+      <p data-line="135" class="code-line" dir="auto"><code>get_action()</code> method is responsible for determining the action to be taken by an agent in a given state. When <code>training == True</code>, it uses Actor's <code>sample_action()</code> method else, it uses <code>select_action()</code> method.</p>
+    </li>
+    <li data-line="137" class="code-line" dir="auto">
+      <p data-line="137" class="code-line" dir="auto"><code>train_model()</code> method is a core method of CausalRL approach. It involves a cooperative setup among three networks: Critic, Actor, Reverse-Environment, which learn from the environment's transitions. These method include computing various costs, errors, losses and these losses are used for backpropagation to adjust network parameters.</p>
+    </li>
+    <li data-line="139" class="code-line" dir="auto">
+      <p data-line="139" class="code-line" dir="auto"><code>backwards()</code> method  conducts backpropagation for multiple neural networks in a reinforcement learning framework, each targeting a specific part of the causal relationship graph. It first disables, then selectively enables gradients for each network during the error backpropagation process to ensure targeted learning. Finally, it resets the networks to allow gradient updates, preparing them for future forward passes.</p>
+    </li>
+  </ul>
+<br>
+<br>
+  <h2 data-line="142" class="code-line" dir="auto" id="class-rl-params" tabindex="-1">Class RLParams <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/utils/setting/rl_params.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
+  <p data-line="70" class="code-line" dir="auto">The <code>RLParameters</code> class is designed as a structured approach to manage the settings for Reinforcement Learning (RL) configurations. This class encapsulates and manages multiple subsidiary parameter classes, each representing different components of an RL system. The detailed parameters for each component within the <code>RLParams</code> can be found in the <code>rl_config.py</code> </p>
+  <h3 data-line="144" class="code-line" dir="auto" id="class-trainingparameters" tabindex="-1">Class TrainingParameters</h3>
+  <ul data-line="145" class="code-line" dir="auto">
+    <!-- <li data-line="145" class="code-line" dir="auto"><code>trainer_name</code>: Specifies the type of trainer algorithm. (default: <code>causal_rl</code>)</li> -->
+    <!-- <li data-line="146" class="code-line" dir="auto"><code>trainer_variant</code>: Specifies a variant of <code>CausalRL</code>. (default: <code>classic</code>)</li> -->
+    <!-- <li data-line="147" class="code-line" dir="auto"><code>use_on_policy</code>: Set whether the training is <code>on-policy</code> or <code>off-policy</code>. (default: <code>False</code>)</li> -->
+    <li data-line="148" class="code-line" dir="auto"><code>batch_size</code>: Number of samples processed before model update. Larger batch szie can lead to more stable but slower training. (batch size / samples per step, default: <code>64</code>)</li>
+    <li data-line="149" class="code-line" dir="auto"><code>replay_ratio</code>: Ratio foe how often past experiences are reused. (default: <code>1</code>)</li>
+    <li data-line="150" class="code-line" dir="auto"><code>train_interval</code>: Frequency of thraining updates. (default: <code>1</code>)</li>
+  </ul>
+  <h3 data-line="153" class="code-line" dir="auto" id="class-algorithmparameters" tabindex="-1">Class AlgorithmParameters</h3>
+  <ul data-line="154" class="code-line" dir="auto">
+    <!-- <li data-line="154" class="code-line" dir="auto"><code>min_seq_length</code>: Minimum sequence length during exploration. (default: <code>1</code>)</li> -->
+    <li data-line="155" class="code-line" dir="auto"><code>gpt_seq_length</code>: Maximum sequence length for training and exploration. (default: <code>16</code>)</li>
 <li data-line="156" class="code-line" dir="auto"><code>discount_factor</code>: To reduce the value of future rewards in the calculation of expected returns. (default: <code>0.99</code>)</li>
 <li data-line="157" class="code-line" dir="auto"><code>advantage_lambda</code>: Weighting advantages in policy optimization. (default: <code>0.99</code>)</li>
 <!-- <li data-line="158" class="code-line" dir="auto"><code>use_gae_advantage</code>: Automatically set in <code>rl_trainer</code>.py. It's determined based on weather the policy is off-policy or on-policy. (default: <code>None</code>)</li> -->
