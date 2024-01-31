@@ -2,7 +2,8 @@
 <html>
     <head>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-        <title>Tutorial_Day1</title>
+        <title>CausalRL Documentation</title>
+
         <link rel="stylesheet" href="../style.css">
 
     </head>
@@ -32,7 +33,7 @@
 <div class="sidebar">
   <ul>
   <li>
-    <a href="../index.html">Introduction</a>
+    <a href="../index.html">INTRODUCTION</a>
     <ul>
       <li><a href="../index.html#basic-usage">Basic Usage</a></li>
     </ul>
@@ -46,24 +47,33 @@
     </ul>
   </li>
   <li>
-    <a href="../Env Wrapper.html">Env Wrapper</a>
+    <a href="../Env Wrapper.html">ENVIRONMENTS</a>
     <ul>
       <li><a href="../Env Wrapper.html#gym-wrapper">Gym Wrapper</a></li>
       <li><a href="../Env Wrapper.html#unity-mlagent-wrapper">Unity MLAgent Wrapper</a></li>
     </ul>
   </li>
-  <li>
-    <a href="#">Tutorials</a>
-    <ul>
-      <li><a href="./tutorials/Tutorial_Day1.html">Day 1</a></li>
-      <li><a href="#">Day 2</a></li>
+  <li class="dropdown-menu">
+    <a class="dropbtn" href="#">TUTORIALS <span class="dropdown-arrow">&#9660;</span></a>
+    <ul class="dropdown-content">
+        <li><a href="./tutorials/Tutorial_Day1.html">Day 1</a></li>
+        <li><a href="#">Day 2</a></li>
     </ul>
   </li>
   <li>
-    <a href="#">Development</a>
+    <a>DEVELOPMENT</a>
     <ul>
-      <li><a href="https://github.com/ccnets-team/rl-tune">Github</a></li>
-      <li><a href="https://wandb.ai/rl_tune/rl-tune-gym/?workspace">W&amp;B</a></li>
+        <li>
+            <a href="https://github.com/ccnets-team/rl-tune">
+            Github    
+            <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/9f93117b-8082-4b92-ac77-245b2e13eeba" alt="Github" style="height:10px; width:10px;">
+            </a>
+        </li>
+        <li><a href="https://wandb.ai/rl_tune/rl-tune-gym/?workspace">
+            W&amp;B
+            <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/9f93117b-8082-4b92-ac77-245b2e13eeba" alt="W&B" style="height:10px; width:10px;">
+            </a>
+        </li>
     </ul>
   </li>
 </ul>
@@ -83,7 +93,7 @@
     <p data-line="13" class="code-line" dir="auto"><em>This tutorial is based on <strong>CCNets's causal-rl repository</strong> <code>beta branch</code>.</em></p>
     <p data-line="15" class="code-line" dir="auto">While CausalRL usually utilizes <strong>GPT models</strong> in each of its networks, this tutorial aims to simplify understanding by using relatively simple MLP models and the environment of Unity MLAgent. We will explore the training process and approach of CausalRL. Initially, CausalRL is composed of three networks: Critic, Actor, and Reverse Environment. This setup enhances the common Actor-Critic model used in many reinforcement learning algorithms by adding the unique Reverse Environment exclusive to CausalRL.</p>
     <p data-line="17" class="code-line" dir="auto">Typical reinforcement learning algorithms mainly consider transitions from the current to future states, predicting and optimizing future outcomes based on the agent's current state and actions. However, the Reverse Environment in CausalRL inversely undertakes this process, contemplating transitions from future to current states. It aims to understand <em>"which actions could have led to specific future states."</em> This approach allows CausalRL to delve deeper into understanding the causes,
-    i.e., the causality of specific outcomes, and to trace back through the processes that led to them.</p>
+    i.e. the causality of specific outcomes, and to trace back through the processes that led to them.</p>
     <p data-line="20" class="code-line" dir="auto">For more detailed information, please refer to the <a href="https://github.com/ccnets-team/causal-rl/blob/beta-causal-rl/README.md" data-href="https://github.com/ccnets-team/causal-rl/blob/beta-causal-rl/README.md">CausalRL Readme.md</a> or <a href="https://www.linkedin.com/company/ccnets/posts/?feedView=all" data-href="https://www.linkedin.com/company/ccnets/posts/?feedView=all">LinkedIn page of CCNets</a></p>
     <h2 data-line="22" class="code-line" dir="auto" id="dependency" tabindex="-1">Dependency</h2>
     <pre><code data-line="24" class="code-line language-bash" dir="auto">conda create -name crl python=3.9.18
@@ -233,7 +243,7 @@
       </div>    
 
 </div>
-    
+    <script src="../js_funcs.js"></script>
     <script src="script.js"></script>
     </body>
 </html>

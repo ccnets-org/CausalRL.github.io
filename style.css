@@ -1088,7 +1088,7 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
       padding: 6px 8px 6px 16px;
       text-decoration: none;
       font-family: 'ARIAL.TTF', sans-serif;
-      font-size: 25px;
+      font-size: 20px;
       color: #0F0F0F;
       display: block;
     }
@@ -1106,4 +1106,30 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-  }
+    }
+
+    .dropdown-menu {
+        position: relative;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: relative;
+        background-color: #f9f9f9;
+        z-index: 1;
+    }
+    
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropdown-arrow {
+        font-size: x-small;
+        border-width: 0 0.1px -0.5px 0;
+        display: inline-block;
+        padding: 1px;
+    }
+    
