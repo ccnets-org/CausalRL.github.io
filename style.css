@@ -1132,4 +1132,41 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
         display: inline-block;
         padding: 1px;
     }
+    .grid-container {
+        display: none;
+        width: 600px;
+        grid-template-columns: repeat(4, minmax(134px, 1fr)); 
+        gap: 15px; 
+        padding: 10px;
+        padding-bottom: 50px;
+        position: relative;
+    }
+    
+    .grid-item {
+        width: 134px; 
+        height: auto; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .grid-item img {
+        width: 100%; 
+        height: auto; 
+    }
+    
+    .grid-item span {
+        display: block;
+        text-align: center;
+        margin-top: 5px; 
+    }
+    #sourceCredit {
+        position: absolute;
+        display: none;
+        right: 10px;
+        bottom: 10px;
+        font-size: 12px;
+        color: #484bcc;
+    }
+    
     

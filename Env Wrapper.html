@@ -39,18 +39,19 @@
     <li>
       <a href="API.html">API</a>
       <ul>
-        <li><a href="API.html#class-rltune">RLTune</a></li>
-        <li><a href="API.html#class-causalrl">CausalRL</a></li>
-        <li><a href="API.html#class-rl-params">RLParams</a></li>
+        <li><a href="API.html#class-rltune">CausalRL</a></li>
+        <li><a href="API.html#class-causalrl">CausalTrainer</a></li>
+        <li><a href="API.html#class-rl-params">RLConfig</a></li>
       </ul>
     </li>
     <li>
-      <a href="Env Wrapper.html">ENVIRONMENTS</a>
+      <a>ENVIRONMENTS</a>
       <ul>
-        <li><a href="Env Wrapper.html#gym-wrapper">Gym Wrapper</a></li>
-        <li><a href="#unity-mlagent-wrapper">Unity MLAgent Wrapper</a></li>
+      <li><a href="analyze_env.html">Analyze_env</a></li>
+      <li><a href="Env Wrapper.html#gym-wrapper">Gym Wrapper</a></li>
+      <li><a href="#unity-mlagent-wrapper">Unity MLAgent Wrapper</a></li>
       </ul>
-    </li>
+  </li>
     <li class="dropdown-menu">
       <a class="dropbtn" href="#">TUTORIALS <span class="dropdown-arrow">&#9660;</span></a>
       <ul class="dropdown-content">
@@ -78,20 +79,20 @@
   </div>
 <div data-line="59" class="code-line" dir="auto"></div>
 <div class="main-content">
-<h1 data-line="61" class="code-line" dir="auto" id="env-wrapper" tabindex="-1">Env Wrapper</h1>
-<p data-line="62" class="code-line" dir="auto"><strong>Env Wrapper</strong> Modules are a collection of modular components, each offering unique finctionality for reinforcement learning environmens. This modules includes a range of modules like <a href="https://github.com/ccnets-team/rl-tune/blob/main/environments/gym_wrapper.py" target="_blank"><code>gym_wrapper</code></a>, <a href="https://github.com/ccnets-team/rl-tune/blob/main/environments/mlagents_wrapper.py" target="_blank"><code>ml_agent_wrapper</code></a>, etc., designed to enhance and simplify the integration and customization of various RL platforms.</p>
-<h2 data-line="64" class="code-line" dir="auto" id="gym-wrapper" tabindex="-1">Gym Wrapper <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/environments/gym_wrapper.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
+<h1 data-line="61" class="code-line" dir="auto" id="env-wrapper" tabindex="-1">ENVIRONMENTS</h1>
+<!-- <p data-line="62" class="code-line" dir="auto"><strong>Env Wrapper</strong> Modules are a collection of modular components, each offering unique finctionality for reinforcement learning environmens. This modules includes a range of modules like <a href="https://github.com/ccnets-team/rl-tune/blob/main/environments/gym_wrapper.py" target="_blank"><code>gym_wrapper</code></a>, <a href="https://github.com/ccnets-team/rl-tune/blob/main/environments/mlagents_wrapper.py" target="_blank"><code>ml_agent_wrapper</code></a>, etc., designed to enhance and simplify the integration and customization of various RL platforms.</p> -->
+<h2 data-line="64" class="code-line" dir="auto" id="gym-wrapper" tabindex="-1">Gymnasium Mujoco <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/environments/gym_wrapper.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
 <div data-line="65" class="code-line" dir="auto"></div>
 <div align="center">
     <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/0b1ad841-da4b-4fb4-a171-a9781c875a38" alt="gymnasium-text" width="400">
 </div>
-<pre><code data-line="70" class="code-line language-python" dir="auto"><span class="hljs-comment"># gym_wrapper.py</span>
+<!-- <pre><code data-line="70" class="code-line language-python" dir="auto"><span class="hljs-comment"># gym_wrapper.py</span>
 <span class="hljs-keyword">class</span> <span class="hljs-title class_">GymEnvWrapper</span>(<span class="hljs-title class_ inherited__">AgentExperienceCollector</span>):
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config, max_seq_length, test_env: <span class="hljs-built_in">bool</span>, use_graphics: <span class="hljs-built_in">bool</span> = <span class="hljs-literal">False</span>, seed: <span class="hljs-built_in">int</span> = <span class="hljs-number">0</span></span>):
 	...
-</code></pre>
+</code></pre> -->
 <pre><code data-line="78" class="code-line language-python" dir="auto"><span class="hljs-comment"># main.ipynb</span>
-env_config, rl_params = analyze_env(env_name = <span class="hljs-string">"HalfCheetah-v4"</span>)
+env_config, rl_params = <a href="./analyze_env.html">analyze_env</a>(env_name = <span class="hljs-string">"HalfCheetah-v4"</span>)
 </code></pre>
 <ul data-line="82" class="code-line" dir="auto">
 <li data-line="82" class="code-line" dir="auto">
@@ -103,19 +104,37 @@ env_config, rl_params = analyze_env(env_name = <span class="hljs-string">"HalfCh
 </ul>
 </li>
 </ul>
-<p data-line="88" class="code-line" dir="auto">To visit <strong>Gymnasium Official Page</strong> for more details, Click <a href="https://gymnasium.farama.org" data-href="https://gymnasium.farama.org/api/wrappers/">here</a>.</p>
-<h2 data-line="91" class="code-line" dir="auto" id="unity-mlagent-wrapper" tabindex="-1">Unity MLAgent Wrapper <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/environments/mlagents_wrapper.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
+<p data-line="88" class="code-line" dir="auto">To visit <strong>Gymnasium Official Page</strong> for more details, Click <a href="https://gymnasium.farama.org" data-href="https://gymnasium.farama.org/api/wrappers/"><strong>here</strong></a>.</p>
+<button onclick="toggleGrid()">View Env Images</button>
+    <div class="grid-container" id="imageGrid">
+        <div class="grid-item"><img src="https://github.com/ccnets-team/causal-rl/assets/95277008/4e28c237-f449-4513-8c65-7d207bef96d2" alt="Ant"><span>Ant</span></div>
+        <div class="grid-item"><img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/fc17a709-25a3-46b5-9cda-5af4b99c516c" alt="HalfCheetah"><span>HalfCheetah</span></div>
+        <div class="grid-item"><img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/5cc08dd0-ccdb-452d-99eb-ce9127c4b2ff" alt="Walker"><span>Walker</span></div>
+        <div class="grid-item"><img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/1f008467-14be-4ab2-b3ca-050ec6d88d36" alt="Hopper"><span>Hopper</span></div>
+        <div class="grid-item"><img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/de2322c6-c5c8-4176-ba43-6790e1153fe7" alt="Swimmer"><span>Swimmer</span></div>
+        <div class="grid-item"><img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/40216875-8b70-42af-8155-7f5576212b76" alt="Pusher"><span>Pusher</span></div>
+        <div class="grid-item"><img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/dae475ee-a6bd-4edd-bc9b-4c3aac6b8612" alt="Reacher"><span>Reacher</span></div>
+        <div class="grid-item"><img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/542538e8-d5b5-4cfc-a352-8914418b8753" alt="Inverted_pendulum"><span>Inverted Pendulum</span></div>
+        <div class="grid-item"><img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/185b1d6c-3b1d-41a1-8d8d-04b9005e2ee4" alt="Inverted_Double_pendulum"><span>Inverted Double Pendulum</span></div>
+        <div class="grid-item"><img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/32fb751e-e65e-4a97-94d6-382304c41a76" alt="Humunoid"><span>Humunoid</span></div>
+        <div class="grid-item"><img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/d9f6b2ed-7de2-4100-bf31-5913678ce4d3" alt="HumunoidStandup"><span>Humunoid Standup</span></div>
+        <p class="source-credit" id="sourceCredit">Source: OpenAI Gymnasium Documentation</p>
+      </div>
+      
+<hr>
+<br>
+<h2 data-line="91" class="code-line" dir="auto" id="unity-mlagent-wrapper" tabindex="-1">Unity MLAgent<a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/environments/mlagents_wrapper.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
 <div data-line="92" class="code-line" dir="auto"></div>
 <div align="center">
     <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/ad0760d5-6f70-456f-802f-627cfcbfaa01" alt="unity-wide" width="600">
 </div>
-<pre><code data-line="96" class="code-line language-python" dir="auto"><span class="hljs-comment"># mlagents_wrapper.py</span>
+<!-- <pre><code data-line="96" class="code-line language-python" dir="auto"><span class="hljs-comment"># mlagents_wrapper.py</span>
 <span class="hljs-keyword">class</span> <span class="hljs-title class_">MLAgentsEnvWrapper</span>(<span class="hljs-title class_ inherited__">AgentExperienceCollector</span>):
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config, max_seq_length, test_env, use_graphics: <span class="hljs-built_in">bool</span>, worker_id, seed = <span class="hljs-number">0</span>, time_scale = <span class="hljs-number">256</span></span>):
 	...
-</code></pre>
+</code></pre> -->
 <pre><code data-line="103" class="code-line language-python" dir="auto"><span class="hljs-comment"># main.ipynb</span>
-env_config, rl_params = analyze_env(env_name = <span class="hljs-string">"3DBallHard"</span>)
+env_config, rl_params = <a href="./analyze_env.html">analyze_env</a>(env_name = <span class="hljs-string">"3DBallHard"</span>)
 </code></pre>
 <ul data-line="107" class="code-line" dir="auto">
 <li data-line="107" class="code-line" dir="auto">
@@ -127,7 +146,7 @@ env_config, rl_params = analyze_env(env_name = <span class="hljs-string">"3DBall
 </ul>
 </li>
 </ul>
-<p data-line="113" class="code-line" dir="auto">To visit <strong>Unity MLAgent Official Page</strong> for more details, Click <a href="https://github.com/gzrjzcx/ML-agents/blob/master/gym-unity/README.md" data-href="https://github.com/gzrjzcx/ML-agents/blob/master/gym-unity/README.md">here</a>.</p>
+<p data-line="113" class="code-line" dir="auto">To visit <strong>Unity MLAgent Official Page</strong> for more details, Click <a href="https://github.com/gzrjzcx/ML-agents/blob/master/gym-unity/README.md" data-href="https://github.com/gzrjzcx/ML-agents/blob/master/gym-unity/README.md"><strong>here</strong></a>.</p>
 <div data-line="115" class="code-line" dir="auto"></div>
 <br>
 <hr>

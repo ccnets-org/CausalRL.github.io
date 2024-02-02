@@ -39,18 +39,19 @@
   <li>
     <a href="API.html">API</a>
     <ul>
-      <li><a href="API.html#class-rltune">RLTune</a></li>
-      <li><a href="API.html#class-causalrl">CausalRL</a></li>
-      <li><a href="API.html#class-rl-params">RLParams</a></li>
+      <li><a href="API.html#class-rltune">CausalRL</a></li>
+      <li><a href="API.html#class-causalrl">CausalTrainer</a></li>
+      <li><a href="API.html#class-rl-params">RLConfig</a></li>
     </ul>
   </li>
   <li>
-    <a href="Env Wrapper.html">ENVIRONMENTS</a>
+    <a>ENVIRONMENTS</a>
     <ul>
-      <li><a href="Env Wrapper.html#gym-wrapper">Gym Wrapper</a></li>
-      <li><a href="#unity-mlagent-wrapper">Unity MLAgent Wrapper</a></li>
+    <li><a href="analyze_env.html">Analyze_env</a></li>
+    <li><a href="Env Wrapper.html#gym-wrapper">Gym Wrapper</a></li>
+    <li><a href="#unity-mlagent-wrapper">Unity MLAgent Wrapper</a></li>
     </ul>
-  </li>
+</li>
   <li class="dropdown-menu">
     <a class="dropbtn" href="#">TUTORIALS <span class="dropdown-arrow">&#9660;</span></a>
     <ul class="dropdown-content">
@@ -79,11 +80,11 @@
 <div data-line="61" class="code-line" dir="auto"></div>
 <div class="main-content">
   <h1 data-line="63" class="code-line" dir="auto" id="api" tabindex="-1">API</h1>
-  <h2 data-line="65" class="code-line" dir="auto" id="class-rltune" tabindex="-1">Class RLTune <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/rl_tune.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
-  <pre><code data-line="66" class="code-line language-python" dir="auto"><span class="hljs-keyword">class</span> <span class="hljs-title class_">RLTune</span>:
+  <h2 data-line="65" class="code-line" dir="auto" id="class-rltune" tabindex="-1">Class CausalRL <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/causal_rl.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
+  <pre><code data-line="66" class="code-line language-python" dir="auto"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CausalRL</span>:
       <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config: EnvConfig, rl_params: RLParameters, device, use_graphics=<span class="hljs-literal">False</span>, use_print=<span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">False</span></span>):
   </code></pre>
-  <p data-line="70" class="code-line" dir="auto">The RLTune class is designed for tuning and training reinforcement learning models, using a specified trainer.</p>
+  <p data-line="70" class="code-line" dir="auto">The CausalRL class is designed for tuning and training reinforcement learning models, using a specified trainer.</p>
   <h3 data-line="72" class="code-line" dir="auto" id="parameters" tabindex="-1">Parameters:</h3>
   <ul data-line="73" class="code-line" dir="auto">
   <li data-line="73" class="code-line" dir="auto"><code>env_config</code> (EnvConfig): Configuration for the environment.</li>
@@ -154,7 +155,7 @@
   </ul>
   <br>
   <br>
-  <h2 data-line="125" class="code-line" dir="auto" id="class-causalrl" tabindex="-1">Class CausalRL <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/training/causal_rl.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
+  <h2 data-line="125" class="code-line" dir="auto" id="class-causalrl" tabindex="-1">Class CausalTrainer <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/training/causal_trainer.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
   <pre><code data-line="126" class="code-line language-python" dir="auto"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CausalRL</span>(<span class="hljs-title class_ inherited__">BaseTrainer</span>):
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config, rl_params, device</span>):
   </code></pre>
@@ -174,7 +175,7 @@
     </ul>
   <br>
   <br>
-    <h2 data-line="142" class="code-line" dir="auto" id="class-rl-params" tabindex="-1">Class RLParams <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/utils/setting/rl_params.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
+    <h2 data-line="142" class="code-line" dir="auto" id="class-rl-params" tabindex="-1">RLConfig <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/utils/setting/rl_config.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
     <p data-line="70" class="code-line" dir="auto">The <code>RLParameters</code> class is designed as a structured approach to manage the settings for Reinforcement Learning (RL) configurations. This class encapsulates and manages multiple subsidiary parameter classes, each representing different components of an RL system. The detailed parameters for each component within the <code>RLParams</code> can be found in the <code>rl_config.py</code> </p>
     <h3 data-line="144" class="code-line" dir="auto" id="class-trainingparameters" tabindex="-1">Class TrainingParameters</h3>
     <ul data-line="145" class="code-line" dir="auto">
@@ -184,6 +185,8 @@
       <li data-line="148" class="code-line" dir="auto"><code>batch_size</code>: Number of samples processed before model update. Larger batch szie can lead to more stable but slower training. (batch size / samples per step, default: <code>64</code>)</li>
       <li data-line="149" class="code-line" dir="auto"><code>replay_ratio</code>: Ratio foe how often past experiences are reused. (default: <code>1</code>)</li>
       <li data-line="150" class="code-line" dir="auto"><code>train_interval</code>: Frequency of thraining updates. (default: <code>1</code>)</li>
+      <li data-line="181" class="code-line" dir="auto"><code>max_steps</code>: Maximum number of steps for the exploration phase. (default: <code>100000</code>)</li>
+      <li data-line="185" class="code-line" dir="auto"><code>buffer_size</code>: Total size of the memory buffer, This determines the capacity for storing past experiences. (default: <code>256000</code>)</li>
     </ul>
     <h3 data-line="153" class="code-line" dir="auto" id="class-algorithmparameters" tabindex="-1">Class AlgorithmParameters</h3>
     <ul data-line="154" class="code-line" dir="auto">
@@ -205,22 +208,12 @@
   </ul>
   <h3 data-line="170" class="code-line" dir="auto" id="class-optimizationparameters" tabindex="-1">Class OptimizationParameters</h3>
   <ul data-line="171" class="code-line" dir="auto">
-  <li data-line="171" class="code-line" dir="auto"><code>lr</code>: Learning rate for the optimiztion algorithm. (default: <code>2e-5</code>)</li>
-  <li data-line="172" class="code-line" dir="auto"><code>min_lr</code>: Minimum learning rate to which the lr will decay. (default: <code>5e-1</code>)</li>
+  <li data-line="171" class="code-line" dir="auto"><code>lr</code>: Learning rate for the optimiztion algorithm. (default: <code>5e-5</code>)</li>
+  <li data-line="172" class="code-line" dir="auto"><code>min_lr</code>: Minimum learning rate to which the lr will decay. (default: <code>5e-6</code>)</li>
   <li data-line="173" class="code-line" dir="auto"><code>scheduler_type</code>: Specifies the type of learning rate scheduler. (default: <code>exponential</code>)</li>
   <li data-line="174" class="code-line" dir="auto"><code>tau</code>: How quickly the target network is updated with the main network's weights. (default: <code>1e-1</code>)</li>
   <li data-line="175" class="code-line" dir="auto"><code>use_target_network</code>: Indicate whether to use target network or not. (default: <code>True</code>)</li>
-  <li data-line="176" class="code-line" dir="auto"><code>clip_grad_range</code>: The range within which gradients are clipped. To prevent the issue of exploding gradients. (default: <code>None</code>)</li>
-  </ul>
-  <h3 data-line="179" class="code-line" dir="auto" id="class-explorationparameters" tabindex="-1">Class ExplorationParameters</h3>
-  <ul data-line="180" class="code-line" dir="auto">
-  <li data-line="180" class="code-line" dir="auto"><code>noise_type</code>: Type of exploration noise used to encourage exploration in the agent. (default: <code>None</code>)</li>
-  <li data-line="181" class="code-line" dir="auto"><code>max_steps</code>: Maximum number of steps for the exploration phase. (default: <code>100000</code>)</li>
-  </ul>
-  <h3 data-line="184" class="code-line" dir="auto" id="class-memoryparameters" tabindex="-1">Class MemoryParameters</h3>
-  <ul data-line="185" class="code-line" dir="auto">
-  <li data-line="185" class="code-line" dir="auto"><code>buffer_size</code>: Total size of the memory buffer, This determines the capacity for storing past experiences. (default: <code>256000</code>)</li>
-  <!-- <li data-line="186" class="code-line" dir="auto"><code>early_training_start_step</code>: An optional parameter that allows training to commence before the replay buffer is completely filled. (default: <code>None</code>)</li> -->
+  <li data-line="176" class="code-line" dir="auto"><code>clip_grad_range</code>: The range within which gradients are clipped. To prevent the issue of exploding gradients. (default: <code>2.0</code>)</li>
   </ul>
   <h3 data-line="189" class="code-line" dir="auto" id="class-normalizationparameters" tabindex="-1">Class NormalizationParameters</h3>
   <ul data-line="190" class="code-line" dir="auto">
@@ -233,12 +226,7 @@
   <li data-line="192" class="code-line" dir="auto">
   <p data-line="192" class="code-line" dir="auto"><code>advantage_normalizer</code>: Determines the method used for normalizing advantage values. (default: <code>L1_norm</code>)</p>
   </li>
-  <!-- <li data-line="193" class="code-line" dir="auto">
-  <p data-line="193" class="code-line" dir="auto"><code>exponential_moving_alpha</code>: Set the alpha value for exponential moving average calculations. (dafault: <code>1e-4</code>)</p>
-  </li> -->
-  <!-- <li data-line="194" class="code-line" dir="auto">
-  <p data-line="194" class="code-line" dir="auto"><code>clip_norm_range</code>: The range within which normalized values are clipped. (default: <code>10.0</code>)</p>
-  </li> -->
+  </ul>
   <div data-line="196" class="code-line" dir="auto"></div>
   <br>
   <hr>
