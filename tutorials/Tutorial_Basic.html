@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Tutorial_Basic</title>
+        <link rel="stylesheet" href="../style/style.css">
+
+    </head>
+    <body class="vscode-body vscode-light">
+        <div data-line="0" class="code-line" dir="auto"></div>
+        <div data-line="2" class="code-line" dir="auto"></div>
+        <nav class="navbar">
+        <div  data-line="4" class="code-line" dir="auto"></div>
+        <a class="header-link" href="../index.html">  
+            <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/6db8e929-637b-4d9c-9a61-20910e878d53" alt="CCNets Logo" class="logo">
+            <!-- <h1 class="page-name">CausalRL Documentation</h1> -->
+        </a>
+        <div data-line="7" class="code-line" dir="auto"></div>
+        <div class="social-links">
+        <a href="https://ccnets.org/" target="_blank">
+            <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/42f10f53-0262-4203-9c6f-618e4841adb2" alt="Website" style="width: 20px; height: 20px;">
+        </a>
+        <a href="https://github.com/ccnets-team/rl-tune" target="_blank">
+            <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/5183f887-1263-408b-8c2f-9eeefafbce48" alt="GitHub" style="width: 20px; height: 20px;">
+        </a>
+        <a href="https://www.linkedin.com/company/ccnets/" target="_blank">
+            <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/fe1f76f2-a407-4f58-ad28-92a9ac9efa3f" alt="LinkedIn" style="width: 20px; height: 20px;">
+        </a>
+        </div>
+        </nav>
+        <div data-line="9" class="code-line" dir="auto"></div>
+        <div class="sidebar">
+        <ul>
+        <li>
+            <a href="../index.html">INTRODUCTION</a>
+            <ul>
+            <li><a href="../index.html#basic-usage">Basic Usage</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="../API.html">API</a>
+            <ul>
+            <li><a href="../API.html#class-rltune">CausalRL</a></li>
+            <li><a href="../API.html#class-causalrl">CausalTrainer</a></li>
+            <li><a href="../API.html#class-rl-params">RLConfig </a></li>
+            </ul>
+        </li>
+        <li>
+            <a>ENVIRONMENTS</a>
+            <ul>
+            <li><a href="../analyze_env.html">Analyze_env</a></li>
+            <li><a href="../Env Wrapper.html#gym-wrapper">OpenAI Gymnasium</a></li>
+            <li><a href="../Env Wrapper.html#unity-mlagent-wrapper">Unity MLAgents</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-menu">
+            <a class="dropbtn" href="#">TUTORIALS <span class="dropdown-arrow">&#9660;</span></a>
+            <ul class="dropdown-content">
+                <li><a href="./Tutorial_Day1.html">Day 1</a></li>
+                <li><a href="#">Day 2</a></li>
+            </ul>
+        </li>
+        <li>
+            <a>DEVELOPMENT</a>
+            <ul>
+                <li>
+                    <a href="https://github.com/ccnets-team/rl-tune">
+                    Github    
+                    <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/9f93117b-8082-4b92-ac77-245b2e13eeba" alt="Github" style="height:10px; width:10px;">
+                    </a>
+                </li>
+                <li><a href="https://wandb.ai/rl_tune/rl-tune-gym/?workspace">
+                    W&amp;B
+                    <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/9f93117b-8082-4b92-ac77-245b2e13eeba" alt="W&B" style="height:10px; width:10px;">
+                    </a>
+                </li>
+            </ul>
+        </li>
+        </ul>
+        </div>
+            <div class="main-content">
+
+                <h1 data-line="0" class="code-line" dir="auto" id="causal-rl-tutorial---basic" tabindex="-1">CAUSAL RL TUTORIAL - Basic</h1>
+                <p data-line="2" class="code-line" dir="auto">DELAWARE INCORPORATION
+                COPYRIGHT (c) 2024. CCNets, Inc. All Rights reserved.</p>
+                <p data-line="5" class="code-line" dir="auto">Author: JUNHO PARK, JEONGYOONG KIM</p>
+                <br>
+                <div data-line="11" class="code-line" dir="auto"></div>
+                <h2 data-line="13" class="code-line" dir="auto" id="introduction" tabindex="-1">Introduction</h2>
+                <p data-line="15" class="code-line" dir="auto"><em>이 튜토리얼은 <strong>CCNets's causal-rl repository</strong> <code>beta branch</code>에 기반하여 작성되었습니다.</em></p>
+                <p data-line="17" class="code-line" dir="auto">이번 튜토리얼에서는 <strong>CausalRL</strong>의 기본적인 사용방법과 <code>rl_config</code>의 Parameter 클래스들을 이용해 훈련에 사용할 parameter들을 튜닝하는 방법에 대해 알아보겠습니다.</p>
+                <!-- <p data-line="19" class="code-line" dir="auto">더 자세한 정보를 위해서 <a href="https://github.com/ccnets-team/causal-rl/blob/beta-causal-rl/README.md" data-href="https://github.com/ccnets-team/causal-rl/blob/beta-causal-rl/README.md">CausalRL Readme.md</a> 또는 <a href="https://www.linkedin.com/company/ccnets/posts/?feedView=all" data-href="https://www.linkedin.com/company/ccnets/posts/?feedView=all">LinkedIn page of CCNets</a> 를 참고하세요.</p> -->
+                <br>
+                <h2 data-line="21" class="code-line" dir="auto" id="dependency" tabindex="-1">Dependency</h2>
+                <pre><code data-line="23" class="code-line language-bash" dir="auto">conda create -name crl python=3.9.18
+                conda activate crl
+                conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+                pip install mlagents==0.30
+                pip install protobuf==3.20
+                pip install jupyter
+                pip install transformers==4.34.1
+                </code></pre>
+                <h3 data-line="33" class="code-line" dir="auto" id="clone-the-repository" tabindex="-1">Clone the repository:</h3>
+                <pre><code data-line="35" class="code-line language-bash" dir="auto">git <span class="hljs-built_in">clone</span> https://github.com/ccnets-team/causal-rl.git
+                </code></pre>
+                <br>
+        
+                <h2 data-line="39" class="code-line" dir="auto" id="import-library" tabindex="-1">Import Library</h2>
+                <pre><code data-line="41" class="code-line language-python" dir="auto"><span class="hljs-keyword">from</span> __future__ <span class="hljs-keyword">import</span> print_function
+                <span class="hljs-keyword">from</span> utils.setting.env_settings <span class="hljs-keyword">import</span> analyze_env
+                <span class="hljs-keyword">from</span> utils.init <span class="hljs-keyword">import</span> set_seed
+                <span class="hljs-keyword">from</span> torch.utils.tensorboard <span class="hljs-keyword">import</span> SummaryWriter
+                <span class="hljs-keyword">import</span> torch
+
+                set_seed()
+                ngpu = <span class="hljs-number">2</span> <span class="hljs-comment"># 사용할 GPU의 수</span>
+
+                device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hljs-keyword">if</span> (torch.cuda.is_available() <span class="hljs-keyword">and</span> ngpu &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">else</span> <span class="hljs-string">"cpu"</span>)
+                </code></pre>
+                <ul data-line="54" class="code-line" dir="auto">
+                <p>먼저, 필요한 라이브러리와 모듈을 불러오겠습니다.</p>    
+                <li data-line="54" class="code-line" dir="auto"><code>set_seed()</code>: <em>random</em>, <em>numpy</em>, <em>torch</em>와 같은 다양한 라이브러리의 시드 값을 고정하여 무작위성을 제어함으로써, 실험을 안정적이고 재현 가능하게 만듭니다.</li>
+                </ul>
+                <br>
+
+                <h2 data-line="56" class="code-line" dir="auto" id="setting-up-the-learning-environment" tabindex="-1">Setting Up the Learning Environment</h2>
+                <p data-line="58" class="code-line" dir="auto">먼저, <strong>MLAgent's 3DBallHard</strong>을 튜토리얼에 사용하기 위해서, 아래와 같이 causal_rl 디렉토리 위치와 동일한 위치에 파일을 다운받고 압축을 풀어주세요.</p>
+                <pre data-line="60" class="code-line" dir="auto"><code>Unity MLAgents(download link: https://drive.google.com/pdrive/folders/1TGSfw7IgfmVZslvmqIDLr5jAneQpsVbb?usp=sharing):
+                    locate the downloaded folder as below:
+                    your_projects/
+                        causal_rl/
+                        unity_environments/
+                </code></pre>
+                <pre><code data-line="67" class="code-line language-python" dir="auto">env_config, rl_params = analyze_env(env_name = <span class="hljs-string">"3DBallHard"</span>)
+                </code></pre>
+                <ul data-line="71" class="code-line" dir="auto">
+                <li data-line="71" class="code-line" dir="auto"><code>analyze_env()</code> 함수는 <code>3DBallHard</code>라는 이름의 환경을 분석하고 설정합니다. 이 함수는 <strong>CausalRL</strong> 프레임워크의 핵심 함수 중 하나로, 사용자가 정의한 환경 이름(<code>env_name</code>)을 받아 필요한 환경 설정(<code>env_config</code>)과 학습 매개변수(<code>rl_params</code>)를 구성합니다. 여기서 <code>3DBallHard</code> 환경에 대한 구성과 매개변수를 추출하여, <code>env_config</code>와 <code>rl_params</code> 두 변수에 할당하는 과정을 수행합니다.</li>
+                </ul>
+                <br>
+                <h2 data-line="73" class="code-line" dir="auto" id="set-parameters" tabindex="-1">Set Parameters</h2>
+                <pre><code data-line="75" class="code-line language-python" dir="auto"><span class="hljs-keyword">from</span> utils.setting.rl_config <span class="hljs-keyword">import</span> TrainingParameters, AlgorithmParameters, NetworkParameters
+                <span class="hljs-keyword">from</span> nn.gpt <span class="hljs-keyword">import</span> GPT
+
+                rl_params.training = TrainingParameters(batch_size=<span class="hljs-number">64</span>, replay_ratio=<span class="hljs-number">1</span>, max_steps=<span class="hljs-number">100000</span>, buffer_size=<span class="hljs-number">256000</span>)
+
+                rl_params.algorithm = AlgorithmParameters(gpt_seq_length=<span class="hljs-number">16</span>, discount_factor=<span class="hljs-number">0.99</span>)
+
+                rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</span>, d_model=<span class="hljs-number">256</span>, dropout=<span class="hljs-number">0.02</span>, network_type=GPT)
+                </code></pre>
+                <ul data-line="86" class="code-line" dir="auto">
+                <li data-line="86" class="code-line" dir="auto">
+                <p data-line="86" class="code-line" dir="auto"><strong>TrainingParameters:</strong></p>
+                <ul data-line="87" class="code-line" dir="auto">
+                <li data-line="87" class="code-line" dir="auto">
+                <p data-line="87" class="code-line" dir="auto"><code>batch_size</code>:</p>
+                <p data-line="89" class="code-line" dir="auto"><em>MLAgent와 Gymnasium 환경에서는 32 또는 64의 <code>batch_size</code>를 추천합니다. 또한, 메모리 최적화와 계산 효율을 위해 2의 배수값을 입력하는 것이 좋습니다</em></p>
+                </li>
+                <li data-line="91" class="code-line" dir="auto">
+                <p data-line="91" class="code-line" dir="auto"><code>replay_ratio</code>:</p>
+                <p data-line="93" class="code-line" dir="auto">훈련에서 과거 경험을 얼마나 자주 재사용하는지에 대한 비율입니다. <em>MLAgent와 Gymnasium 환경에서는 1, 2, 4의 <code>replay_ratio</code>를 추천합니다</em></p>
+                </li>
+                <li data-line="95" class="code-line" dir="auto">
+                <p data-line="95" class="code-line" dir="auto"><code>max_steps</code>:</p>
+                <p data-line="97" class="code-line" dir="auto">탐색 단계의 최대 수로, 탐색 전략이 적용되는 기간을 정의합니다. 일반적인 머신러닝 학습에서는 <em><code>epochs</code></em> 또는 <em><code>iterations</code></em> 로 표현합니다.</p>
+                </li>
+                <li data-line="99" class="code-line" dir="auto">
+                <p data-line="99" class="code-line" dir="auto"><code>buffer_size</code>:</p>
+                <p data-line="101" class="code-line" dir="auto">메모리 버퍼의 총 크기로, 얼마나 많은 과거 경험을 저장할 수 있는지에 영향을 미칩니다.</p>
+                </li>
+                </ul>
+                <p data-line="103" class="code-line" dir="auto"><strong>위의 TrainingParameters의 각 parameter는 큰 값을 설정할수록 안정적인 학습이 가능할수도 있지만, 더 느린 훈련을 초래할 수 있습니다</strong></p>
+                </li>
+                <li data-line="105" class="code-line" dir="auto">
+                <p data-line="105" class="code-line" dir="auto"><strong>AlgorithmParameters:</strong></p>
+                <ul data-line="106" class="code-line" dir="auto">
+                <li data-line="106" class="code-line" dir="auto">
+                <p data-line="106" class="code-line" dir="auto"><code>gpt_seq_length</code>:</p>
+                <p data-line="108" class="code-line" dir="auto">GPT 모델을 이용한 훈련 및 탐색에서 사용되는 최대 시퀀스 길이입니다. 훈련에 큰 영향을 미치는 parameter로 <code>gpt_seq_length</code>값이 크다면 더 긴 시퀀스를 처리할 수 있게 하여, 모델이 더욱 긴 <em>상태-행동 시퀀스</em>를 이해할 수 있게 되고 장기 의존성을 학습할 수 있도록 합니다. 하지만, 메모리 사용량이 증가하고, 높은 계산 복잡성으로 인해 훈련시간이 길어질 우려가 있습니다. 반면, 작은 <code>gpt_seq_length</code>값은 메모리 효율성이 개선되고 훈련 속도가 빨라질 수 있지만, 모델이 짧은 <em>상태-행동 시퀀스</em>만을 볼 수 있어 단기간의 정보를 기반으로 다음 결정을 내리게 됩니다.</p>
+                </li>
+                <li data-line="110" class="code-line" dir="auto">
+                <p data-line="110" class="code-line" dir="auto"><code>discount_factor</code>:</p>
+                <p data-line="112" class="code-line" dir="auto">미래 보상의 현재 가치를 결정하는 중요한 매개변수입니다. 미래 보상의 현재 가치라는 말은 강화학습에서 에이전트가 미래에 받을 보상을 현재 시점에서 얼마나 가치있게 평가하는지를 나타냅니다. 시간이 지남에 따라 받게 될 보상이 현재 시점에서는 더 낮은 가치를 가지게 되는데, 이를 수학적으로 조정하기 위해 할인율을 사용합니다. 따라서, <code>discount_factor</code>를 높게 설정한다면, 에이전트가 미래의 보상을 더 중시하여 장기적으로 이익이 되는 전략을 선호하게 됩니다. 반면, <code>discount_factor</code>를 낮게 설정한다면, 에이전트는 즉각적인 보상을 중시하게 됩니다. 그러므로, 학습하는 환경의 특성에 맞게 <code>discount_factor</code>를 조정하는 것은 에이전트의 의사결정 과정과 학습 안정화를 위해 중요합니다.</p>
+                </li>
+                </ul>
+                </li>
+                <li data-line="114" class="code-line" dir="auto">
+                <p data-line="114" class="code-line" dir="auto"><strong>NetworkParameters:</strong></p>
+                <ul data-line="115" class="code-line" dir="auto">
+                <li data-line="115" class="code-line" dir="auto">
+                <p data-line="115" class="code-line" dir="auto"><code>num_layer</code>:</p>
+                <p data-line="117" class="code-line" dir="auto">네트워크의 레이어 수로, 모델의 깊이를 결정합니다. <code>num_layer</code>가 높을수록 모델이 깊어져 더욱 복잡한 패턴을 학습할 수 있지만, 과적합의 위험이 커지고, 계산 비용이 증가합니다.</p>
+                </li>
+                <li data-line="119" class="code-line" dir="auto">
+                <p data-line="119" class="code-line" dir="auto"><code>d_model</code>:</p>
+                <p data-line="121" class="code-line" dir="auto">모델의 차원으로, 네트워크에서 처리하는 특성 벡터의 크기를 나타냅니다. <code>d_model</code>이 크면 모델이 표현할 수 있는 정보량이 증가하여 성능이 향상될 수 있으나, <code>num_layer</code>와 마찬가지로, 과적합 또는 메모리 사용량 증가의 문제가 발생할 수 있습니다.</p>
+                </li>
+                <li data-line="123" class="code-line" dir="auto">
+                <p data-line="123" class="code-line" dir="auto"><code>dropout</code>:</p>
+                <p data-line="125" class="code-line" dir="auto">학습 중에 노드를 무작위로 생략하는 비율로, 과적합을 방지하는 데 도움이 됩니다. <em>MLAgent와 Gymnasium 환경에서는 0.01 ~ 0.03의 <code>dropout</code>을 추천합니다.</em></p>
+                </li>
+                <li data-line="127" class="code-line" dir="auto">
+                <p data-line="127" class="code-line" dir="auto"><code>network_type</code>:</p>
+                <p data-line="129" class="code-line" dir="auto">사용될 모델 기반 네트워크의 유형으로, 특정 모델을 지정할 수 있습니다.</p>
+                </li>
+                </ul>
+                </li>
+                </ul>
+                <br>
+
+                <h2 data-line="131" class="code-line" dir="auto" id="training" tabindex="-1">Training</h2>
+                <pre><code data-line="133" class="code-line language-python" dir="auto"><span class="hljs-keyword">from</span> causal_rl <span class="hljs-keyword">import</span> CausalRL
+
+                <span class="hljs-keyword">with</span> CausalRL(env_config, rl_params, device, use_print = <span class="hljs-literal">True</span>, use_wandb = <span class="hljs-literal">False</span>) <span class="hljs-keyword">as</span> causal_rl:
+                    causal_rl.train(resume_training = <span class="hljs-literal">False</span>, use_eval = <span class="hljs-literal">False</span>, use_graphics = <span class="hljs-literal">False</span>)
+                    causal_rl.test(max_episodes = <span class="hljs-number">100</span>, use_graphics = <span class="hljs-literal">False</span>)
+                </code></pre>
+<pre>
+    [100/100000] 	buffer_size: 4695
+    Opt-Adam lr: 5e-05
+    Time for steps is 3.72 sec
+    [200/100000] 	buffer_size: 9098
+    Opt-Adam lr: 5e-05
+    Time for steps is 3.09 sec
+    [300/100000] 	buffer_size: 13573
+    Opt-Adam lr: 5e-05
+    Time for steps is 3.13 sec
+    [400/100000] 	buffer_size: 18183
+    Opt-Adam lr: 5e-05
+    Time for steps is 3.09 sec
+    [500/100000] 	buffer_size: 22659
+    Opt-Adam lr: 5e-05
+    Time for steps is 3.09 sec
+    [600/100000] 	buffer_size: 27169
+    Opt-Adam lr: 5e-05
+    Time for steps is 3.19 sec
+    [700/100000] 	buffer_size: 31702
+    Opt-Adam lr: 5e-05
+    Time for steps is 3.11 sec
+    [800/100000] 	buffer_size: 36303
+    Opt-Adam lr: 5e-05
+    Time for steps is 3.13 sec
+    [900/100000] 	buffer_size: 40885
+    ...
+    Values: Estimated: -1.2477	Expected: -1.3003	Advantage: -0.2903	
+    Losses: Value: 0.0224	Critic: 0.1057	Actor: -0.0018	Revenv: 0.2051	
+    CoopErrors: Critic: 0.1229	Actor: 0.1230	Revenv: 0.4962	
+    TransitionCosts: Forward: 0.1230	Reverse: 0.3095	Recurrent: 0.3096	</pre>
+
+                <br>
+                <hr>
+                <div align="left" style="padding-bottom: 10px;">
+                    Copyright © 2024 CCNets
+                  </div>    
+            
+            </div>
+       
+    <script src="../style/js_funcs.js"></script>
+    <script src="../style/script.js"></script>
+    </body>
+</html>
