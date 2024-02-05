@@ -1133,7 +1133,7 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
         padding: 1px;
     }
     .grid-container {
-        display: none;
+        display: grid;
         width: 600px;
         grid-template-columns: repeat(4, minmax(134px, 1fr)); 
         gap: 15px; 
@@ -1162,7 +1162,7 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
     }
     #sourceCredit {
         position: absolute;
-        display: none;
+        display: flex;
         right: 10px;
         bottom: 10px;
         font-size: 12px;

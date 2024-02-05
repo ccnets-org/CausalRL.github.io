@@ -82,7 +82,7 @@
   <h1 data-line="63" class="code-line" dir="auto" id="api" tabindex="-1">API</h1>
   <h2 data-line="65" class="code-line" dir="auto" id="class-rltune" tabindex="-1">Class CausalRL <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/causal_rl.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
   <pre><code data-line="66" class="code-line language-python" dir="auto"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CausalRL</span>:
-      <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config: EnvConfig, rl_params: RLParameters, device, use_graphics=<span class="hljs-literal">False</span>, use_print=<span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">False</span></span>):
+      <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config: EnvConfig, rl_params: RLParameters, device, use_print=<span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">False</span></span>):
   </code></pre>
   <p data-line="70" class="code-line" dir="auto">The CausalRL class is designed for tuning and training reinforcement learning models, using a specified trainer.</p>
   <h3 data-line="72" class="code-line" dir="auto" id="parameters" tabindex="-1">Parameters:</h3>
@@ -90,14 +90,14 @@
   <li data-line="73" class="code-line" dir="auto"><code>env_config</code> (EnvConfig): Configuration for the environment.</li>
   <li data-line="74" class="code-line" dir="auto"><code>trainer</code> (Trainer): Trainer object for the reinforcement learning algorithm.</li>
   <li data-line="75" class="code-line" dir="auto"><code>device</code> (Device): Computational device (e.g. CPU, GPU).</li>
-  <li data-line="76" class="code-line" dir="auto"><code>use_graphics</code> (bool, optional): Whether to use graphics during training/testing. Default is False.</li>
-  <li data-line="77" class="code-line" dir="auto"><code>use_print</code> (bool, optional): Whether to print training/testing logs. Default is False.</li>
+  <li data-line="76" class="code-line" dir="auto"><code>use_print</code> (bool, optional): Whether to print training/testing logs. Default is False.</li>
+  <li data-line="77" class="code-line" dir="auto"><code>use_wandb</code> (bool, optional): Whether to record log to W&B during training/testing. Default is False.</li>
   </ul>
   <h3 data-line="79" class="code-line" dir="auto" id="functions" tabindex="-1">Method Overview</h3>
   <ul data-line="81" class="code-line" dir="auto">
   <li data-line="81" class="code-line" dir="auto">
   <p data-line="81" class="code-line" dir="auto"><code>__init__():</code>
-  Accepts environment configuration (EnvConfig), RL parameters (RLParameters), computational device (device), and options for graphics, printing, and WandB integration.</p>
+  Accepts environment configuration (EnvConfig), RL parameters (RLParameters), computational device (device), and printing, and WandB integration.</p>
   </li>
   <li data-line="84" class="code-line" dir="auto">
   <p data-line="84" class="code-line" dir="auto"><code>_end_environments():</code>
@@ -129,7 +129,7 @@
   <p data-line="102" class="code-line" dir="auto"><code>_test_step_logic():</code>
   The logic for each step during the testing phase of a reinforcement learning algorithm.</p>
   </li>
-  <li data-line="105" class="code-line" dir="auto">
+  <!-- <li data-line="105" class="code-line" dir="auto">
   <p data-line="105" class="code-line" dir="auto"><code>train_on_policy():</code>
   To train a model using on-policy reinforcement learning algorithm.</p>
   <ul data-line="108" class="code-line" dir="auto">
@@ -138,7 +138,7 @@
   <li data-line="110" class="code-line" dir="auto"><code>_update_strategy_from_samples():</code> to enhance the strategy used in the training of a reinforcement learning.</li>
   <li data-line="111" class="code-line" dir="auto"><code>reset_memory_and_train():</code> reset the memory buffer and then performs a seies of training steps. It iterates over a predefined number of on-policy iterations(<code>train_step</code>)</li>
   </ul>
-  </li>
+  </li> -->
   <li data-line="113" class="code-line" dir="auto">
   <p data-line="113" class="code-line" dir="auto"><code>train_off_policy():</code>
   To train a model using off-policy reinforcement learning alrorithm.</p>
@@ -213,7 +213,8 @@
   <li data-line="173" class="code-line" dir="auto"><code>scheduler_type</code>: Specifies the type of learning rate scheduler. (default: <code>exponential</code>)</li>
   <li data-line="174" class="code-line" dir="auto"><code>tau</code>: How quickly the target network is updated with the main network's weights. (default: <code>1e-1</code>)</li>
   <li data-line="175" class="code-line" dir="auto"><code>use_target_network</code>: Indicate whether to use target network or not. (default: <code>True</code>)</li>
-  <li data-line="176" class="code-line" dir="auto"><code>clip_grad_range</code>: The range within which gradients are clipped. To prevent the issue of exploding gradients. (default: <code>2.0</code>)</li>
+  <li data-line="176" class="code-line" dir="auto"><code>clip_grad_range</code>: The range within which gradients are clipped. To prevent the issue of exploding gradients. (default: <code>None</code>)</li>
+  <li data-line="176" class="code-line" dir="auto"><code>max_grad_norm</code>: A Parameter used in gradient clipping technique to prevent the "gradient explosion" issue by limiting the size of the gradients. It sets a threshold so that the L2 norm of all gradients does not exceed this value, helping to stabilize the training process. (default: <code>1.0</code>)</li>
   </ul>
   <h3 data-line="189" class="code-line" dir="auto" id="class-normalizationparameters" tabindex="-1">Class NormalizationParameters</h3>
   <ul data-line="190" class="code-line" dir="auto">
@@ -224,7 +225,7 @@
   <p data-line="191" class="code-line" dir="auto"><code>reward_normalizer</code>: Determines the method used for normalizing reward values. (default: <code>running_mean_std</code>)</p>
   </li>
   <li data-line="192" class="code-line" dir="auto">
-  <p data-line="192" class="code-line" dir="auto"><code>advantage_normalizer</code>: Determines the method used for normalizing advantage values. (default: <code>L1_norm</code>)</p>
+  <p data-line="192" class="code-line" dir="auto"><code>advantage_normalizer</code>: Determines the method used for normalizing advantage values. (default: <code>running_abs_mean</code>)</p>
   </li>
   </ul>
   <div data-line="196" class="code-line" dir="auto"></div>
