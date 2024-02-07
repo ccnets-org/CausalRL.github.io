@@ -17,7 +17,7 @@
     --vscode-textSeparator-foreground:rgba(0, 0, 0, 0.18);
     --vscode-textLink-foreground:#006ab1;
     --vscode-textLink-activeForeground:#006ab1;
-    --vscode-textPreformat-foreground:#ad4a21ad;
+    --vscode-textPreformat-foreground:#cf3b28c2;
     --vscode-textBlockQuote-background:rgba(127, 127, 127, 0.1);
     --vscode-textBlockQuote-border:rgba(0, 122, 204, 0.5);
     --vscode-textCodeBlock-background:#fae4de;
@@ -442,6 +442,8 @@ code
 {
     color: var(--vscode-textPreformat-foreground);
     font-weight: bold;
+    background-color: rgba(221, 218, 218, 0.925);
+    border-radius: 4px;
 }
 
 blockquote
@@ -681,6 +683,10 @@ hr {
 	border-bottom: 1px solid;
 }
 
+.tut-h1 {
+    text-underline-position: none !important;
+}
+
 h1 {
 	font-size: 2em;
 	margin-top: 0;
@@ -688,6 +694,7 @@ h1 {
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
 }
+
 
 h2 {
   padding-top: 70px;
@@ -1021,8 +1028,10 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
     text-decoration: none !important;
     }
     .main-content {
+    width: 70%;
+    
     margin-top: 70px;
-    margin-left: 200px;
+    margin-left: 230px;
     }
     .main-header {
     display: flex;
@@ -1066,7 +1075,7 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
 
     .sidebar {
       height: 100%;
-      width: 200px;
+      width: 230px;
       position: fixed;
       z-index: 1;
       top: 0;
@@ -1100,6 +1109,20 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
       color: #0F0F0F;
       display: block;
     }
+
+    .sidebar li li li a {
+        padding: 6px 8px 6px 25px;
+        text-decoration: none;
+        font-family: 'arial.ttf', sans-serif;
+        font-size: 15px;
+        color: #0F0F0F;
+        display: block;
+    }
+
+    .inline-container {
+        display: flex;
+        align-items: center;
+    }
   
     .centered {
     display: flex;
@@ -1115,7 +1138,7 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
     .dropdown-content {
         display: none;
         position: relative;
-        background-color: #f9f9f9;
+        background-color: #d7d7d7;
         z-index: 1;
     }
     
@@ -1131,7 +1154,14 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
         border-width: 0 0.1px -0.5px 0;
         display: inline-block;
         padding: 1px;
+        transition: transform 0.3s ease;
     }
+    
+    .rotate-arrow {
+        transform: rotate(180deg);
+    }
+
+
     .grid-container {
         display: grid;
         width: 600px;
@@ -1169,4 +1199,54 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
         color: #484bcc;
     }
     
+    .image-container {
+        display: flex;
+        justify-content: space-between; 
+    }
+    .image-container img {
+        width: 30%; 
+        padding: 5px; 
+    }
+
+    .toc {
+        position: sticky;
+        top: 100px;
+        width: 15%;
+        float: right;
+        cursor: pointer;
+    }
     
+    .toc-title, .toc-item {
+        background-color: rgba(234, 243, 243, 0.3);
+        color: black;
+        border-left: 3px solid rgb(171, 171, 171);
+      }
+
+    .toc-title {
+        padding-left: 10px;
+        font-size: 18px;
+        color: rgb(2, 2, 2);
+    }
+    
+    .toc-item {
+        padding: 5px 10px;
+        list-style: none;
+        font-size: 15px;
+        color: black;
+        border-left: 3px solid rgb(171, 171, 171);
+    }
+
+    .toc-title.selected, .toc-item.selected {
+        background-color: rgba(95, 158, 160, 0.3);
+        color: black;
+        font-weight: bold;
+        border-left: 3px solid cadetblue;
+      }
+
+
+    
+    @media (max-width: 1700px) {
+    .toc {
+        display: none;
+    }
+    }

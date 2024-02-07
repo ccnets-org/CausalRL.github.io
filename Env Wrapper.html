@@ -52,13 +52,18 @@
       <li><a href="#unity-mlagent-wrapper">Unity MLAgents</a></li>
       </ul>
   </li>
-    <li class="dropdown-menu">
-      <a class="dropbtn" href="#">TUTORIALS <span class="dropdown-arrow">&#9660;</span></a>
-      <ul class="dropdown-content">
-          <li><a href="./tutorials/Tutorial_Day1.html">Day 1</a></li>
-          <li><a href="#">Day 2</a></li>
-      </ul>
-    </li>
+  <li>
+    <a>TUTORIAL</a>
+    <ul>
+        <li class="dropdown-menu">
+            <a class="dropbtn" href="#">Basic <span class="dropdown-arrow">&#9660;</span></a>
+            <ul class="dropdown-content">
+                <li><a href="./tutorials/Tutorial_Basic.html">Unlocking CausalRL</a></li>
+                <!-- <li><a href="#">Day 2</a></li> -->
+            </ul>
+        </li>
+    </ul>
+</li>
     <li>
     <a>DEVELOPMENT</a>
     <ul>
@@ -78,10 +83,18 @@
   </ul>
   </div>
 <div data-line="59" class="code-line" dir="auto"></div>
+<div class="toc">
+  <h3>INDEX</h3>
+  <ul id="toc-list"></ul>
+</div>
 <div class="main-content">
-<h1 data-line="61" class="code-line" dir="auto" id="env-wrapper" tabindex="-1">ENVIRONMENTS</h1>
+<h1 data-line="61" class="page-title" dir="auto" id="env-wrapper" tabindex="-1">ENVIRONMENTS</h1>
 <!-- <p data-line="62" class="code-line" dir="auto"><strong>Env Wrapper</strong> Modules are a collection of modular components, each offering unique finctionality for reinforcement learning environmens. This modules includes a range of modules like <a href="https://github.com/ccnets-team/rl-tune/blob/main/environments/gym_wrapper.py" target="_blank"><code>gym_wrapper</code></a>, <a href="https://github.com/ccnets-team/rl-tune/blob/main/environments/mlagents_wrapper.py" target="_blank"><code>ml_agent_wrapper</code></a>, etc., designed to enhance and simplify the integration and customization of various RL platforms.</p> -->
-<h2 data-line="64" class="code-line" dir="auto" id="gym-wrapper" tabindex="-1">Gymnasium Mujoco <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/environments/gym_wrapper.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
+<div class="inline-container">
+  <h2 data-line="91" class="code-line" dir="auto" id="unity-mlagent-wrapper" tabindex="-1">Gymnasium Mujoco</h2>
+  <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/environments/gym_wrapper.py" target="_blank" style="font-weight: 600; margin-left: 10px; margin-bottom:10px; font-size: 10px; font-size: smaller;">[source]</a>
+</div>
+
 <div data-line="65" class="code-line" dir="auto"></div>
 <div align="center">
     <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/0b1ad841-da4b-4fb4-a171-a9781c875a38" alt="gymnasium-text" width="400">
@@ -105,7 +118,7 @@ env_config, rl_params = <a href="./analyze_env.html">analyze_env</a>(env_name = 
 </li>
 </ul>
 <p data-line="88" class="code-line" dir="auto">To visit <strong>Gymnasium Official Page</strong> for more details, Click <a href="https://gymnasium.farama.org" data-href="https://gymnasium.farama.org/api/wrappers/"><strong>here</strong></a>.</p>
-<button onclick="toggleGrid()">Close Env Images</button>
+<button id="toggleButton" onclick="toggleGrid()">Close Env Images</button>
     <div class="grid-container" id="imageGrid">
         <div class="grid-item"><img src="https://github.com/ccnets-team/causal-rl/assets/95277008/4e28c237-f449-4513-8c65-7d207bef96d2" alt="Ant"><span>Ant</span></div>
         <div class="grid-item"><img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/fc17a709-25a3-46b5-9cda-5af4b99c516c" alt="HalfCheetah"><span>HalfCheetah</span></div>
@@ -123,7 +136,11 @@ env_config, rl_params = <a href="./analyze_env.html">analyze_env</a>(env_name = 
       
 <hr>
 <br>
-<h2 data-line="91" class="code-line" dir="auto" id="unity-mlagent-wrapper" tabindex="-1">Unity MLAgent<a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/environments/mlagents_wrapper.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
+<div class="inline-container">
+  <h2 data-line="91" class="code-line" dir="auto" id="unity-mlagent-wrapper" tabindex="-1">Unity MLAgent</h2>
+  <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/environments/mlagents_wrapper.py" target="_blank" style="font-weight: 600; margin-left: 10px; margin-bottom:10px; font-size: 10px; font-size: smaller;">[source]</a>
+</div>
+
 <div data-line="92" class="code-line" dir="auto"></div>
 <div align="center">
     <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/ad0760d5-6f70-456f-802f-627cfcbfaa01" alt="unity-wide" width="600">

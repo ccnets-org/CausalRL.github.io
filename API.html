@@ -52,13 +52,18 @@
     <li><a href="#unity-mlagent-wrapper">Unity MLAgents</a></li>
     </ul>
 </li>
-  <li class="dropdown-menu">
-    <a class="dropbtn" href="#">TUTORIALS <span class="dropdown-arrow">&#9660;</span></a>
-    <ul class="dropdown-content">
-        <li><a href="./tutorials/Tutorial_Day1.html">Day 1</a></li>
-        <li><a href="#">Day 2</a></li>
-    </ul>
-  </li>
+<li>
+  <a>TUTORIAL</a>
+  <ul>
+      <li class="dropdown-menu">
+          <a class="dropbtn" href="#">Basic <span class="dropdown-arrow">&#9660;</span></a>
+          <ul class="dropdown-content">
+              <li><a href="./tutorials/Tutorial_Basic.html">Unlocking CausalRL</a></li>
+              <!-- <li><a href="#">Day 2</a></li> -->
+          </ul>
+      </li>
+  </ul>
+</li>
   <li>
     <a>DEVELOPMENT</a>
     <ul>
@@ -78,9 +83,16 @@
 </ul>
 </div>
 <div data-line="61" class="code-line" dir="auto"></div>
+<div class="toc">
+  <h3>INDEX</h3>
+  <ul id="toc-list"></ul>
+</div>
 <div class="main-content">
-  <h1 data-line="63" class="code-line" dir="auto" id="api" tabindex="-1">API</h1>
-  <h2 data-line="65" class="code-line" dir="auto" id="class-rltune" tabindex="-1">Class CausalRL <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/causal_rl.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
+  <h1 data-line="63" class="page-title" dir="auto" id="api" tabindex="-1">API</h1>
+  <div class="inline-container">
+    <h2 data-line="91" class="class-rltune" dir="auto" id="unity-mlagent-wrapper" tabindex="-1">Class CausalRL</h2>
+    <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/causal_rl.py" target="_blank" style="font-weight: 600; margin-left: 10px; margin-bottom:10px; font-size: 10px; font-size: smaller;">[source]</a>
+  </div>
   <pre><code data-line="66" class="code-line language-python" dir="auto"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CausalRL</span>:
       <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config: EnvConfig, rl_params: RLParameters, device, use_print=<span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">False</span></span>):
   </code></pre>
@@ -155,7 +167,10 @@
   </ul>
   <br>
   <br>
-  <h2 data-line="125" class="code-line" dir="auto" id="class-causalrl" tabindex="-1">Class CausalTrainer <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/training/causal_trainer.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
+  <div class="inline-container">
+    <h2 data-line="91" class="class-rltrainer" dir="auto" id="unity-mlagent-wrapper" tabindex="-1">Class CausalTrainer</h2>
+    <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/training/causal_trainer.py" target="_blank" style="font-weight: 600; margin-left: 10px; margin-bottom:10px; font-size: 10px; font-size: smaller;">[source]</a>
+  </div>
   <pre><code data-line="126" class="code-line language-python" dir="auto"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CausalRL</span>(<span class="hljs-title class_ inherited__">BaseTrainer</span>):
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config, rl_params, device</span>):
   </code></pre>
@@ -175,7 +190,10 @@
     </ul>
   <br>
   <br>
-    <h2 data-line="142" class="code-line" dir="auto" id="class-rl-params" tabindex="-1">RLConfig <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/utils/setting/rl_config.py" target="_blank" style="font-size: smaller;">[source]</a></h2>
+  <div class="inline-container">
+    <h2 data-line="91" class="class-rl-params" dir="auto" id="unity-mlagent-wrapper" tabindex="-1">RLConfig</h2>
+    <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/utils/setting/rl_config.py" target="_blank" style="font-weight: 600; margin-left: 10px; margin-bottom:10px; font-size: 10px; font-size: smaller;">[source]</a>
+  </div>
     <p data-line="70" class="code-line" dir="auto">The <code>RLParameters</code> class is designed as a structured approach to manage the settings for Reinforcement Learning (RL) configurations. This class encapsulates and manages multiple subsidiary parameter classes, each representing different components of an RL system. The detailed parameters for each component within the <code>RLParams</code> can be found in the <code>rl_config.py</code> </p>
     <h3 data-line="144" class="code-line" dir="auto" id="class-trainingparameters" tabindex="-1">Class TrainingParameters</h3>
     <ul data-line="145" class="code-line" dir="auto">
