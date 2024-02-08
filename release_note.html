@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>CausalRL Documentation</title>
+
+        <link rel="stylesheet" href="./style/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    </head>
+    <body class="vscode-body vscode-light">
+        <div data-line="0" class="code-line" dir="auto"></div>
+        <div data-line="2" class="code-line" dir="auto"></div>
+        <nav class="navbar">
+        <div  data-line="4" class="code-line" dir="auto"></div>
+        <a class="header-link" href="index.html">  
+            <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/6db8e929-637b-4d9c-9a61-20910e878d53" alt="CCNets Logo" class="logo">
+            <!-- <h1 class="page-name">CausalRL Documentation</h1> -->
+        </a>
+        <div data-line="7" class="code-line" dir="auto"></div>
+        <div class="social-links">
+        <a href="https://ccnets.org/" target="_blank">
+            <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/42f10f53-0262-4203-9c6f-618e4841adb2" alt="Website" style="width: 20px; height: 20px;">
+        </a>
+        <a href="https://github.com/ccnets-team/rl-tune" target="_blank">
+            <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/5183f887-1263-408b-8c2f-9eeefafbce48" alt="GitHub" style="width: 20px; height: 20px;">
+        </a>
+        <a href="https://www.linkedin.com/company/ccnets/" target="_blank">
+            <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/fe1f76f2-a407-4f58-ad28-92a9ac9efa3f" alt="LinkedIn" style="width: 20px; height: 20px;">
+        </a>
+        </div>
+        </nav>
+        <div data-line="9" class="code-line" dir="auto"></div>
+        <div class="sidebar">
+        <ul>
+        <li>
+            <a href="index.html">INTRODUCTION</a>
+            <ul>
+            <li><a href="index.html#basic-usage">Basic Usage</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="API.html">API</a>
+            <ul>
+              <li><a href="API.html#class-causalrl">CausalRL</a></li>
+              <li><a href="API.html#class-causaltrainer">CausalTrainer</a></li>
+              <li><a href="API.html#class-rl-config">RLConfig</a></li>
+            </ul>
+          </li>
+          <li>
+            <a>ENVIRONMENTS</a>
+            <ul>
+            <li><a href="analyze_env.html">Analyze_env</a></li>
+            <li><a href="Env Wrapper.html#gym-wrapper">OpenAI Gymnasium</a></li>
+            <li><a href="Env Wrapper.html#unity-mlagent-wrapper">Unity MLAgents</a></li>
+            </ul>
+        </li>
+        <li>
+            <a>TUTORIAL</a>
+            <ul>
+                <li class="dropdown-menu">
+                    <a class="dropbtn" href="#">Basic <span class="dropdown-arrow">&#9660;</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="./tutorials/Tutorial_Basic.html">Unlocking CausalRL</a></li>
+                        <!-- <li><a href="#">Day 2</a></li> -->
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a>DEVELOPMENT</a>
+            <ul>
+                <li>
+                    <a href="https://github.com/ccnets-team/rl-tune">
+                    Github    
+                    <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/9f93117b-8082-4b92-ac77-245b2e13eeba" alt="Github" style="height:10px; width:10px;">
+                    </a>
+                </li>
+                <li><a href="https://wandb.ai/rl_tune/rl-tune-gym/?workspace">
+                    W&amp;B
+                    <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/9f93117b-8082-4b92-ac77-245b2e13eeba" alt="W&B" style="height:10px; width:10px;">
+                    </a>
+                </li>
+                <li><a href="./release_note.html">
+                    CausalRL Release Notes
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        </ul>
+        </div>
+        <div data-line="61" class="code-line" dir="auto"></div>
+        <!-- Content Start-->
+        <div data-line="62" class="code-line" dir="auto"></div>
+        <div class="toc">
+            <h3>INDEX</h3>
+            <ul id="toc-list"></ul>
+          </div>2
+        <!-- Content Start-->
+        <div data-line="62" class="code-line" dir="auto"></div>
+        <div class="main-content">
+            <h1 data-line="0" class="code-line" dir="auto" id="release-note" tabindex="-1">Release Notes</h1>
+            <br>
+            <h2 data-line="62" class="code-line" dir="auto" id="v106" tabindex="-1">v1.0.6</h2>
+            <ul data-line="64" class="code-line" dir="auto">
+            <li data-line="64" class="code-line" dir="auto">
+            <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 3, 2024</em></p>
+            </li>
+            <li data-line="65" class="code-line" dir="auto">
+            <p data-line="65" class="code-line" dir="auto"><strong>Default Setting Optimized</strong></p>
+            <p data-line="67" class="code-line" dir="auto">Removed padding mask from <code>running mean std normalizer</code> for more accurate normalization.</p>
+            <p data-line="69" class="code-line" dir="auto">Optimized RL parameters to enhance learning efficiency and performance, including adjustments to <code>learning rates</code> and exploration strategies.</p>
+            </li>
+            </ul>
+
+            <br>
+
+            <h2 data-line="47" class="code-line" dir="auto" id="v105" tabindex="-1">v1.0.5</h2>
+            <ul data-line="49" class="code-line" dir="auto">
+            <li data-line="49" class="code-line" dir="auto">
+            <p data-line="49" class="code-line" dir="auto"><em>Released on Feb 2, 2024</em></p>
+            </li>
+            <li data-line="50" class="code-line" dir="auto">
+            <p data-line="50" class="code-line" dir="auto"><strong>Refactor for Enhanced Loss Reduction and Boltzmann Exploration Adjustments</strong></p>
+            <p data-line="52" class="code-line" dir="auto">Updated loss reduction method: To "cross" from "batch", combining batch and sequence dimension reductions each normalized by dividing by 2.</p>
+            <p data-line="54" class="code-line" dir="auto">Boltzmann Exploration parameters revised:
+            Initial temperature (<code>tau</code>): Set to 1.0.</p>
+            <p data-line="57" class="code-line" dir="auto">Minimum temperature (<code>min_temperature</code>): Adjusted to 0.01.</p>
+            <p data-line="59" class="code-line" dir="auto">This update ensures robust initial exploration and balances learning, improving model adaptability and performance consistency across unseen environments.</p>
+            </li>
+            </ul>
+
+            <br>
+
+            <h2 data-line="34" class="code-line" dir="auto" id="v104" tabindex="-1">v1.0.4</h2>
+            <ul data-line="36" class="code-line" dir="auto">
+            <li data-line="36" class="code-line" dir="auto">
+            <p data-line="36" class="code-line" dir="auto"><em>Released on Feb 1, 2024</em></p>
+            <p data-line="38" class="code-line" dir="auto">Adjusted RL and Boltzmann Exploration settings for enhanced compatibility with general gym environments.</p>
+            <p data-line="40" class="code-line" dir="auto">Updated discount_factor (gamma): From 0.993 to 0.99.</p>
+            <p data-line="42" class="code-line" dir="auto">Removed gradient clipping limit: Adjusted <code>clip_grad_range</code> from 1.0 to 2.0.</p>
+            <p data-line="44" class="code-line" dir="auto">Fine-tuned Boltzmann Exploration: Adjusted tau from 1.0 to 0.05 and reduced <code>min_temperature</code> from 0.1 to 0.005.</p>
+            </li>
+            </ul>
+
+            <br>
+
+            <h2 data-line="23" class="code-line" dir="auto" id="v103" tabindex="-1">v1.0.3</h2>
+            <ul data-line="25" class="code-line" dir="auto">
+            <li data-line="25" class="code-line" dir="auto">
+            <p data-line="25" class="code-line" dir="auto"><em>Released on Jan 31, 2024</em></p>
+            </li>
+            <li data-line="26" class="code-line" dir="auto">
+            <p data-line="26" class="code-line" dir="auto"><strong>Update: Uniform Parameter Tuning Across All Gym Environments</strong></p>
+            <p data-line="28" class="code-line" dir="auto">Advantage Normalization Adjusted: Transitioned from L1_norm to None for broader compatibility.</p>
+            <p data-line="30" class="code-line" dir="auto"><code>Min Exploration Temperature</code> Increased: From 0.01 to 0.1 to enhance exploration stability.
+            Visit our project page for a detailed impact analysis: Causal RL Project Page.</p>
+            </li>
+            </ul>
+            
+            <br>
+            
+            <h2 data-line="9" class="code-line" dir="auto" id="v101" tabindex="-1">v1.0.1</h2>
+            <ul data-line="11" class="code-line" dir="auto">
+            <li data-line="11" class="code-line" dir="auto">
+            <p data-line="11" class="code-line" dir="auto"><em>Released on Jan 31, 2024</em></p>
+            </li>
+            <li data-line="12" class="code-line" dir="auto">
+            <p data-line="12" class="code-line" dir="auto"><strong>Minor Patch Update</strong></p>
+            <p data-line="14" class="code-line" dir="auto">Adjustments to Library Settings: Fine-tuning for more effective reinforcement learning with GPT models.</p>
+            <p data-line="16" class="code-line" dir="auto"><code>clip_grad_range</code>: Adjusted from None to 1.0 to ensure a more stable gradient clipping mechanism.</p>
+            <p data-line="18" class="code-line" dir="auto"><code>min_temperature</code>: Increased from 0.01 to 0.02 for Boltzmann exploration, shifting slightly more towards exploitation in sequence length sampling for GPT inputs.</p>
+            <p data-line="20" class="code-line" dir="auto">Aimed at improving the stability and performance of causal-rl models across various environments.</p>
+            </li>
+            </ul>
+
+            <br>
+            <h2 data-line="2" class="code-line" dir="auto" id="v100" tabindex="-1">v1.0.0</h2>
+            <ul data-line="4" class="code-line" dir="auto">
+            <li data-line="4" class="code-line" dir="auto">
+            <p data-line="4" class="code-line" dir="auto"><em>Released on Jan 31, 2024</em></p>
+            <p data-line="6" class="code-line" dir="auto"><strong>Initial release of the Causal RL library.</strong></p>
+            </li>
+            </ul>
+
+                
+            <br>
+            <hr>
+            <div align="left" style="padding-bottom: 10px;">
+                Copyright © 2024 CCNets
+            </div>    
+        </div>
+        <!-- Content End-->
+
+        <!-- css -->
+        
+          <script src="./style/js_funcs.js"></script>
+          <script src="./style/script.js"></script>
+    </body>
+  </html>

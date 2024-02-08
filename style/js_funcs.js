@@ -68,7 +68,7 @@ const observer = new IntersectionObserver(entries => {
       selectedIndex = entry.target.dataset.index
       tocItems[selectedIndex].classList.add('selected')
     }   
-    else if(entry.boundingClientRect.y > 50) {
+    else if(entry.boundingClientRect.y > 200) {
       tocItems[selectedIndex].classList.remove('selected')
       selectedIndex = Number(entry.target.dataset.index) - 1
       tocItems[selectedIndex].classList.add('selected')
