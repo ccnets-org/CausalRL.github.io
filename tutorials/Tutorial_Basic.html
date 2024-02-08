@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PP6S33V9K"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9PP6S33V9K');
+        </script>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-        <title>Tutorial_Basic</title>
+        <title>CausalRL Documentation|Tutorial_Basic</title>
         <link rel="stylesheet" href="../style/style.css">
 
     </head>
@@ -48,16 +57,21 @@
         <li>
             <a>ENVIRONMENTS</a>
             <ul>
-            <li><a href="../analyze_env.html">Analyze_env</a></li>
-            <li><a href="../Env Wrapper.html#gym-wrapper">OpenAI Gymnasium</a></li>
-            <li><a href="../Env Wrapper.html#unity-mlagent-wrapper">Unity MLAgents</a></li>
+                <li><a href="../analyze_env.html">Analyze_env</a></li>
+                <li><a href="../Env Wrapper.html#gym-wrapper">OpenAI Gymnasium</a></li>
+                <li><a href="../Env Wrapper.html#unity-mlagent-wrapper">Unity MLAgents</a></li>
             </ul>
         </li>
-        <li class="dropdown-menu">
-            <a class="dropbtn" href="#">TUTORIALS <span class="dropdown-arrow">&#9660;</span></a>
-            <ul class="dropdown-content">
-                <li><a href="./Tutorial_Day1.html">Day 1</a></li>
-                <li><a href="#">Day 2</a></li>
+        <li>
+            <a>TUTORIAL</a>
+            <ul>
+                <li class="dropdown-menu">
+                    <a class="dropbtn" href="#">Basic <span class="dropdown-arrow">&#9660;</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="./Tutorial_Basic.html">Unlocking CausalRL</a></li>
+                        <!-- <li><a href="#">Day 2</a></li> -->
+                    </ul>
+                </li>
             </ul>
         </li>
         <li>
@@ -74,63 +88,80 @@
                     <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/9f93117b-8082-4b92-ac77-245b2e13eeba" alt="W&B" style="height:10px; width:10px;">
                     </a>
                 </li>
+                <li><a href="./release_note.html">
+                    CausalRL Release Notes
+                    </a>
+                </li>
             </ul>
         </li>
         </ul>
         </div>
+        <div class="toc">
+            <h3>INDEX</h3>
+            <ul id="toc-list"></ul>
+          </div>
             <div class="main-content">
 
-                <h1 data-line="0" class="code-line" dir="auto" id="causal-rl-tutorial---basic" tabindex="-1">CAUSAL RL TUTORIAL - Basic</h1>
+                <!-- <h1 class="tut-h1" dir="auto" id="causal-rl-tutorial---basic" tabindex="-1">CAUSAL RL TUTORIAL - Basic</h1> -->
+                <h1 data-line="0" class="page-title" dir="auto" id="causal-rl-tutorial---basic" tabindex="-1"><em>Unlocking CausalRL</em></h1>
                 <p data-line="2" class="code-line" dir="auto">DELAWARE INCORPORATION
                 COPYRIGHT (c) 2024. CCNets, Inc. All Rights reserved.</p>
-                <p data-line="5" class="code-line" dir="auto">Author: JUNHO PARK, JEONGYOONG KIM</p>
+                <p data-line="5" class="code-line" dir="auto"><em>Author: JUNHO PARK, JEONGYOONG KIM</em></p>
                 <br>
                 <div data-line="11" class="code-line" dir="auto"></div>
                 <h2 data-line="13" class="code-line" dir="auto" id="introduction" tabindex="-1">Introduction</h2>
-                <p data-line="15" class="code-line" dir="auto"><em>이 튜토리얼은 <strong>CCNets's causal-rl repository</strong> <code>beta branch</code>에 기반하여 작성되었습니다.</em></p>
+                <p data-line="15" class="code-line" dir="auto"><em>이 튜토리얼은 <strong>CCNets's causal-rl repository</strong>  <code> beta branch</code>에 기반하여 작성되었습니다.</em></p>
                 <p data-line="17" class="code-line" dir="auto">이번 튜토리얼에서는 <strong>CausalRL</strong>의 기본적인 사용방법과 <code>rl_config</code>의 Parameter 클래스들을 이용해 훈련에 사용할 parameter들을 튜닝하는 방법에 대해 알아보겠습니다.</p>
                 <!-- <p data-line="19" class="code-line" dir="auto">더 자세한 정보를 위해서 <a href="https://github.com/ccnets-team/causal-rl/blob/beta-causal-rl/README.md" data-href="https://github.com/ccnets-team/causal-rl/blob/beta-causal-rl/README.md">CausalRL Readme.md</a> 또는 <a href="https://www.linkedin.com/company/ccnets/posts/?feedView=all" data-href="https://www.linkedin.com/company/ccnets/posts/?feedView=all">LinkedIn page of CCNets</a> 를 참고하세요.</p> -->
                 <br>
                 <h2 data-line="21" class="code-line" dir="auto" id="dependency" tabindex="-1">Dependency</h2>
-                <pre><code data-line="23" class="code-line language-bash" dir="auto">conda create -name crl python=3.9.18
-                conda activate crl
-                conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
-                pip install mlagents==0.30
-                pip install protobuf==3.20
-                pip install jupyter
-                pip install transformers==4.34.1
-                </code></pre>
+<pre><code data-line="23" class="code-line language-bash" dir="auto">conda create -name crl python=3.9.18
+conda activate crl
+conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+pip install mlagents==0.30
+pip install protobuf==3.20
+pip install jupyter
+pip install transformers==4.34.1
+</code></pre>
                 <h3 data-line="33" class="code-line" dir="auto" id="clone-the-repository" tabindex="-1">Clone the repository:</h3>
                 <pre><code data-line="35" class="code-line language-bash" dir="auto">git <span class="hljs-built_in">clone</span> https://github.com/ccnets-team/causal-rl.git
                 </code></pre>
                 <br>
         
                 <h2 data-line="39" class="code-line" dir="auto" id="import-library" tabindex="-1">Import Library</h2>
-                <pre><code data-line="41" class="code-line language-python" dir="auto"><span class="hljs-keyword">from</span> __future__ <span class="hljs-keyword">import</span> print_function
-                <span class="hljs-keyword">from</span> utils.setting.env_settings <span class="hljs-keyword">import</span> analyze_env
-                <span class="hljs-keyword">from</span> utils.init <span class="hljs-keyword">import</span> set_seed
-                <span class="hljs-keyword">from</span> torch.utils.tensorboard <span class="hljs-keyword">import</span> SummaryWriter
-                <span class="hljs-keyword">import</span> torch
+<pre><code data-line="41" class="code-line language-python" dir="auto">
+<span class="hljs-keyword">from</span> __future__ <span class="hljs-keyword">import</span> print_function
+<span class="hljs-keyword">from</span> utils.setting.env_settings <span class="hljs-keyword">import</span> analyze_env
+<span class="hljs-keyword">from</span> utils.init <span class="hljs-keyword">import</span> set_seed
+<span class="hljs-keyword">from</span> torch.utils.tensorboard <span class="hljs-keyword">import</span> SummaryWriter
+<span class="hljs-keyword">import</span> torch
 
-                set_seed()
-                ngpu = <span class="hljs-number">2</span> <span class="hljs-comment"># 사용할 GPU의 수</span>
+set_seed()
+ngpu = <span class="hljs-number">2</span> <span class="hljs-comment"># 사용할 GPU의 수</span>
 
-                device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hljs-keyword">if</span> (torch.cuda.is_available() <span class="hljs-keyword">and</span> ngpu &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">else</span> <span class="hljs-string">"cpu"</span>)
-                </code></pre>
+device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hljs-keyword">if</span> (torch.cuda.is_available() <span class="hljs-keyword">and</span> ngpu &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">else</span> <span class="hljs-string">"cpu"</span>)
+</code></pre>
                 <ul data-line="54" class="code-line" dir="auto">
                 <p>먼저, 필요한 라이브러리와 모듈을 불러오겠습니다.</p>    
                 <li data-line="54" class="code-line" dir="auto"><code>set_seed()</code>: <em>random</em>, <em>numpy</em>, <em>torch</em>와 같은 다양한 라이브러리의 시드 값을 고정하여 무작위성을 제어함으로써, 실험을 안정적이고 재현 가능하게 만듭니다.</li>
                 </ul>
                 <br>
 
-                <h2 data-line="56" class="code-line" dir="auto" id="setting-up-the-learning-environment" tabindex="-1">Setting Up the Learning Environment</h2>
+                <h2 data-line="56" class="code-line" dir="auto" id="setting-up-the-learning-environment" tabindex="-1">Set Up Env</h2>
                 <p data-line="58" class="code-line" dir="auto">먼저, <strong>MLAgent's 3DBallHard</strong>을 튜토리얼에 사용하기 위해서, 아래와 같이 causal_rl 디렉토리 위치와 동일한 위치에 파일을 다운받고 압축을 풀어주세요.</p>
-                <pre data-line="60" class="code-line" dir="auto"><code>Unity MLAgents(download link: https://drive.google.com/pdrive/folders/1TGSfw7IgfmVZslvmqIDLr5jAneQpsVbb?usp=sharing):
-                    locate the downloaded folder as below:
-                    your_projects/
-                        causal_rl/
-                        unity_environments/
-                </code></pre>
+<pre data-line="60" class="code-line" dir="auto"><code>Unity MLAgents(download link: https://drive.google.com/pdrive/folders/1TGSfw7IgfmVZslvmqIDLr5jAneQpsVbb?usp=sharing):
+    locate the downloaded folder as below:
+    your_projects/
+        causal_rl/
+        unity_environments/
+</code></pre>
+<div style="text-align: center;">
+    <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/b2ed57f1-9ed9-4b88-ad8f-40adce1a23e4" alt="3DBallHard" style="width: 500px;">
+</div>
+<br>
+<p data-line="74" class="code-line" dir="auto">
+    <strong>Unity MLAgent 3DBallHard</strong> 환경에서 에이전트(큐브)는 머리 위에 공을 균형 유지하기 위한 45개의 상태 값을 가지며, X축과 Z축을 따른 두 가지 연속적인 회전 동작을 통해 이를 달성합니다. 이러한 행동 결정 과정에서, 에이전트는 주어진 상태 정보를 기반으로 각 단계마다 최적의 행동을 선택합니다. </p>
+    <p data-line="76" class="code-line" dir="auto">3DBallHard 환경에 대한 보다 자세한 정보는 <a href="https://unity-technologies.github.io/ml-agents/Learning-Environment-Examples/#3dball-3d-balance-ball" data-href="https://unity-technologies.github.io/ml-agents/Learning-Environment-Examples/#3dball-3d-balance-ball"><strong>MLAgent Docs</strong></a>를 참조해 주세요.</p>
                 <pre><code data-line="67" class="code-line language-python" dir="auto">env_config, rl_params = analyze_env(env_name = <span class="hljs-string">"3DBallHard"</span>)
                 </code></pre>
                 <ul data-line="71" class="code-line" dir="auto">
@@ -138,37 +169,37 @@
                 </ul>
                 <br>
                 <h2 data-line="73" class="code-line" dir="auto" id="set-parameters" tabindex="-1">Set Parameters</h2>
-                <pre><code data-line="75" class="code-line language-python" dir="auto"><span class="hljs-keyword">from</span> utils.setting.rl_config <span class="hljs-keyword">import</span> TrainingParameters, AlgorithmParameters, NetworkParameters
-                <span class="hljs-keyword">from</span> nn.gpt <span class="hljs-keyword">import</span> GPT
+<pre><code data-line="75" class="code-line language-python" dir="auto"><span class="hljs-keyword">from</span> utils.setting.rl_config <span class="hljs-keyword">import</span> TrainingParameters, AlgorithmParameters, NetworkParameters
+<span class="hljs-keyword">from</span> nn.gpt <span class="hljs-keyword">import</span> GPT
 
-                rl_params.training = TrainingParameters(batch_size=<span class="hljs-number">64</span>, replay_ratio=<span class="hljs-number">1</span>, max_steps=<span class="hljs-number">100000</span>, buffer_size=<span class="hljs-number">256000</span>)
+rl_params.training = TrainingParameters(batch_size=<span class="hljs-number">64</span>, replay_ratio=<span class="hljs-number">1</span>, max_steps=<span class="hljs-number">100000</span>, buffer_size=<span class="hljs-number">256000</span>)
 
-                rl_params.algorithm = AlgorithmParameters(gpt_seq_length=<span class="hljs-number">16</span>, discount_factor=<span class="hljs-number">0.99</span>)
+rl_params.algorithm = AlgorithmParameters(gpt_seq_length=<span class="hljs-number">16</span>, discount_factor=<span class="hljs-number">0.99</span>)
 
-                rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</span>, d_model=<span class="hljs-number">256</span>, dropout=<span class="hljs-number">0.02</span>, network_type=GPT)
-                </code></pre>
+rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</span>, d_model=<span class="hljs-number">256</span>, dropout=<span class="hljs-number">0.02</span>, network_type=GPT)
+</code></pre>
                 <ul data-line="86" class="code-line" dir="auto">
                 <li data-line="86" class="code-line" dir="auto">
                 <p data-line="86" class="code-line" dir="auto"><strong>TrainingParameters:</strong></p>
                 <ul data-line="87" class="code-line" dir="auto">
                 <li data-line="87" class="code-line" dir="auto">
                 <p data-line="87" class="code-line" dir="auto"><code>batch_size</code>:</p>
-                <p data-line="89" class="code-line" dir="auto"><em>MLAgent와 Gymnasium 환경에서는 32 또는 64의 <code>batch_size</code>를 추천합니다. 또한, 메모리 최적화와 계산 효율을 위해 2의 배수값을 입력하는 것이 좋습니다</em></p>
+                <p data-line="89" class="code-line" dir="auto"><em>MLAgent와 Gymnasium 환경에서는 32 또는 64의 <code>batch_size</code>를 추천합니다. 또한, 메모리 최적화와 계산 효율을 위해 2의 배수값을 입력하는 것이 좋습니다.</em></p>
                 </li>
                 <li data-line="91" class="code-line" dir="auto">
                 <p data-line="91" class="code-line" dir="auto"><code>replay_ratio</code>:</p>
-                <p data-line="93" class="code-line" dir="auto">훈련에서 과거 경험을 얼마나 자주 재사용하는지에 대한 비율입니다. <em>MLAgent와 Gymnasium 환경에서는 1, 2, 4의 <code>replay_ratio</code>를 추천합니다</em></p>
+                <p data-line="93" class="code-line" dir="auto">훈련에서 과거 경험을 얼마나 자주 재사용하는지에 대한 비율입니다. <em>MLAgent와 Gymnasium 환경에서는 1, 2, 4의 <code>replay_ratio</code>를 추천합니다.</em></p>
                 </li>
                 <li data-line="95" class="code-line" dir="auto">
                 <p data-line="95" class="code-line" dir="auto"><code>max_steps</code>:</p>
-                <p data-line="97" class="code-line" dir="auto">탐색 단계의 최대 수로, 탐색 전략이 적용되는 기간을 정의합니다. 일반적인 머신러닝 학습에서는 <em><code>epochs</code></em> 또는 <em><code>iterations</code></em> 로 표현합니다.</p>
+                <p data-line="97" class="code-line" dir="auto">탐색 단계의 최대 수로, 탐색 전략이 적용되는 기간을 정의합니다. 일반적인 머신러닝 학습에서는 <em><code>iterations</code></em> 로 표현합니다.</p>
                 </li>
                 <li data-line="99" class="code-line" dir="auto">
                 <p data-line="99" class="code-line" dir="auto"><code>buffer_size</code>:</p>
                 <p data-line="101" class="code-line" dir="auto">메모리 버퍼의 총 크기로, 얼마나 많은 과거 경험을 저장할 수 있는지에 영향을 미칩니다.</p>
                 </li>
                 </ul>
-                <p data-line="103" class="code-line" dir="auto"><strong>위의 TrainingParameters의 각 parameter는 큰 값을 설정할수록 안정적인 학습이 가능할수도 있지만, 더 느린 훈련을 초래할 수 있습니다</strong></p>
+                <p data-line="103" class="code-line" dir="auto"><strong>위의 TrainingParameters의 각 parameter는 큰 값을 설정할수록 안정적인 학습이 가능할 수도 있지만, 더 느린 훈련을 초래할 수 있습니다.</strong></p>
                 </li>
                 <li data-line="105" class="code-line" dir="auto">
                 <p data-line="105" class="code-line" dir="auto"><strong>AlgorithmParameters:</strong></p>
@@ -196,7 +227,7 @@
                 </li>
                 <li data-line="123" class="code-line" dir="auto">
                 <p data-line="123" class="code-line" dir="auto"><code>dropout</code>:</p>
-                <p data-line="125" class="code-line" dir="auto">학습 중에 노드를 무작위로 생략하는 비율로, 과적합을 방지하는 데 도움이 됩니다. <em>MLAgent와 Gymnasium 환경에서는 0.01 ~ 0.03의 <code>dropout</code>을 추천합니다.</em></p>
+                <p data-line="125" class="code-line" dir="auto">학습 중에 노드를 무작위로 생략하는 비율로, 과적합을 방지하는 데 도움이 됩니다. <em>MLAgent와 Gymnasium 환경에서는 0.01 ~ 0.02의 <code>dropout</code>을 추천합니다.</em></p>
                 </li>
                 <li data-line="127" class="code-line" dir="auto">
                 <p data-line="127" class="code-line" dir="auto"><code>network_type</code>:</p>
@@ -208,44 +239,27 @@
                 <br>
 
                 <h2 data-line="131" class="code-line" dir="auto" id="training" tabindex="-1">Training</h2>
-                <pre><code data-line="133" class="code-line language-python" dir="auto"><span class="hljs-keyword">from</span> causal_rl <span class="hljs-keyword">import</span> CausalRL
+<pre><code data-line="133" class="code-line language-python" dir="auto"><span class="hljs-keyword">from</span> causal_rl <span class="hljs-keyword">import</span> CausalRL
+    
+    <span class="hljs-keyword">with</span> CausalRL(env_config, rl_params, device, use_print = <span class="hljs-literal">True</span>, use_wandb = <span class="hljs-literal">False</span>) <span class="hljs-keyword">as</span> causal_rl:
+    causal_rl.train(resume_training = <span class="hljs-literal">False</span>, use_eval = <span class="hljs-literal">False</span>, use_graphics = <span class="hljs-literal">False</span>)
+    causal_rl.test(max_episodes = <span class="hljs-number">100</span>, use_graphics = <span class="hljs-literal">False</span>)
+</code></pre>
+                
+                <h2 data-line="131" class="code-line" dir="auto" id="training" tabindex="-1">Result</h2>
 
-                <span class="hljs-keyword">with</span> CausalRL(env_config, rl_params, device, use_print = <span class="hljs-literal">True</span>, use_wandb = <span class="hljs-literal">False</span>) <span class="hljs-keyword">as</span> causal_rl:
-                    causal_rl.train(resume_training = <span class="hljs-literal">False</span>, use_eval = <span class="hljs-literal">False</span>, use_graphics = <span class="hljs-literal">False</span>)
-                    causal_rl.test(max_episodes = <span class="hljs-number">100</span>, use_graphics = <span class="hljs-literal">False</span>)
-                </code></pre>
-<pre>
-    [100/100000] 	buffer_size: 4695
-    Opt-Adam lr: 5e-05
-    Time for steps is 3.72 sec
-    [200/100000] 	buffer_size: 9098
-    Opt-Adam lr: 5e-05
-    Time for steps is 3.09 sec
-    [300/100000] 	buffer_size: 13573
-    Opt-Adam lr: 5e-05
-    Time for steps is 3.13 sec
-    [400/100000] 	buffer_size: 18183
-    Opt-Adam lr: 5e-05
-    Time for steps is 3.09 sec
-    [500/100000] 	buffer_size: 22659
-    Opt-Adam lr: 5e-05
-    Time for steps is 3.09 sec
-    [600/100000] 	buffer_size: 27169
-    Opt-Adam lr: 5e-05
-    Time for steps is 3.19 sec
-    [700/100000] 	buffer_size: 31702
-    Opt-Adam lr: 5e-05
-    Time for steps is 3.11 sec
-    [800/100000] 	buffer_size: 36303
-    Opt-Adam lr: 5e-05
-    Time for steps is 3.13 sec
-    [900/100000] 	buffer_size: 40885
-    ...
-    Values: Estimated: -1.2477	Expected: -1.3003	Advantage: -0.2903	
-    Losses: Value: 0.0224	Critic: 0.1057	Actor: -0.0018	Revenv: 0.2051	
-    CoopErrors: Critic: 0.1229	Actor: 0.1230	Revenv: 0.4962	
-    TransitionCosts: Forward: 0.1230	Reverse: 0.3095	Recurrent: 0.3096	</pre>
+                <div class="image-container">
+                    <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/de9d2447-4ded-408f-a3ba-e55764a85b3d" alt="Step/TrainReward">
+                    <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/d362998d-52ad-4847-896c-e9c0d0434899" alt="Step/Time">
+                    <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/2dfda3bc-b7f2-40d4-aabe-1b28e6759231" alt="Episode/TrainRewards">
+                </div>
+                <br>
+                <p>위의 세 가지 그래프는 사용자의 이해를 돕기 위해, 다른 파라미터 튜닝없이 <code>max_steps: 30000</code> 으로 설정한 <strong>3DBallHard</strong> 환경에서 <code>gpt_seq_length: 8</code>과 <code>gpt_seq_length: 16</code>으로 각각 설정해 학습을 진행한 결과입니다.</p>  
+                <p>그래프를 통해 나타난 것과 같이, <code>gpt_seq_length</code>를 낮게 설정하여 짧은 시퀀스 길이를 학습에 사용하게 되면, GPT 모델이 긴 시퀀스 길이 대비 빠르게 학습하고 계산 효율성이 높아집니다.</p>
+                <p>반면, 긴 시퀀스 길이 설정은 모델이 환경의 더 넓은 범위를 이해하고, 장기적인 의존성을 학습할 수 있게 해, 최종적인 성능 향상에 기여하지만, 상대적으로 모델 학습에 더 오랜 시간이 걸린 것을 확인할 수 있습니다.</p>
+                <p>이를 통해, 강화학습 모델을 최적화하기 위해서는 <strong>CausalRL</strong>의 학습 파라미터를 학습 환경과 사용자의 학습 목표에 맞게 조정하는 것의 중요성을 확인할 수 있습니다.</p>
 
+                <br>
                 <br>
                 <hr>
                 <div align="left" style="padding-bottom: 10px;">
