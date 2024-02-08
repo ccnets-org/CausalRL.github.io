@@ -1250,3 +1250,7 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
         display: none;
     }
     }
+
+    .hidden {
+        display: none;
+      }

@@ -19,17 +19,15 @@ function toggleGrid() {
     var button = document.getElementById("toggleButton");
     var source = document.getElementById("sourceCredit");
     
-    if (grid.style.display === "none") {
-        grid.style.display = "grid";
-        source.style.display = "block";
-        button.textContent = "Close Env Images"; 
+    grid.classList.toggle("hidden");
+    source.classList.toggle("hidden");
+    
+    if (grid.classList.contains("hidden")) {
+        button.textContent = "Open Env Images";
     } else {
-        grid.style.display = "none";
-        source.style.display = "none";
-        button.textContent = "Open Env Images"; 
+        button.textContent = "Close Env Images";
     }
 }
-
 
 // Toc
 const tags = document.querySelectorAll('h1,h2')
