@@ -107,12 +107,12 @@
     <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/causal_rl.py" target="_blank" style="font-weight: 600; margin-left: 10px; margin-bottom:10px; font-size: 10px; font-size: smaller;">[source]</a>
   </div>
   <pre><code data-line="66" class="code-line language-python" dir="auto"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CausalRL</span>:
-      <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config: EnvConfig, rl_params: RLParameters, device, use_print=<span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">False</span></span>):
+      <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, rl_params: RLParameters, device, use_print=<span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">False</span></span>):
   </code></pre>
   <p data-line="70" class="code-line" dir="auto">The CausalRL class is designed for tuning and training reinforcement learning models, using a specified trainer.</p>
   <h3 data-line="72" class="code-line" dir="auto" id="parameters" tabindex="-1">Parameters:</h3>
   <ul data-line="73" class="code-line" dir="auto">
-  <li data-line="73" class="code-line" dir="auto"><code>env_config</code> (EnvConfig): Configuration for the environment.</li>
+  <!-- <li data-line="73" class="code-line" dir="auto"><code>env_config</code> (EnvConfig): Configuration for the environment.</li> -->
   <li data-line="74" class="code-line" dir="auto"><code>trainer</code> (Trainer): Trainer object for the reinforcement learning algorithm.</li>
   <li data-line="75" class="code-line" dir="auto"><code>device</code> (Device): Computational device (e.g. CPU, GPU).</li>
   <li data-line="76" class="code-line" dir="auto"><code>use_print</code> (bool, optional): Whether to print training/testing logs. Default is False.</li>
@@ -120,14 +120,14 @@
   </ul>
   <h3 data-line="79" class="code-line" dir="auto" id="functions" tabindex="-1">Method Overview</h3>
   <ul data-line="81" class="code-line" dir="auto">
-  <li data-line="81" class="code-line" dir="auto">
+  <!-- <li data-line="81" class="code-line" dir="auto">
   <p data-line="81" class="code-line" dir="auto"><code>__init__():</code>
   Accepts environment configuration (EnvConfig), RL parameters (RLParameters), computational device (device), and printing, and WandB integration.</p>
-  </li>
-  <li data-line="84" class="code-line" dir="auto">
+  </li> -->
+  <!-- <li data-line="84" class="code-line" dir="auto">
   <p data-line="84" class="code-line" dir="auto"><code>_end_environments():</code>
   If the environment exists, shut down both the training and testing environments of a reinforcement learning setup.</p>
-  </li>
+  </li> -->
   <li data-line="87" class="code-line" dir="auto">
   <p data-line="87" class="code-line" dir="auto"><code>train():</code>
   The main method of this class. To train the model based on the provided policy.</p>
@@ -142,18 +142,18 @@
   <li data-line="94" class="code-line" dir="auto">setup(training=False): To prepare the test environment using this method</li>
   </ul>
   </li>
-  <li data-line="96" class="code-line" dir="auto">
+  <!-- <li data-line="96" class="code-line" dir="auto">
   <p data-line="96" class="code-line" dir="auto"><code>_train_step_logic():</code>
   The core method of the training process in a reinforcement learning environment.</p>
   <ul data-line="99" class="code-line" dir="auto">
   <li data-line="99" class="code-line" dir="auto"><code>helper.init_step():</code> initializes the training/testing step</li>
   <li data-line="100" class="code-line" dir="auto"><code>process_test_environmemt():</code> to handle interactions with an environment and for test interactions(<code>if 'training' == False</code>), the trajectories are not pushed to memory, which is a step reserved for training interaction.</li>
   </ul>
-  </li>
-  <li data-line="102" class="code-line" dir="auto">
+  </li> -->
+  <!-- <li data-line="102" class="code-line" dir="auto">
   <p data-line="102" class="code-line" dir="auto"><code>_test_step_logic():</code>
   The logic for each step during the testing phase of a reinforcement learning algorithm.</p>
-  </li>
+  </li> -->
   <!-- <li data-line="105" class="code-line" dir="auto">
   <p data-line="105" class="code-line" dir="auto"><code>train_on_policy():</code>
   To train a model using on-policy reinforcement learning algorithm.</p>
@@ -170,7 +170,7 @@
   <ul data-line="116" class="code-line" dir="auto">
   <li data-line="116" class="code-line" dir="auto"><code>process_train_environment():</code> Interacts with the training environment and collect data based on the current policy.</li>
   <li data-line="117" class="code-line" dir="auto"><code>should_update_strategy():</code> check if strategy should be updated.</li>
-  <li data-line="118" class="code-line" dir="auto"><code>_update_strategy_from_samples():</code> to enhance the strategy used in the training of a reinforcement learning.</li>
+  <!-- <li data-line="118" class="code-line" dir="auto"><code>_update_strategy_from_samples():</code> to enhance the strategy used in the training of a reinforcement learning.</li> -->
   <li data-line="119" class="code-line" dir="auto"><code>train_step():</code> a single step of training in a reinforcement learning include Sample Trajectory, Model Training, TD Errors and Record Metrics</li>
   </ul>
   </li>
@@ -185,9 +185,9 @@
     <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/training/causal_trainer.py" target="_blank" style="font-weight: 600; margin-left: 10px; margin-bottom:10px; font-size: 10px; font-size: smaller;">[source]</a>
   </div>
   <pre><code data-line="126" class="code-line language-python" dir="auto"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CausalRL</span>(<span class="hljs-title class_ inherited__">BaseTrainer</span>):
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, env_config, rl_params, device</span>):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, rl_params, device</span>):
   </code></pre>
-  <p data-line="131" class="code-line" dir="auto">This class is specialized trainer for reinforcement learning. It initailizes with environment configuration('env_config'), RLparameters('rl_params'), and the computational device('device').
+  <p data-line="131" class="code-line" dir="auto">This class is specialized trainer for reinforcement learning. It initailizes with RLparameters('rl_params'), and the computational device('device').
     And the class sets up three key networks: Critic, Actor, Reverse-Environment networks, each configured based on the provided RL parameters.</p>
     <h3 data-line="134" class="code-line" dir="auto" id="funtions" tabindex="-1">Method Overview</h3>
     <ul data-line="135" class="code-line" dir="auto">

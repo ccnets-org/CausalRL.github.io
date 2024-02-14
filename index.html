@@ -119,9 +119,9 @@
 
 device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hljs-keyword">if</span> (torch.cuda.is_available() <span class="hljs-keyword">and</span> ngpu &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">else</span> <span class="hljs-string">"cpu"</span>)
 
-env_config, rl_params = analyze_env(env_name = <span class="hljs-string">"Humanoid-v4"</span>)
+rl_params = analyze_env(env_name = <span class="hljs-string">"HalfCheetah-v4"</span>)
 
-<span class="hljs-keyword">with</span> CausalRL(env_config, rl_params, device, use_print = <span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">True</span>) <span class="hljs-keyword">as</span> causal_rl:
+<span class="hljs-keyword">with</span> CausalRL(rl_params, device, use_print = <span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">True</span>) <span class="hljs-keyword">as</span> causal_rl:
     causal_rl.train(resume_training = <span class="hljs-literal">False</span>, use_eval = <span class="hljs-literal">False</span>, use_graphics = <span class="hljs-literal">False</span>)
     causal_rl.test(max_episode = <span class="hljs-literal">100</span>, use_graphics = <span class="hljs-literal">False</span>)
 </code></pre>
