@@ -120,28 +120,29 @@
   </ul>
   <h3 data-line="79" class="code-line" dir="auto" id="functions" tabindex="-1">Method Overview</h3>
   <ul data-line="81" class="code-line" dir="auto">
-  <!-- <li data-line="81" class="code-line" dir="auto">
-  <p data-line="81" class="code-line" dir="auto"><code>__init__():</code>
-  Accepts environment configuration (EnvConfig), RL parameters (RLParameters), computational device (device), and printing, and WandB integration.</p>
-  </li> -->
-  <!-- <li data-line="84" class="code-line" dir="auto">
-  <p data-line="84" class="code-line" dir="auto"><code>_end_environments():</code>
-  If the environment exists, shut down both the training and testing environments of a reinforcement learning setup.</p>
-  </li> -->
-  <li data-line="87" class="code-line" dir="auto">
-  <p data-line="87" class="code-line" dir="auto"><code>train():</code>
-  The main method of this class. To train the model based on the provided policy.</p>
-  <ul data-line="90" class="code-line" dir="auto">
-  <li data-line="90" class="code-line" dir="auto">setup(training=True): To prepare the training environment using this method</li>
+    <!-- <li data-line="81" class="code-line" dir="auto">
+    <p data-line="81" class="code-line" dir="auto"><code>__init__():</code>
+    Accepts environment configuration (EnvConfig), RL parameters (RLParameters), computational device (device), and printing, and WandB integration.</p>
+    </li> -->
+    <!-- <li data-line="84" class="code-line" dir="auto">
+    <p data-line="84" class="code-line" dir="auto"><code>_end_environments():</code>
+    If the environment exists, shut down both the training and testing environments of a reinforcement learning setup.</p>
+    </li> -->
+    <li data-line="87" class="code-line" dir="auto">
+    <p data-line="87" class="code-line" dir="auto"><code>train():</code>
+    The main method of this class. To train the model based on the provided policy.</p>
+    <ul data-line="90" class="code-line" dir="auto">
+    <li data-line="90" class="code-line" dir="auto">setup(training=True): To prepare the training environment using this method</li>
+    </ul>
+    </li>
+    <li data-line="92" class="code-line" dir="auto">
+    <p data-line="92" class="code-line" dir="auto"><code>test():</code>
+    To evaluate a reinforcement learning algorithm over specified of episodes(default: max_episode=100)</p>
+    <ul data-line="94" class="code-line" dir="auto">
+    <li data-line="94" class="code-line" dir="auto">setup(training=False): To prepare the test environment using this method</li>
+    </ul>
+    </li>
   </ul>
-  </li>
-  <li data-line="92" class="code-line" dir="auto">
-  <p data-line="92" class="code-line" dir="auto"><code>test():</code>
-  To evaluate a reinforcement learning algorithm over specified of episodes(default: max_episode=100)</p>
-  <ul data-line="94" class="code-line" dir="auto">
-  <li data-line="94" class="code-line" dir="auto">setup(training=False): To prepare the test environment using this method</li>
-  </ul>
-  </li>
   <!-- <li data-line="96" class="code-line" dir="auto">
   <p data-line="96" class="code-line" dir="auto"><code>_train_step_logic():</code>
   The core method of the training process in a reinforcement learning environment.</p>
@@ -164,22 +165,81 @@
   <li data-line="111" class="code-line" dir="auto"><code>reset_memory_and_train():</code> reset the memory buffer and then performs a seies of training steps. It iterates over a predefined number of on-policy iterations(<code>train_step</code>)</li>
   </ul>
   </li> -->
-  <li data-line="113" class="code-line" dir="auto">
+  <!-- <li data-line="113" class="code-line" dir="auto">
   <p data-line="113" class="code-line" dir="auto"><code>train_off_policy():</code>
   To train a model using off-policy reinforcement learning alrorithm.</p>
   <ul data-line="116" class="code-line" dir="auto">
   <li data-line="116" class="code-line" dir="auto"><code>process_train_environment():</code> Interacts with the training environment and collect data based on the current policy.</li>
-  <li data-line="117" class="code-line" dir="auto"><code>should_update_strategy():</code> check if strategy should be updated.</li>
+  <li data-line="117" class="code-line" dir="auto"><code>should_update_strategy():</code> check if strategy should be updated.</li> -->
   <!-- <li data-line="118" class="code-line" dir="auto"><code>_update_strategy_from_samples():</code> to enhance the strategy used in the training of a reinforcement learning.</li> -->
-  <li data-line="119" class="code-line" dir="auto"><code>train_step():</code> a single step of training in a reinforcement learning include Sample Trajectory, Model Training, TD Errors and Record Metrics</li>
+  <!-- <li data-line="119" class="code-line" dir="auto"><code>train_step():</code> a single step of training in a reinforcement learning include Sample Trajectory, Model Training, TD Errors and Record Metrics</li>
   </ul>
   </li>
   <li data-line="122" class="code-line" dir="auto">
   <p data-line="122" class="code-line" dir="auto"><code>interact_environment():</code> This function progresses the environmentstate, retrieves the resulting trajectories, and the records these trajectories using the helper.record method.</p>
   </li>
-  </ul>
+  </ul> -->
   <br>
   <br>
+  <div class="inline-container">
+    <h2 data-line="91" class="class-rl-config" dir="auto" id="class-rl-config" tabindex="-1">Class RLParameters</h2>
+    <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/utils/setting/rl_config.py" target="_blank" style="font-weight: 600; margin-left: 10px; margin-bottom:10px; font-size: 10px; font-size: smaller;">[source]</a>
+  </div>
+    <p data-line="70" class="code-line" dir="auto">The <code>RLParameters</code> class is designed as a structured approach to manage the settings for Reinforcement Learning (RL) configurations. This class encapsulates and manages multiple subsidiary parameter classes, each representing different components of an RL system. The detailed parameters for each component within the <code>RLParams</code> can be found in the <code>rl_config.py</code> </p>
+    <h3 data-line="144" class="code-line" dir="auto" id="class-trainingparameters" tabindex="-1">Class TrainingParameters</h3>
+    <ul data-line="145" class="code-line" dir="auto">
+      <!-- <li data-line="145" class="code-line" dir="auto"><code>trainer_name</code>: Specifies the type of trainer algorithm. (default: <code>causal_rl</code>)</li> -->
+      <!-- <li data-line="146" class="code-line" dir="auto"><code>trainer_variant</code>: Specifies a variant of <code>CausalRL</code>. (default: <code>classic</code>)</li> -->
+      <!-- <li data-line="147" class="code-line" dir="auto"><code>use_on_policy</code>: Set whether the training is <code>on-policy</code> or <code>off-policy</code>. (default: <code>False</code>)</li> -->
+      <li data-line="148" class="code-line" dir="auto"><code><p>batch_size</code>: Number of samples processed before model update. Larger batch szie can lead to more stable but slower training. (batch size / samples per step, default: <code>64</code>)</p></li>
+      <li data-line="149" class="code-line" dir="auto"><code><p>replay_ratio</code>: Ratio foe how often past experiences are reused. (default: <code>1</code>)</p></li>
+      <li data-line="150" class="code-line" dir="auto"><code><p>train_interval</code>: Frequency of thraining updates. (default: <code>1</code>)</p></li>
+      <li data-line="181" class="code-line" dir="auto"><code><p>max_steps</code>: Maximum number of steps for the exploration phase. (default: <code>100000</code>)</p></li>
+      <li data-line="185" class="code-line" dir="auto"><code><p>buffer_size</code>: Total size of the memory buffer, This determines the capacity for storing past experiences. (default: <code>256000</code>)</p></li>
+    </ul>
+    <h3 data-line="153" class="code-line" dir="auto" id="class-algorithmparameters" tabindex="-1">Class AlgorithmParameters</h3>
+    <ul data-line="154" class="code-line" dir="auto">
+      <li data-line="155" class="code-line" dir="auto"><code><p>gpt_seq_length</code>: Maximum sequence length for training and exploration. (default: <code>16</code>)</p></li>
+      <li data-line="156" class="code-line" dir="auto"><code><p>discount_factor</code>: To reduce the value of future rewards in the calculation of expected returns. (default: <code>0.99</code>)</p></li>
+      <li data-line="157" class="code-line" dir="auto"><code><p>advantage_lambda</code>: Weighting advantages in policy optimization. (default: <code>0.99</code>)</p></li>
+      <li data-line="158" class="code-line" dir="auto"><code><p>use_deterministic</code>: Determines whether to use deterministic actions during training/evalua</p>tion.
+      <li data-line="159" class="code-line" dir="auto"><code><p>use_masked_exploration</code>: Enables sequence masking-based exploration, dynamically varying input sequence lengths by selective masking to promote internal strategy exploration without external n</p>oise.
+    </ul>
+    <h3 data-line="161" class="code-line" dir="auto" id="class-networkparameters" tabindex="-1">Class NetworkParameters</h3>
+    <ul data-line="162" class="code-line" dir="auto">
+      <li data-line="163" class="code-line" dir="auto"><code><p>num_layer</code>: Defines the number of layers in the neural network. (default: <code>5</code>)</p></li>
+      <li data-line="164" class="code-line" dir="auto"><code><p>d_model</code>: Specifies the dimensionality of the input and output of the model layers. (default: <code>256</code>)</p></li>
+      <li data-line="165" class="code-line" dir="auto"><code><p>dropout</code>: Sets the dropout rate to prevent overfitting. This is a regularization technique where randomly selected neurons are ignored during training. (default: <code>0.01</code>)</p></li>
+      <li data-line="164" class="code-line" dir="auto"><code><p>network_type</code>:  Determines the type of neural network architecture to use. This parameter allows the selection of different network architectures if needed. (default: <code>GPT</code>)</p></li>
+      <li data-line="165" class="code-line" dir="auto"><code><p>critic_params</code>: Parameters for the critic network.</p></li>
+      <li data-line="166" class="code-line" dir="auto"><code><p>actor_params</code>: Parameters for the actor network.</p></li>
+      <li data-line="167" class="code-line" dir="auto"><code><p>rev_env_params</code>: Parameters for the rev-env network.</p></li>
+    </ul>
+    <h3 data-line="170" class="code-line" dir="auto" id="class-optimizationparameters" tabindex="-1">Class OptimizationParameters</h3>
+    <ul data-line="171" class="code-line" dir="auto">
+      <li data-line="171" class="code-line" dir="auto"><p><code>lr</code>: Learning rate for the optimiztion algorithm. (default: <code>5e-5</code>)</p></li>
+      <li data-line="172" class="code-line" dir="auto"><p><code>min_lr</code>: Minimum learning rate to which the lr will decay. (default: <code>5e-6</code>)</p></li>
+      <li data-line="173" class="code-line" dir="auto"><p><code>scheduler_type</code>: Specifies the type of learning rate scheduler. (default: <code>exponential</code>)</p></li>
+      <li data-line="174" class="code-line" dir="auto"><p><code>tau</code>: How quickly the target network is updated with the main network's weights. (default: <code>1e-1</code>)</p></li>
+      <li data-line="175" class="code-line" dir="auto"><p><code>use_target_network</code>: Indicate whether to use target network or not. (default: <code>True</code>)</p></li>
+      <li data-line="176" class="code-line" dir="auto"><p><code>clip_grad_range</code>: The range within which gradients are clipped. To prevent the issue of exploding gradients. (default: <code>None</code>)</p></li>
+      <li data-line="177" class="code-line" dir="auto"><p><code>max_grad_norm</code>: A Parameter used in gradient clipping technique to prevent the "gradient explosion" issue by limiting the size of the gradients. It sets a threshold so that the L2 norm of all gradients does not exceed this value, helping to stabilize the training process. (default: <code>1.0</code>)</p></li>
+    </ul>
+    <h3 data-line="189" class="code-line" dir="auto" id="class-normalizationparameters" tabindex="-1">Class NormalizationParameters</h3>
+    <ul data-line="190" class="code-line" dir="auto">
+      <li data-line="190" class="code-line" dir="auto">
+      <p data-line="190" class="code-line" dir="auto"><code>state_normalizer</code>: Determines the method used for normalizing state valeus. (default: <code>running_mean_std</code>)</p>
+      </li>
+      <li data-line="191" class="code-line" dir="auto">
+      <p data-line="191" class="code-line" dir="auto"><code>reward_normalizer</code>: Determines the method used for normalizing reward values. (default: <code>running_mean_std</code>)</p>
+      </li>
+      <li data-line="192" class="code-line" dir="auto">
+      <p data-line="192" class="code-line" dir="auto"><code>advantage_normalizer</code>: Determines the method used for normalizing advantage values. (default: <code>running_abs_mean</code>)</p>
+      </li>
+    </ul>
+  <br>
+  <br>
+
   <div class="inline-container">
     <h2 data-line="91" class="class-causaltrainer" dir="auto" id="class-causaltrainer" tabindex="-1">Class CausalTrainer</h2>
     <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/training/causal_trainer.py" target="_blank" style="font-weight: 600; margin-left: 10px; margin-bottom:10px; font-size: 10px; font-size: smaller;">[source]</a>
@@ -201,64 +261,6 @@
         <p data-line="139" class="code-line" dir="auto"><code>backwards()</code> method  conducts backpropagation for multiple neural networks in a reinforcement learning framework, each targeting a specific part of the causal relationship graph. It first disables, then selectively enables gradients for each network during the error backpropagation process to ensure targeted learning. Finally, it resets the networks to allow gradient updates, preparing them for future forward passes.</p>
       </li>
     </ul>
-  <br>
-  <br>
-  <div class="inline-container">
-    <h2 data-line="91" class="class-rl-config" dir="auto" id="class-rl-config" tabindex="-1">RLConfig</h2>
-    <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/utils/setting/rl_config.py" target="_blank" style="font-weight: 600; margin-left: 10px; margin-bottom:10px; font-size: 10px; font-size: smaller;">[source]</a>
-  </div>
-    <p data-line="70" class="code-line" dir="auto">The <code>RLParameters</code> class is designed as a structured approach to manage the settings for Reinforcement Learning (RL) configurations. This class encapsulates and manages multiple subsidiary parameter classes, each representing different components of an RL system. The detailed parameters for each component within the <code>RLParams</code> can be found in the <code>rl_config.py</code> </p>
-    <h3 data-line="144" class="code-line" dir="auto" id="class-trainingparameters" tabindex="-1">Class TrainingParameters</h3>
-    <ul data-line="145" class="code-line" dir="auto">
-      <!-- <li data-line="145" class="code-line" dir="auto"><code>trainer_name</code>: Specifies the type of trainer algorithm. (default: <code>causal_rl</code>)</li> -->
-      <!-- <li data-line="146" class="code-line" dir="auto"><code>trainer_variant</code>: Specifies a variant of <code>CausalRL</code>. (default: <code>classic</code>)</li> -->
-      <!-- <li data-line="147" class="code-line" dir="auto"><code>use_on_policy</code>: Set whether the training is <code>on-policy</code> or <code>off-policy</code>. (default: <code>False</code>)</li> -->
-      <li data-line="148" class="code-line" dir="auto"><code>batch_size</code>: Number of samples processed before model update. Larger batch szie can lead to more stable but slower training. (batch size / samples per step, default: <code>64</code>)</li>
-      <li data-line="149" class="code-line" dir="auto"><code>replay_ratio</code>: Ratio foe how often past experiences are reused. (default: <code>1</code>)</li>
-      <li data-line="150" class="code-line" dir="auto"><code>train_interval</code>: Frequency of thraining updates. (default: <code>1</code>)</li>
-      <li data-line="181" class="code-line" dir="auto"><code>max_steps</code>: Maximum number of steps for the exploration phase. (default: <code>100000</code>)</li>
-      <li data-line="185" class="code-line" dir="auto"><code>buffer_size</code>: Total size of the memory buffer, This determines the capacity for storing past experiences. (default: <code>256000</code>)</li>
-    </ul>
-    <h3 data-line="153" class="code-line" dir="auto" id="class-algorithmparameters" tabindex="-1">Class AlgorithmParameters</h3>
-    <ul data-line="154" class="code-line" dir="auto">
-      <!-- <li data-line="154" class="code-line" dir="auto"><code>min_seq_length</code>: Minimum sequence length during exploration. (default: <code>1</code>)</li> -->
-      <li data-line="155" class="code-line" dir="auto"><code>gpt_seq_length</code>: Maximum sequence length for training and exploration. (default: <code>16</code>)</li>
-  <li data-line="156" class="code-line" dir="auto"><code>discount_factor</code>: To reduce the value of future rewards in the calculation of expected returns. (default: <code>0.99</code>)</li>
-  <li data-line="157" class="code-line" dir="auto"><code>advantage_lambda</code>: Weighting advantages in policy optimization. (default: <code>0.99</code>)</li>
-  <!-- <li data-line="158" class="code-line" dir="auto"><code>use_gae_advantage</code>: Automatically set in <code>rl_trainer</code>.py. It's determined based on weather the policy is off-policy or on-policy. (default: <code>None</code>)</li> -->
-  </ul>
-  <h3 data-line="161" class="code-line" dir="auto" id="class-networkparameters" tabindex="-1">Class NetworkParameters</h3>
-  <ul data-line="162" class="code-line" dir="auto">
-  <li data-line="163" class="code-line" dir="auto"><code>num_layer</code>: Defines the number of layers in the neural network. (default: <code>5</code>)</li>
-  <li data-line="164" class="code-line" dir="auto"><code>d_model</code>: Specifies the dimensionality of the input and output of the model layers. (default: <code>256</code>)</li>
-  <li data-line="165" class="code-line" dir="auto"><code>dropout</code>: Sets the dropout rate to prevent overfitting. This is a regularization technique where randomly selected neurons are ignored during training. (default: <code>0.01</code>)</li>
-  <li data-line="164" class="code-line" dir="auto"><code>network_type</code>:  Determines the type of neural network architecture to use. This parameter allows the selection of different network architectures if needed. (default: <code>GPT</code>)</li>
-  <li data-line="165" class="code-line" dir="auto"><code>critic_params</code>: Parameters for the critic network.</li>
-  <li data-line="166" class="code-line" dir="auto"><code>actor_params</code>: Parameters for the actor network.</li>
-  <li data-line="167" class="code-line" dir="auto"><code>rev_env_params</code>: Parameters for the rev-env network.</li>
-  </ul>
-  <h3 data-line="170" class="code-line" dir="auto" id="class-optimizationparameters" tabindex="-1">Class OptimizationParameters</h3>
-  <ul data-line="171" class="code-line" dir="auto">
-  <li data-line="171" class="code-line" dir="auto"><code>lr</code>: Learning rate for the optimiztion algorithm. (default: <code>5e-5</code>)</li>
-  <li data-line="172" class="code-line" dir="auto"><code>min_lr</code>: Minimum learning rate to which the lr will decay. (default: <code>5e-6</code>)</li>
-  <li data-line="173" class="code-line" dir="auto"><code>scheduler_type</code>: Specifies the type of learning rate scheduler. (default: <code>exponential</code>)</li>
-  <li data-line="174" class="code-line" dir="auto"><code>tau</code>: How quickly the target network is updated with the main network's weights. (default: <code>1e-1</code>)</li>
-  <li data-line="175" class="code-line" dir="auto"><code>use_target_network</code>: Indicate whether to use target network or not. (default: <code>True</code>)</li>
-  <li data-line="176" class="code-line" dir="auto"><code>clip_grad_range</code>: The range within which gradients are clipped. To prevent the issue of exploding gradients. (default: <code>None</code>)</li>
-  <li data-line="176" class="code-line" dir="auto"><code>max_grad_norm</code>: A Parameter used in gradient clipping technique to prevent the "gradient explosion" issue by limiting the size of the gradients. It sets a threshold so that the L2 norm of all gradients does not exceed this value, helping to stabilize the training process. (default: <code>1.0</code>)</li>
-  </ul>
-  <h3 data-line="189" class="code-line" dir="auto" id="class-normalizationparameters" tabindex="-1">Class NormalizationParameters</h3>
-  <ul data-line="190" class="code-line" dir="auto">
-  <li data-line="190" class="code-line" dir="auto">
-  <p data-line="190" class="code-line" dir="auto"><code>state_normalizer</code>: Determines the method used for normalizing state valeus. (default: <code>running_mean_std</code>)</p>
-  </li>
-  <li data-line="191" class="code-line" dir="auto">
-  <p data-line="191" class="code-line" dir="auto"><code>reward_normalizer</code>: Determines the method used for normalizing reward values. (default: <code>running_mean_std</code>)</p>
-  </li>
-  <li data-line="192" class="code-line" dir="auto">
-  <p data-line="192" class="code-line" dir="auto"><code>advantage_normalizer</code>: Determines the method used for normalizing advantage values. (default: <code>running_abs_mean</code>)</p>
-  </li>
-  </ul>
   <div data-line="196" class="code-line" dir="auto"></div>
   <br>
   <hr>
