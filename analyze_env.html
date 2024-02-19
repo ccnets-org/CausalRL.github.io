@@ -69,7 +69,7 @@
                 <li class="dropdown-menu">
                     <a class="dropbtn" href="#">Basic <span class="dropdown-arrow">&#9660;</span></a>
                     <ul class="dropdown-content">
-                        <li><a href="./tutorials/Tutorial_Basic.html">Unlocking CausalRL</a></li>
+                        <li><a href="./tutorials/Tutorial_supernet.html">Unlocking CausalRL</a></li>
                         <!-- <li><a href="#">Day 2</a></li> -->
                     </ul>
                 </li>
@@ -79,12 +79,12 @@
             <a>DEVELOPMENT</a>
             <ul>
                 <li>
-                    <a href="https://github.com/ccnets-team/rl-tune">
+                    <a href="https://github.com/ccnets-team/rl-tune" target="_blank">
                     Github    
                     <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/9f93117b-8082-4b92-ac77-245b2e13eeba" alt="Github" style="height:10px; width:10px;">
                     </a>
                 </li>
-                <li><a href="https://wandb.ai/rl_tune/rl-tune-gym/?workspace">
+                <li><a href="https://wandb.ai/rl_tune/rl-tune-gym/?workspace" target="_blank">
                     W&amp;B
                     <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/9f93117b-8082-4b92-ac77-245b2e13eeba" alt="W&B" style="height:10px; width:10px;">
                     </a>
@@ -106,24 +106,23 @@
                 <a href="https://github.com/ccnets-team/causal-rl/blob/release-v1.0.0/utils/setting/env_settings.py#L33" target="_blank" style="font-weight: 600; margin-left: 10px; margin-bottom:10px; font-size: 10px; font-size: smaller;">[source]</a>
               </div>
             <pre><code data-line="2" class="code-line language-python" dir="auto"><span class="hljs-keyword">def</span> <span class="hljs-title function_">analyze_env</span>(<span class="hljs-params">env_name</span>):
-                env_config, rl_params = <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>
+                rl_params = <span class="hljs-literal">None</span>
                 use_gym = <span class="hljs-literal">False</span>
                 <span class="hljs-keyword">if</span> <span class="hljs-string">"-v"</span> <span class="hljs-keyword">in</span> env_name:
                     use_gym = <span class="hljs-literal">True</span>
-                env_config, rl_params = configure_parameters(env_name, use_gym=use_gym)
-                print_env_specs(env_config)
-                <span class="hljs-keyword">return</span> env_config, rl_params
+                rl_params = configure_parameters(env_name, use_gym=use_gym)
+                <span class="hljs-keyword">return</span> rl_params
             </code></pre>
-            <h3 data-line="14" class="code-line" dir="auto" id="analyze_envenv_name-str---tupleoptionaltypeenvconfig-typerlparameters" tabindex="-1"><strong><code>analyze_env</code></strong>(env_name: str) -&gt; Tuple[Optional[Type[EnvConfig]], Type[RLParameters]]</h3>
-            <p data-line="16" class="code-line" dir="auto">The <code>analyze_env</code> function is an essential feature of <code>CausalRL</code>, a versatile framework tailored for reinforcement learning in a wide array of environments. By taking a user-defined environment name (<code>env_name</code>), it not only configures the necessary settings (<code>env_config</code>) and learning parameters (<code>rl_params</code>) but also ensures the seamless setup and detailed analysis of various reinforcement learning scenarios.</p>
+            <h3 data-line="14" class="code-line" dir="auto" id="analyze_envenv_name-str---tupleoptionaltypeenvconfig-typerlparameters" tabindex="-1"><em><strong><code>analyze_env</code></strong>(env_name: str) -&gt; Type[RLParameters]</em></h3>
+            <p data-line="16" class="code-line" dir="auto">The <code>analyze_env</code> function is an essential feature of <code>CausalRL</code>, a versatile framework tailored for reinforcement learning in a wide array of environments. By taking a user-defined environment name (<code>env_name</code>), it not only configures the necessary settings (<code>env_config</code><em> by internal method</em>) and learning parameters (<code>rl_params</code>) but also ensures the seamless setup and detailed analysis of various reinforcement learning scenarios.</p>
             <ul data-line="19" class="code-line" dir="auto">
             <li data-line="19" class="code-line" dir="auto">
             <p data-line="19" class="code-line" dir="auto"><strong>Parameters:</strong>
-            <code>env_name</code> (str): The name of the environment to be analyzed. The configuration and parameters are determined based on this name.</p>
+            <code>env_name</code> (<em>str</em>): The name of the environment to be analyzed. The configuration and parameters are determined based on this name.</p>
             </li>
             <li data-line="22" class="code-line" dir="auto">
             <p data-line="22" class="code-line" dir="auto"><strong>Returns:</strong>
-            Tuple[Optional[Type[EnvConfig]], Type[RLParameters]]: A tuple of the environment configuration (<code>EnvConfig</code>) and reinforcement learning parameters (<code>RLParameters</code>).</p>
+            <em>Type[RLParameters]</em>: Reinforcement learning parameters (<code>RLParameters</code>).</p>
             </li>
             </ul>
         <!-- Content End-->

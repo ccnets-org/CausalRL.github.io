@@ -68,7 +68,7 @@
       <li class="dropdown-menu">
           <a class="dropbtn" href="#">Basic <span class="dropdown-arrow">&#9660;</span></a>
           <ul class="dropdown-content">
-              <li><a href="./tutorials/Tutorial_Basic.html">Unlocking CausalRL</a></li>
+              <li><a href="./tutorials/Tutorial_supernet.html">Unlocking CausalRL</a></li>
               <!-- <li><a href="#">Day 2</a></li> -->
           </ul>
       </li>
@@ -78,12 +78,12 @@
     <a>DEVELOPMENT</a>
     <ul>
         <li>
-            <a href="https://github.com/ccnets-team/rl-tune">
+            <a href="https://github.com/ccnets-team/rl-tune" target="_blank">
             Github    
             <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/9f93117b-8082-4b92-ac77-245b2e13eeba" alt="Github" style="height:10px; width:10px;">
             </a>
         </li>
-        <li><a href="https://wandb.ai/rl_tune/rl-tune-gym/?workspace">
+        <li><a href="https://wandb.ai/rl_tune/rl-tune-gym/?workspace" target="_blank">
             W&amp;B
             <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/9f93117b-8082-4b92-ac77-245b2e13eeba" alt="W&B" style="height:10px; width:10px;">
             </a>
@@ -121,12 +121,13 @@ device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hlj
 
 rl_params = analyze_env(env_name = <span class="hljs-string">"HalfCheetah-v4"</span>)
 
-<span class="hljs-keyword">with</span> CausalRL(rl_params, device, use_print = <span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">True</span>) <span class="hljs-keyword">as</span> causal_rl:
-    causal_rl.train(resume_training = <span class="hljs-literal">False</span>, use_eval = <span class="hljs-literal">False</span>, use_graphics = <span class="hljs-literal">False</span>)
+<span class="hljs-keyword">with</span> CausalRL(rl_params, device, use_print = <span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">False</span>) <span class="hljs-keyword">as</span> causal_rl:
+    causal_rl.train(resume_training = <span class="hljs-literal">False</span>, use_eval = <span class="hljs-literal">True</span>, use_graphics = <span class="hljs-literal">False</span>)
     causal_rl.test(max_episode = <span class="hljs-literal">100</span>, use_graphics = <span class="hljs-literal">False</span>)
 </code></pre>
 <div data-line="93" class="code-line" dir="auto"></div>
   <br>
+  <h6><em>This page is based on CCNets's causal-rl Release v1.1.5</em></h6>
   <hr>
   <div align="left" style="padding-bottom: 10px;">
     Copyright © 2024 CCNets
