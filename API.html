@@ -69,7 +69,7 @@
       <li class="dropdown-menu">
           <a class="dropbtn" href="#">Basic <span class="dropdown-arrow">&#9660;</span></a>
           <ul class="dropdown-content">
-              <li><a href="./tutorials/Tutorial_supernet_KR.html">Unlocking CausalRL</a></li>
+              <li><a href="./tutorials/Tutorial_supernet_EN.html">Unlocking CausalRL</a></li>
               <!-- <li><a href="#">Day 2</a></li> -->
           </ul>
       </li>
@@ -102,7 +102,7 @@
   <h3>INDEX</h3>
   <ul id="toc-list"></ul>
 </div>
-<div class="main-content">
+<div class="main-content" id="main-content">
   <h1 data-line="63" class="page-title" dir="auto" id="api" tabindex="-1">API</h1>
   <div class="inline-container">
     <h2 data-line="91" class="class-causalrl" dir="auto" id="class-causalrl" tabindex="-1">Class CausalRL</h2>
@@ -201,7 +201,13 @@
     </ul>
     <h3 data-line="153" class="code-line" dir="auto" id="class-algorithmparameters" tabindex="-1">Class AlgorithmParameters</h3>
     <ul data-line="154" class="code-line" dir="auto">
-      <li data-line="155" class="code-line" dir="auto"><code><em><p>gpt_seq_length</em></code>: Maximum sequence length for training and exploration. (<em>default: 16</em>)</p></li>
+      <li data-line="155" class="code-line" dir="auto"><code><em><p>gpt_seq_length</em></code>: 
+        The GPT sequence length is the maximum sequence length used during training and exploration. 
+        In training, it is used to calculate the <em>Temporal Difference(TD) steps</em>, and in exploration, it is set as the maximum sequence length that can be input into GPT.
+        A larger <code>gpt_seq_length</code> value allows for processing longer sequences, enabling the model to understand longer <em>state-action sequences</em> and learn long-term dependencies. 
+        However, this can lead to increased memory usage and longer training times due to higher computational complexity. 
+        On the other hand, a smaller <code>gpt_seq_length</code> value improves memory efficiency and can speed up training, 
+        but it limits the model to only seeing short <em>state-action sequences</em>, making decisions based on short-term information. (<em>default: 16</em>)</p></li>
       <li data-line="156" class="code-line" dir="auto"><code><em><p>discount_factor</em></code>: To reduce the value of future rewards in the calculation of expected returns. (<em>default: 0.993</em>)</p></li>
       <li data-line="157" class="code-line" dir="auto"><code><em><p>advantage_lambda</em></code>: Weighting advantages in policy optimization. (<em>default: 0.95</em>)</p></li>
       <li data-line="158" class="code-line" dir="auto"><code><em><p>use_deterministic</em></code>: Determines whether to use deterministic actions during training/evaluation. (<em>default: False</em>)</p></li>
