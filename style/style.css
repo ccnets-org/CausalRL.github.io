@@ -1029,20 +1029,25 @@ text-decoration: none !important;
 }
 
 .language-switcher {
-    display: inline-block; /* 버튼을 inline으로 표시 */
-    margin-right: 20px; /* 소셜 링크와의 간격 조정 */
+    display: inline-block; 
+    margin-right: 200px; 
 }
 
 .language-switcher button {
-    padding: 5px 10px; /* 버튼 패딩 조정 */
-    margin: 0 5px; /* 버튼 간 간격 조정 */
-    background-color: #f8f9fa; /* 버튼 배경 색상 */
-    border: 1px solid #ddd; /* 버튼 테두리 스타일 */
-    cursor: pointer; /* 마우스 오버 시 커서 변경 */
+    padding: 5px 10px; 
+    margin: 0 -3px; 
+    background-color: #f8f9fa; 
+    border: 1px solid #ddd; 
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.language-switcher button.active {
+    background-color: cadetblue; 
 }
 
 .language-switcher button:hover {
-    background-color: #e2e6ea; /* 호버 시 배경 색상 변경 */
+    background-color: #e2e6ea; 
 }
 
 .main-content {
@@ -1231,7 +1236,7 @@ margin-bottom: 20px;
     top: 100px;
     width: 15%;
     float: right;
-    cursor: pointer;
+    cursor: default;
 }
 
 .toc-title, .toc-item {
