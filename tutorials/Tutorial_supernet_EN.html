@@ -110,7 +110,7 @@
             <div class="main-content", id="content-en" style="display: none;">
 
                 <!-- <h1 class="tut-h1" dir="auto" id="causal-rl-tutorial---basic" tabindex="-1">CAUSAL RL TUTORIAL - Basic</h1> -->
-                <h1 data-line="0" class="page-title" dir="auto" id="causal-rl-tutorial---basic" tabindex="-1"><em>Unlocking CausalRL</em></h1>
+                <h1 data-line="0" class="page-title" dir="auto" id="causal-rl-tutorial---basic" tabindex="-1"><em>CausalRL Start Off</em></h1>
                 <p data-line="2" class="code-line" dir="auto" style="font-weight: 500;">DELAWARE INCORPORATION
                 COPYRIGHT (c) 2024. CCNets, Inc. All Rights reserved.</p>
                 <p data-line="5" class="code-line" dir="auto"><em style="font-weight: 500;">Author: JEONGYOONG KIM, JUNHO PARK</em></p>
@@ -257,15 +257,15 @@ rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</s
                 <ul data-line="87" class="code-line" dir="auto">
                 <li data-line="87" class="code-line" dir="auto">
                 <p data-line="87" class="code-line" dir="auto"><code>batch_size</code>:</p>
-                <p data-line="89" class="code-line" dir="auto">For MLAgent and Gymnasium environments, a <code>batch_size</code> of 32 or 64 is recommended.</p>
+                <p data-line="89" class="code-line" dir="auto">For MLAgent and Gymnasium environments, a <em style="font-weight:600;">batch_size</em> of 32 or 64 is recommended.</p>
                 </li>
                 <li data-line="91" class="code-line" dir="auto">
                 <p data-line="91" class="code-line" dir="auto"><code>replay_ratio</code>:</p>
-                <p data-line="93" class="code-line" dir="auto">This is the ratio of how often past experiences are reused in training. A <code>replay_ratio</code> of 1, 2, or 4 is recommended for MLAgent and Gymnasium environments.</em></p>
+                <p data-line="93" class="code-line" dir="auto">This is the ratio of how often past experiences are reused in training. A <em style="font-weight:600;">replay_ratio</em> of 1, 2, or 4 is recommended for MLAgent and Gymnasium environments.</em></p>
                 </li>
                 <li data-line="95" class="code-line" dir="auto">
                 <p data-line="95" class="code-line" dir="auto"><code>max_steps</code>:</p>
-                <p data-line="97" class="code-line" dir="auto">This defines the maximum number of exploration steps, dictating the period during which exploration strategies are applied. Therefore, the decrease rate of the exploration_rate depends on the max_steps value. A larger max_steps value results in a slower decrease of the <code>exploration rate</code>, allowing the agent to explore for a longer period. Conversely, a smaller <code>max_steps</code> value leads to a quicker reach to the minimum exploration rate.</p>
+                <p data-line="97" class="code-line" dir="auto">This defines the maximum number of exploration steps, dictating the period during which exploration strategies are applied. Therefore, the decrease rate of the exploration_rate depends on the max_steps value. A larger max_steps value results in a slower decrease of the <em style="font-weight:600;">exploration rate</em>, allowing the agent to explore for a longer period. Conversely, a smaller <em style="font-weight:600;">max_steps</em> value leads to a quicker reach to the minimum exploration rate.</p>
                 </li>
                 <li data-line="99" class="code-line" dir="auto">
                 <p data-line="99" class="code-line" dir="auto"><code>buffer_size</code>:</p>
@@ -278,15 +278,15 @@ rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</s
                 <ul data-line="106" class="code-line" dir="auto">
                     <li data-line="110" class="code-line" dir="auto">
                         <p data-line="110" class="code-line" dir="auto"><code>gpt_seq_length</code>:</p>
-                        <p data-line="112" class="code-line" dir="auto"><code>gpt_seq_length</code> is a parameter integrated with <em style="font-weight:600;">td_steps</em> used for setting the sequence length of the GPT model's input data in each network within CausalRL. However, in this tutorial, it is used for setting td_steps since we are substituting the GPT model in each network with <em style="font-weight:600;">SuperNet</em>.</p>
+                        <p data-line="112" class="code-line" dir="auto"><em>gpt_seq_length</em> is a parameter integrated with <em style="font-weight:600;">td_steps</em> used for setting the sequence length of the GPT model's input data in each network within CausalRL. However, in this tutorial, it is used for setting td_steps since we are substituting the GPT model in each network with <em style="font-weight:600;">SuperNet</em>.</p>
                     </li>
                     <li data-line="110" class="code-line" dir="auto">
                         <p data-line="110" class="code-line" dir="auto"><code>discount_factor</code>:</p>
-                        <p data-line="112" class="code-line" dir="auto">This is a crucial parameter that determines the present value of future rewards. The phrase "present value of future rewards" refers to how much value an agent in reinforcement learning places on rewards it will receive in the future, at the present moment. As time progresses, rewards to be received become less valuable at the present moment, and the discount rate is used to mathematically adjust for this. Hence, setting a higher <code>discount_factor</code> means the agent places more importance on future rewards, favoring strategies that are beneficial in the long term. Conversely, a lower <code>discount_factor</code> means the agent prioritizes immediate rewards. Therefore, adjusting the <code>discount_factor</code> to fit the characteristics of the learning environment is crucial for the agent's decision-making process and for stabilizing learning.</p>
+                        <p data-line="112" class="code-line" dir="auto">This is a crucial parameter that determines the present value of future rewards. The phrase "present value of future rewards" refers to how much value an agent in reinforcement learning places on rewards it will receive in the future, at the present moment. As time progresses, rewards to be received become less valuable at the present moment, and the discount rate is used to mathematically adjust for this. Hence, setting a higher <em style="font-weight:600;">discount_factor</em> means the agent places more importance on future rewards, favoring strategies that are beneficial in the long term. Conversely, a lower <em style="font-weight:600;">discount_factor</em> means the agent prioritizes immediate rewards. Therefore, adjusting the <em style="font-weight:600;">discount_factor</em> to fit the characteristics of the learning environment is crucial for the agent's decision-making process and for stabilizing learning.</p>
                     </li>
                     <li data-line="106" class="code-line" dir="auto">
                         <p data-line="106" class="code-line" dir="auto"><code>advantage_lambda</code>:</p>
-                        <p data-line="108" class="code-line" dir="auto">The TD (Temporal Difference) lambda parameter used for weighting the <em style="font-weight:600;">Advantage</em> in policy optimization. It is used to calculate the expected <em style="font-weight:600;">Advantage</em> when an agent takes a certain action in reinforcement learning, determining how much future rewards are reflected in current decisions. The <code>advantage_lambda</code> value is set between 0 and 1, with higher values reflecting future rewards more significantly in current actions.</p>
+                        <p data-line="108" class="code-line" dir="auto">The TD (Temporal Difference) lambda parameter used for weighting the <em style="font-weight:600;">Advantage</em> in policy optimization. It is used to calculate the expected <em style="font-weight:600;">Advantage</em> when an agent takes a certain action in reinforcement learning, determining how much future rewards are reflected in current decisions. The <em style="font-weight:600;">advantage_lambda</em> value is set between 0 and 1, with higher values reflecting future rewards more significantly in current actions.</p>
                     </li>
                 </ul>
                 </li>
@@ -295,15 +295,15 @@ rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</s
                 <ul data-line="115" class="code-line" dir="auto">
                 <li data-line="115" class="code-line" dir="auto">
                 <p data-line="115" class="code-line" dir="auto"><code>num_layer</code>:</p>
-                <p data-line="117" class="code-line" dir="auto">The number of layers in the network, determining the model's depth. A higher <code>num_layer</code> allows the model to learn more complex patterns but increases the risk of overfitting and computational costs.</p>
+                <p data-line="117" class="code-line" dir="auto">The number of layers in the network, determining the model's depth. A higher <em style="font-weight:600;">num_layer</em> allows the model to learn more complex patterns but increases the risk of overfitting and computational costs.</p>
                 </li>
                 <li data-line="119" class="code-line" dir="auto">
                 <p data-line="119" class="code-line" dir="auto"><code>d_model</code>:</p>
-                <p data-line="121" class="code-line" dir="auto">The dimension of the model, indicating the size of feature vectors processed in the network. A larger <code>d_model</code> increases the amount of information the model can represent, potentially improving performance, but like <code>num_layer</code>, it can also lead to overfitting or increased memory usage.</p>
+                <p data-line="121" class="code-line" dir="auto">The dimension of the model, indicating the size of feature vectors processed in the network. A larger <em style="font-weight:600;">d_model</em> increases the amount of information the model can represent, potentially improving performance, but like <em style="font-weight:600;">num_layer</em>, it can also lead to overfitting or increased memory usage.</p>
                 </li>
                 <li data-line="123" class="code-line" dir="auto">
                 <p data-line="123" class="code-line" dir="auto"><code>dropout</code>:</p>
-                <p data-line="125" class="code-line" dir="auto">The ratio of randomly omitted nodes during training, which helps prevent overfitting. A dropout of <em style="font-weight:600;">0.01</em> to <em style="font-weight:600;">0.02</em> is recommended for MLAgent and Gymnasium environments.</p>
+                <p data-line="125" class="code-line" dir="auto">The ratio of randomly omitted nodes during training, which helps prevent overfitting. A <em style="font-weight:600;">dropout</em> of <em style="font-weight:600;">0.01</em> to <em style="font-weight:600;">0.02</em> is recommended for MLAgent and Gymnasium environments.</p>
                 </li>
                 <li data-line="127" class="code-line" dir="auto">
                 <p data-line="127" class="code-line" dir="auto"><code>network_type</code>:</p>
@@ -355,7 +355,7 @@ rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</s
             <!-- KR ver -->
             <div class="main-content", id="content-kr" style="display: none;">
 
-                <h1 data-line="0" class="page-title" dir="auto" id="causal-rl-tutorial---basic" tabindex="-1"><em>Unlocking CausalRL</em></h1>
+                <h1 data-line="0" class="page-title" dir="auto" id="causal-rl-tutorial---basic" tabindex="-1"><em>CausalRL Start Off</em></h1>
                 <p data-line="2" class="code-line" dir="auto" style="font-weight: 500;">DELAWARE INCORPORATION
                 COPYRIGHT (c) 2024. CCNets, Inc. All Rights reserved.</p>
                 <p data-line="5" class="code-line" dir="auto"><em style="font-weight: 500;">Author: JEONGYOONG KIM, JUNHO PARK</em></p>
@@ -504,19 +504,19 @@ rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</s
                 <ul data-line="87" class="code-line" dir="auto">
                 <li data-line="87" class="code-line" dir="auto">
                 <p data-line="87" class="code-line" dir="auto"><code>batch_size</code>:</p>
-                <p data-line="89" class="code-line" dir="auto"><em>MLAgent와 Gymnasium 환경에서는 32 또는 64의 <code>batch_size</code>를 추천합니다.</em></p>
+                <p data-line="89" class="code-line" dir="auto">MLAgent와 Gymnasium 환경에서는 32 또는 64의 <em style="font-weight: 600;">batch_size</em>를 추천합니다.</p>
                 </li>
                 <li data-line="91" class="code-line" dir="auto">
                 <p data-line="91" class="code-line" dir="auto"><code>replay_ratio</code>:</p>
-                <p data-line="93" class="code-line" dir="auto">훈련에서 과거 경험을 얼마나 자주 재사용하는지에 대한 비율입니다. <em>MLAgent와 Gymnasium 환경에서는 1, 2, 4의 <code>replay_ratio</code>를 추천합니다.</em></p>
+                <p data-line="93" class="code-line" dir="auto">훈련에서 과거 경험을 얼마나 자주 재사용하는지에 대한 비율입니다. MLAgent와 Gymnasium 환경에서는 1, 2, 4의 <em style="font-weight: 600;">replay_ratio</em>를 추천합니다.</p>
                 </li>
                 <li data-line="95" class="code-line" dir="auto">
                 <p data-line="95" class="code-line" dir="auto"><code>max_steps</code>:</p>
-                <p data-line="97" class="code-line" dir="auto">탐색 단계의 최대 수로, 탐색 전략이 적용되는 기간을 정의합니다. 따라서, max_steps 값에 따라 <code>exploration_rate</code>의 감소 속도가 달라집니다. <code>max_steps</code>가 크면 탐색 비율 감소가 더 느리게 진행되어 에이전트가 더 오랜 시간 동안 탐색을 지속할 수 있습니다. 반면, <code>max_steps</code>가 작으면 탐색 비율이 더 빠르게 최소값에 도달하게 됩니다.</p>
+                <p data-line="97" class="code-line" dir="auto">탐색 단계의 최대 수로, 탐색 전략이 적용되는 기간을 정의합니다. 따라서, max_steps 값에 따라 <em style="font-weight: 600;">exploration_rate</em>의 감소 속도가 달라집니다. <em style="font-weight: 600;">max_steps</em>가 크면 탐색 비율 감소가 더 느리게 진행되어 에이전트가 더 오랜 시간 동안 탐색을 지속할 수 있습니다. 반면, <em style="font-weight: 600;">max_steps</em>가 작으면 탐색 비율이 더 빠르게 최소값에 도달하게 됩니다.</p>
                 </li>
                 <li data-line="99" class="code-line" dir="auto">
                 <p data-line="99" class="code-line" dir="auto"><code>buffer_size</code>:</p>
-                <p data-line="101" class="code-line" dir="auto">메모리 버퍼의 총 크기로, 얼마나 많은 과거 경험을 저장할 수 있는지에 영향을 미칩니다. <code>buffer_size</code>는 큰 값을 설정할수록 안정적인 학습이 가능할 수도 있지만, 더 느린 훈련을 초래할 수 있습니다.</p>
+                <p data-line="101" class="code-line" dir="auto">메모리 버퍼의 총 크기로, 얼마나 많은 과거 경험을 저장할 수 있는지에 영향을 미칩니다. <em style="font-weight: 600;">buffer_size</em>는 큰 값을 설정할수록 안정적인 학습이 가능할 수도 있지만, 더 느린 훈련을 초래할 수 있습니다.</p>
                 </li>
                 </ul>
                 <p data-line="103" class="code-line" dir="auto"><strong></strong></p>
@@ -526,16 +526,16 @@ rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</s
                 <ul data-line="106" class="code-line" dir="auto">
                     <li data-line="110" class="code-line" dir="auto">
                         <p data-line="110" class="code-line" dir="auto"><code>gpt_seq_length</code>:</p>
-                        <p data-line="112" class="code-line" dir="auto">gpt_seq_length는 CausalRL 에서 각 네트워크에 위치한 GPT 모델의 Input 데이터의 시퀀스 길이를 설정함과 동시에 advantage 계산에 사용되는 td_steps가 통합된 파라미터입니다. 하지만 이번 튜토리얼에서는 각 네트워크에 GPT 모델을 대신해 SuperNet을 사용하기 때문에 td_steps를 설정하는 데 사용됩니다.</p>
+                        <p data-line="112" class="code-line" dir="auto">gpt_seq_length는 CausalRL 에서 각 네트워크에 위치한 GPT 모델의 Input 데이터의 시퀀스 길이를 설정함과 동시에 advantage 계산에 사용되는 td_steps가 통합된 파라미터입니다. 하지만 이번 튜토리얼에서는 각 네트워크에 GPT 모델을 대신해 <em style="font-weight: 600;">SuperNet</em>을 사용하기 때문에 td_steps를 설정하는 데 사용됩니다.</p>
                     </li>
                     <li data-line="110" class="code-line" dir="auto">
                         <p data-line="110" class="code-line" dir="auto"><code>discount_factor</code>:</p>
-                        <p data-line="112" class="code-line" dir="auto">미래 보상의 현재 가치를 결정하는 중요한 매개변수입니다. 미래 보상의 현재 가치라는 말은 강화학습에서 에이전트가 미래에 받을 보상을 현재 시점에서 얼마나 가치있게 평가하는지를 나타냅니다. 시간이 지남에 따라 받게 될 보상이 현재 시점에서는 더 낮은 가치를 가지게 되는데, 이를 수학적으로 조정하기 위해 할인율을 사용합니다. 따라서, <code>discount_factor</code>를 높게 설정한다면, 에이전트가 미래의 보상을 더 중시하여 장기적으로 이익이 되는 전략을 선호하게 됩니다. 반면, <code>discount_factor</code>를 낮게 설정한다면, 에이전트는 즉각적인 보상을 중시하게 됩니다. 그러므로, 학습하는 환경의 특성에 맞게 <code>discount_factor</code>를 조정하는 것은 에이전트의 의사결정 과정과 학습 안정화를 위해 중요합니다.</p>
+                        <p data-line="112" class="code-line" dir="auto">미래 보상의 현재 가치를 결정하는 중요한 매개변수입니다. 미래 보상의 현재 가치라는 말은 강화학습에서 에이전트가 미래에 받을 보상을 현재 시점에서 얼마나 가치있게 평가하는지를 나타냅니다. 시간이 지남에 따라 받게 될 보상이 현재 시점에서는 더 낮은 가치를 가지게 되는데, 이를 수학적으로 조정하기 위해 할인율을 사용합니다. 따라서, <em style="font-weight: 600;">discount_factor</em>를 높게 설정한다면, 에이전트가 미래의 보상을 더 중시하여 장기적으로 이익이 되는 전략을 선호하게 됩니다. 반면, <em style="font-weight: 600;">discount_factor</em>를 낮게 설정한다면, 에이전트는 즉각적인 보상을 중시하게 됩니다. 그러므로, 학습하는 환경의 특성에 맞게 <em style="font-weight: 600;">discount_factor</em>를 조정하는 것은 에이전트의 의사결정 과정과 학습 안정화를 위해 중요합니다.</p>
                     </li>
                     <li data-line="106" class="code-line" dir="auto">
                         <p data-line="106" class="code-line" dir="auto"><code>advantage_lambda</code>:</p>
-                        <p data-line="108" class="code-line" dir="auto">정책 최적화에서 <code>Advantage</code> 를 가중치하는 데 사용되는 <em>TD(Temporary Difference) lambda</em> 파라미터입니다. 
-                            이는 강화학습에서 에이전트가 어떤 행동을 취할 때 얻을 수 있는 기대 <code>advantage</code> 을 계산할 때 사용되며, 미래의 보상을 현재의 결정에 얼마나 중요하게 반영할지 결정합니다. <code>advantage_lambda</code> 값은 0과 1 사이로 설정되며, 값이 높을수록 미래의 보상을 현재의 행동에 더 크게 반영하게 됩니다.</p>
+                        <p data-line="108" class="code-line" dir="auto">정책 최적화에서 <em style="font-weight: 600;">Advantage</em> 를 가중치하는 데 사용되는 <em style="font-weight: 600;">TD(Temporary Difference) lambda</em> 파라미터입니다. 
+                            이는 강화학습에서 에이전트가 어떤 행동을 취할 때 얻을 수 있는 기대 <em style="font-weight: 600;">Advantage</em> 을 계산할 때 사용되며, 미래의 보상을 현재의 결정에 얼마나 중요하게 반영할지 결정합니다. <em style="font-weight: 600;">advantage_lambda</em> 값은 0과 1 사이로 설정되며, 값이 높을수록 미래의 보상을 현재의 행동에 더 크게 반영하게 됩니다.</p>
                     </li>
                 </ul>
                 </li>
@@ -544,15 +544,15 @@ rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</s
                 <ul data-line="115" class="code-line" dir="auto">
                 <li data-line="115" class="code-line" dir="auto">
                 <p data-line="115" class="code-line" dir="auto"><code>num_layer</code>:</p>
-                <p data-line="117" class="code-line" dir="auto">네트워크의 레이어 수로, 모델의 깊이를 결정합니다. <code>num_layer</code>가 높을수록 모델이 깊어져 더욱 복잡한 패턴을 학습할 수 있지만, 과적합의 위험이 커지고, 계산 비용이 증가합니다.</p>
+                <p data-line="117" class="code-line" dir="auto">네트워크의 레이어 수로, 모델의 깊이를 결정합니다. <em style="font-weight: 600;">num_layer</em>가 높을수록 모델이 깊어져 더욱 복잡한 패턴을 학습할 수 있지만, 과적합의 위험이 커지고, 계산 비용이 증가합니다.</p>
                 </li>
                 <li data-line="119" class="code-line" dir="auto">
                 <p data-line="119" class="code-line" dir="auto"><code>d_model</code>:</p>
-                <p data-line="121" class="code-line" dir="auto">모델의 차원으로, 네트워크에서 처리하는 특성 벡터의 크기를 나타냅니다. <code>d_model</code>이 크면 모델이 표현할 수 있는 정보량이 증가하여 성능이 향상될 수 있으나, <code>num_layer</code>와 마찬가지로, 과적합 또는 메모리 사용량 증가의 문제가 발생할 수 있습니다.</p>
+                <p data-line="121" class="code-line" dir="auto">모델의 차원으로, 네트워크에서 처리하는 특성 벡터의 크기를 나타냅니다. <em style="font-weight: 600;">d_model</em>이 크면 모델이 표현할 수 있는 정보량이 증가하여 성능이 향상될 수 있으나, <em style="font-weight: 600;">num_layer</em>와 마찬가지로, 과적합 또는 메모리 사용량 증가의 문제가 발생할 수 있습니다.</p>
                 </li>
                 <li data-line="123" class="code-line" dir="auto">
                 <p data-line="123" class="code-line" dir="auto"><code>dropout</code>:</p>
-                <p data-line="125" class="code-line" dir="auto">학습 중에 노드를 무작위로 생략하는 비율로, 과적합을 방지하는 데 도움이 됩니다. <em>MLAgent와 Gymnasium 환경에서는 0.01 ~ 0.02의 <code>dropout</code>을 추천합니다.</em></p>
+                <p data-line="125" class="code-line" dir="auto">학습 중에 노드를 무작위로 생략하는 비율로, 과적합을 방지하는 데 도움이 됩니다. <em>MLAgent와 Gymnasium 환경에서는 <em style="font-weight: 600;">0.01 ~ 0.02</em>의 <em style="font-weight: 600;">dropout</em>을 추천합니다.</em></p>
                 </li>
                 <li data-line="127" class="code-line" dir="auto">
                 <p data-line="127" class="code-line" dir="auto"><code>network_type</code>:</p>
