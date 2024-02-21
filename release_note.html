@@ -54,8 +54,8 @@
             <a href="API.html">API</a>
             <ul>
               <li><a href="API.html#class-causalrl">CausalRL</a></li>
+              <li><a href="API.html#class-rl-config">RLParameters</a></li>
               <li><a href="API.html#class-causaltrainer">CausalTrainer</a></li>
-              <li><a href="API.html#class-rl-config">RLConfig</a></li>
             </ul>
           </li>
           <li>
@@ -72,7 +72,7 @@
                 <li class="dropdown-menu">
                     <a class="dropbtn" href="#">Basic <span class="dropdown-arrow">&#9660;</span></a>
                     <ul class="dropdown-content">
-                        <li><a href="./tutorials/Tutorial_supernet_EN.html">Unlocking CausalRL</a></li>
+                        <li><a href="./tutorials/Tutorial_supernet_EN.html">CausalRL Start Off</a></li>
                         <!-- <li><a href="#">Day 2</a></li> -->
                     </ul>
                 </li>
@@ -114,234 +114,266 @@
             <h1 data-line="0" class="code-line" dir="auto" id="release-note" tabindex="-1">Release Notes</h1>
             <br>
             
-            <h2 data-line="62" class="code-line" dir="auto" id="v111" tabindex="-1">v1.1.6</h2>
+            <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.1.8</h2>
             <ul data-line="64" class="code-line" dir="auto">
-            <li data-line="64" class="code-line" dir="auto">
-                <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 19, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/1680409d709f6e5c14ac581d6695f58f5f774b75" target="_blank">view on GitHub</a></em></p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Unified Exploration Strategies</strong></p>
-                <p data-line="67" class="code-line" dir="auto">Unified GPT padding and trajectory sampling strategies to ensure equal probabilities across sequences. This change promotes a more diverse exploration of sequences, allowing for fairer learning from a variety of experiences.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Learning Parameter Adjustments</strong></p>
-            </li>
-            </ul>
-            <br>
-
-            <h2 data-line="62" class="code-line" dir="auto" id="v111" tabindex="-1">v1.1.5</h2>
-            <ul data-line="64" class="code-line" dir="auto">
-            <li data-line="64" class="code-line" dir="auto">
-                <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 18, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/fee5ab6fef051e1ef94b02300d9fcc25c7484f93" target="_blank">view on GitHub</a></em></p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Lambda Adjustment Mechanism</strong></p>
-                <p data-line="67" class="code-line" dir="auto">Transitioned the lambda adjustment model from an exponential to a linear model. This change ensures a more equitable distribution of weights across sequences, placing increased emphasis on recent sequences prior to backpropagation.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>GPT Padding Length Strategy</strong></p>
-                <p data-line="67" class="code-line" dir="auto">Enhanced the exploration strategy by adopting a linear increase in the sampling ratio for longer sequences. This adjustment works in tandem with the linear lambda model, facilitating a more strategic exploration of sequence lengths and improving learning efficiency from longer sequences.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Normalization Techniques</strong></p>
-                <p data-line="67" class="code-line" dir="auto">Converted normalization techniques for state, reward, and sum_reward by implementing alpha values of <em style="font-weight:600;">1e-5</em> for normalization of <em style="font-weight:600;">state, reward</em> and <em style="font-weight:600;">sum_reward</em> and <em style="font-weight:600;">1e-4</em> for advantage normalization. The decay factor is set to <em style="font-weight:600;">1 - alpha</em>. This approach emphasizes recent experiences and reduces the impact of older data, enhancing the model's adaptability to new information.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>RL Configuration Adjustment</strong></p>
-            </li>
-            </ul>
-            <br>
-
-            <h2 data-line="62" class="code-line" dir="auto" id="v111" tabindex="-1">v1.1.4</h2>
-            <ul data-line="64" class="code-line" dir="auto">
-            <li data-line="64" class="code-line" dir="auto">
-                <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 16, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/3145492237e5121094bba0a3d8236405c62a05d7" target="_blank">view on GitHub</a></em></p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Dynamic Lambda and Sequence Sampling</strong></p>
-                <p data-line="67" class="code-line" dir="auto">Introduced dynamic lambda to better balance immediate and future rewards based on exploration rate, adapting the learning strategy to the agent's <em>current state</em>.</p>
-                <p data-line="67" class="code-line" dir="auto">Modified the <code>sample_padding_lengths</code> function to improve sequence length sampling. Changed the adjusted_ratios calculation to be biased to the sampling towards longer sequences earlier in training, which is more beneficial for language model (LM) sequence learning. The update aims to avoid the uniform sampling of sequence lengths that previously hindered initial exploration effectiveness.</p>
-                <p data-line="67" class="code-line" dir="auto"><code>advantage_lambda</code> is now dynamically adjusted, starting from a base of <em>0.90</em>. These changes refine the learning process, enhancing the model's ability to learn from longer sequences and adjust its strategy based on exploration progress.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>RL Configuration Adjustment</strong></p>
-            </li>
-            </ul>
-            <br>
-
-            <h2 data-line="62" class="code-line" dir="auto" id="v111" tabindex="-1">v1.1.3</h2>
-            <ul data-line="64" class="code-line" dir="auto">
-            <li data-line="64" class="code-line" dir="auto">
-                <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 15, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/539fd0461f5f23763bbf83c650503c641f4dd99a" target="_blank">view on GitHub</a></em></p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Exploration Rate Decaying Strategy</strong></p>
-                <p data-line="67" class="code-line" dir="auto">Updated the exploration decay mechanism for sequence sampling to achieve a controlled exploration rate, transitioning from a rapid to a more measured exponential decay.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Dynamic Sequence Weighting Before Backpropagation</strong></p>
-                <p data-line="67" class="code-line" dir="auto">Implemented an exponential decay function for dynamic sequence weighting, replacing the previous linear combination method. This shift optimizes gradient calculations by balancing sequence weighting across the training process and exploration rate, rather than focusing solely on the latest state until the end of training.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Adjusted reverse_env Model Specification</strong></p>
-                <p data-line="67" class="code-line" dir="auto">Adjustments made to minimize overfitting, thereby increasing the model's generalizability.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>RL Configuration Adjustment</strong></p>
-            </li>
-            </ul>
-            <br>
-
-            <h2 data-line="62" class="code-line" dir="auto" id="v111" tabindex="-1">v1.1.2</h2>
-            <ul data-line="64" class="code-line" dir="auto">
-            <li data-line="64" class="code-line" dir="auto">
-                <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 14, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/c1eb268c16f529667e3bb3c71b6f1674c823cfc4" target="_blank">view on GitHub</a></em></p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Conditional Parallel Processing</strong></p>
-                <p data-line="67" class="code-line" dir="auto">A new mechanism within the <em style="font-weight: 600;">rev-env network</em> now allows for toggling between parallel and sequential processing of states. This capability is based on the current <code>dropout</code> configuration, resulting in a direct increase in computational speed.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Speed Improvement</strong></p>
-                <p data-line="67" class="code-line" dir="auto">The implementation of parallel processing leads to a noticeable speed boost in state generation within the <em style="font-weight: 600;">rev-env</em> network. This enhancement streamlines both the training and evaluation phases, making the overall process more efficient.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Algorithm Logic Bug Fix</strong></p>
-                <p data-line="67" class="code-line" dir="auto">A critical bug was corrected concerning the management of the <em style="font-weight: 600;">estimated_value</em> tensor. Previously, this tensor was not detached before being passed to <em style="font-weight: 600;">self.revEnv</em> for generating the <em style="font-weight: 600;">recurred_state</em>, leading to potential issues with inadvertent backpropagation. This fix ensures that the computational graph is properly managed, enhancing the algorithm's reliability and performance.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>RL Configuration Adjustment</strong></p>
-            </li>
-            </ul>
-            <br>
-
-            <h2 data-line="62" class="code-line" dir="auto" id="v111" tabindex="-1">v1.1.1</h2>
-            <ul data-line="64" class="code-line" dir="auto">
-            <li data-line="64" class="code-line" dir="auto">
-                <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 13, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/a7b5073c350b4c1586c06c3f1f95d94ef48ca9d1" target="_blank">view on GitHub</a></em></p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Parallel Processing Enhancements and Hyperparameter Tuning</strong></p>
-                <p data-line="67" class="code-line" dir="auto">Parallel Processing with TorchScript:
-
-                Integrated TorchScript's asynchronous execution capabilities for parallelizing the computation of <em style="font-weight: 600;";>reversed_state</em> and <em style="font-weight: 600;";>recurred_state</em> within the <em style="font-weight: 600;";>RevEnv</em> module.
-                Utilizes <em style="font-weight: 600;";>torch.jit.fork</em> and <em style="font-weight: 600;";>torch.jit.wait</em> for concurrent execution, drastically reducing processing time and boosting system efficiency.
-                Ensures <em style="font-weight: 600;";>RevEnv</em> module and its methods are TorchScript compatible to enable effective parallel processing.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Hyperparameter Adjustments</strong></p>
-            </li>
-            </ul>
-            <br>
-
-            <h2 data-line="62" class="code-line" dir="auto" id="v106" tabindex="-1">v1.1.0 </h2>
-            <ul data-line="64" class="code-line" dir="auto">
-            <li data-line="64" class="code-line" dir="auto">
-                <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 13, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/f907328571754201645bd1a29f37943d012c1c23" target="_blank">view on GitHub</a></em></p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Optimized Gym Environment Setting</strong></p>
-                <p data-line="67" class="code-line" dir="auto">Extensive benchmarks on four games(<em>HalfCheetah, Hopper, Walker2D, Ant</em>) with an optimized single setting. </p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Learning Rate Adjustment</strong></p>
-                <p data-line="67" class="code-line" dir="auto">Adjustments to the default learning rate setting for optimal performance across benchmarks.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Environment-Specific Optimization</strong></p>
-                <p data-line="67" class="code-line" dir="auto">Adjustments to gamma values in <em>Ant</em> and <em>Hopper</em> environments to optimize performance, demonstrating the model's adaptive capabilities.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>Masked Exploration Improvement</strong></p>
-                <p data-line="67" class="code-line" dir="auto">Logic improvements and a linear increase in padding length for exploration sampling.</p>
-            </li>
-            <li data-line="65" class="code-line" dir="auto">
-                <p data-line="65" class="code-line" dir="auto"><strong>MLAgent Environment Fix</strong></p>
-                <p data-line="67" class="code-line" dir="auto">Fix for running issues in <em>mlagent environments</em>, optimizing control of exploration padding lengths and adjusting <code>max_sample_weight</code> for improved exploitation towards training end.</p>
-            </li>
-            </ul>
-            <br>
-            <hr>
-            <br>
-
-            <h2 data-line="47" class="code-line" dir="auto" id="v105" tabindex="-1">v1.0.5</h2>
-            <ul data-line="49" class="code-line" dir="auto">
-            <li data-line="49" class="code-line" dir="auto">
-            <p data-line="49" class="code-line" dir="auto"><em>Released on Feb 2, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/74ad4e5bd16fff94c3cc26b43acbb8112aab187e" target="_blank">view on GitHub</a></em></p>
-            </li>
-            <li data-line="50" class="code-line" dir="auto">
-            <p data-line="50" class="code-line" dir="auto"><strong>Refactor for Enhanced Loss Reduction and Boltzmann Exploration Adjustments</strong></p>
-            <p data-line="52" class="code-line" dir="auto">Updated loss reduction method: To "<em style="font-weight: 600;">cross</em>" from "<em style="font-weight: 600;">batch</em>", combining batch and sequence dimension reductions each normalized by dividing by 2.</p>
-            <p data-line="54" class="code-line" dir="auto">Boltzmann Exploration parameters revised:
-            Initial temperature (<code>tau</code>): Set to 1.0.</p>
-            <p data-line="57" class="code-line" dir="auto">Minimum temperature (<code>min_temperature</code>): Adjusted to <em style="font-weight: 600;">0.01</em>.</p>
-            <p data-line="59" class="code-line" dir="auto">This update ensures robust initial exploration and balances learning, improving model adaptability and performance consistency across unseen environments.</p>
-            </li>
-            </ul>
-            <br>
-
-            <h2 data-line="34" class="code-line" dir="auto" id="v104" tabindex="-1">v1.0.4</h2>
-            <ul data-line="36" class="code-line" dir="auto">
-            <li data-line="36" class="code-line" dir="auto">
-            <p data-line="36" class="code-line" dir="auto"><em>Released on Feb 1, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/82d29679033aadbe2f7ea8af8518a4de4a7e35b8" target="_blank">view on GitHub</a></em></p>
-            <p data-line="38" class="code-line" dir="auto">Adjusted RL and Boltzmann Exploration settings for enhanced compatibility with general gym environments.</p>
-            <p data-line="40" class="code-line" dir="auto">Updated discount_factor (gamma): From <em style="font-weight: 600;">0.993</em> to <em style="font-weight: 600;">0.99</em>.</p>
-            <p data-line="42" class="code-line" dir="auto">Removed gradient clipping limit: Adjusted <code>clip_grad_range</code> from <em style="font-weight: 600;">1.0</em> to <em style="font-weight: 600;">2.0</em>.</p>
-            <p data-line="44" class="code-line" dir="auto">Fine-tuned Boltzmann Exploration: Adjusted tau from <em style="font-weight: 600;">1.0</em> to <em style="font-weight: 600;">0.05</em> and reduced <code>min_temperature</code> from <em style="font-weight: 600;">0.1</em> to <em style="font-weight: 600;">0.005</em>.</p>
-            </li>
-            </ul>
-            <br>
-
-            <h2 data-line="23" class="code-line" dir="auto" id="v103" tabindex="-1">v1.0.3 </h2>
-            <ul data-line="25" class="code-line" dir="auto">
-            <li data-line="25" class="code-line" dir="auto">
-            <p data-line="25" class="code-line" dir="auto"><em>Released on Jan 31, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/e1603702fb62a7f06390ddc62aae4751ebe62c61" target="_blank">view on GitHub</a></em></p>
-            </li>
-            <li data-line="26" class="code-line" dir="auto">
-            <p data-line="26" class="code-line" dir="auto"><strong>Update: Uniform Parameter Tuning Across All Gym Environments</strong></p>
-            <p data-line="28" class="code-line" dir="auto">Advantage Normalization Adjusted: Transitioned from L1_norm to None for broader compatibility.</p>
-            <p data-line="30" class="code-line" dir="auto"><code>Min Exploration Temperature</code> Increased: From <em style="font-weight: 600;">0.01</em> to <em style="font-weight: 600;">0.1</em> to enhance exploration stability.</p>
-            </li>
-            </ul>
-            <br>
-
-            <h2 data-line="23" class="code-line" dir="auto" id="v103" tabindex="-1">v1.0.2 </h2>
-            <ul data-line="25" class="code-line" dir="auto">
-            <li data-line="25" class="code-line" dir="auto">
-            <p data-line="25" class="code-line" dir="auto"><em>Released on Jan 31, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/29722129ff177bfced6500e35b7c4f70b8c7a5b9" target="_blank">view on GitHub</a></em></p>
-            </li>
-            <li data-line="26" class="code-line" dir="auto">
-            <p data-line="26" class="code-line" dir="auto"><strong>Exploration Decay Mechanism Enhancements</strong></p>
-            <p data-line="28" class="code-line" dir="auto">Linear Scheduler for Exploration Decay: Transitioned to exclusively using a linear scheduler for exploration decay, streamlining the process for a more consistent and simplified exploration strategy.</p>
-            <p data-line="28" class="code-line" dir="auto">Removal of Exponential Decay: Previously integrated exponential decay within the <em>BoltzmannExploration</em> class has been removed due to observed training instability issues caused by rapid decay from the combined exploration rate and temperature exponential decay. Only linear exploration decay will be utilized to ensure stability and effectiveness in training.</p>
-            <p data-line="28" class="code-line" dir="auto">This update focuses on refining the exploration decay mechanisms to enhance the stability and performance of the Causal RL framework.</p>
-            </li>
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 21, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/8450577ebb96651268b0c95479fe2b25984e38f9" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Enhanced TD Computation in GPT-based RL</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Introduced enhanced Temporal Difference (TD) computation utilizing extended trajectory sequences (<code>gpt_td_seq_length</code>). This update strategically divides trajectories sampled at 1.5 times the GPT sequence length into causal training and TD computation segments, overlapping to enhance accuracy through attention-based TD value computation.</p>
+                    <p data-line="67" class="code-line" dir="auto"><code>select_train_sequence</code> and <code>calculate_sequence_end_value</code> methods added: Enable effective segmentation of extended trajectories for optimized learning. The front part of the trajectory is used for causal training, while the rear part, sharing some length with the front, is designated for precise TD computation. This shared segment approach significantly boosts accuracy and learning efficiency.</p>
+                </li>
+                <li>
+                    <p data-line="65" class="code-line" dir="auto"><strong>Parameter Adjustments for Enhanced Learning</strong></p>
+                </li>
             </ul>
             <br>
             
+            <h2 data-line="62" class="code-line" dir="auto" id="v1117" tabindex="-1">v1.1.7</h2>
+                <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 20, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/dc90d67f7937cbe9760a883c22048631247ab1c0" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Optimization of Tensor Weighting and Reduction</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">The removal of <code>create_sequence_weights</code> function optimizes dynamic lambda values increase, mimicking non-language model behavior in RL exploration. Improved <code>masked_tensor_reduction</code> function adjusts mean calculation method, reducing bias and overfitting risk.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Parameter Adjustments for Enhanced Learning</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Max Steps Increased to cater to extended exploration and Minimum Learning Rate Adjusted for finer convergence and stability over longer training periods.</p>
+                </li>
+                </ul>
+                <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v111" tabindex="-1">v1.1.6</h2>
+                <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 19, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/1680409d709f6e5c14ac581d6695f58f5f774b75" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Unified Exploration Strategies</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Unified GPT padding and trajectory sampling strategies to ensure equal probabilities across sequences. This change promotes a more diverse exploration of sequences, allowing for fairer learning from a variety of experiences.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Learning Parameter Adjustments</strong></p>
+                </li>
+                </ul>
+                <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v111" tabindex="-1">v1.1.5</h2>
+                <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 18, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/fee5ab6fef051e1ef94b02300d9fcc25c7484f93" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Lambda Adjustment Mechanism</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Transitioned the lambda adjustment model from an exponential to a linear model. This change ensures a more equitable distribution of weights across sequences, placing increased emphasis on recent sequences prior to backpropagation.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>GPT Padding Length Strategy</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Enhanced the exploration strategy by adopting a linear increase in the sampling ratio for longer sequences. This adjustment works in tandem with the linear lambda model, facilitating a more strategic exploration of sequence lengths and improving learning efficiency from longer sequences.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Normalization Techniques</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Converted normalization techniques for state, reward, and sum_reward by implementing alpha values of <em style="font-weight:600;">1e-5</em> for normalization of <em style="font-weight:600;">state, reward</em> and <em style="font-weight:600;">sum_reward</em> and <em style="font-weight:600;">1e-4</em> for advantage normalization. The decay factor is set to <em style="font-weight:600;">1 - alpha</em>. This approach emphasizes recent experiences and reduces the impact of older data, enhancing the model's adaptability to new information.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>RL Configuration Adjustment</strong></p>
+                </li>
+                </ul>
+                <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v111" tabindex="-1">v1.1.4</h2>
+                <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 16, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/3145492237e5121094bba0a3d8236405c62a05d7" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Dynamic Lambda and Sequence Sampling</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Introduced dynamic lambda to better balance immediate and future rewards based on exploration rate, adapting the learning strategy to the agent's <em>current state</em>.</p>
+                    <p data-line="67" class="code-line" dir="auto">Modified the <code>sample_padding_lengths</code> function to improve sequence length sampling. Changed the adjusted_ratios calculation to be biased to the sampling towards longer sequences earlier in training, which is more beneficial for language model (LM) sequence learning. The update aims to avoid the uniform sampling of sequence lengths that previously hindered initial exploration effectiveness.</p>
+                    <p data-line="67" class="code-line" dir="auto"><code>advantage_lambda</code> is now dynamically adjusted, starting from a base of <em>0.90</em>. These changes refine the learning process, enhancing the model's ability to learn from longer sequences and adjust its strategy based on exploration progress.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>RL Configuration Adjustment</strong></p>
+                </li>
+                </ul>
+                <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v111" tabindex="-1">v1.1.3</h2>
+                <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 15, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/539fd0461f5f23763bbf83c650503c641f4dd99a" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Exploration Rate Decaying Strategy</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Updated the exploration decay mechanism for sequence sampling to achieve a controlled exploration rate, transitioning from a rapid to a more measured exponential decay.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Dynamic Sequence Weighting Before Backpropagation</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Implemented an exponential decay function for dynamic sequence weighting, replacing the previous linear combination method. This shift optimizes gradient calculations by balancing sequence weighting across the training process and exploration rate, rather than focusing solely on the latest state until the end of training.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Adjusted reverse_env Model Specification</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Adjustments made to minimize overfitting, thereby increasing the model's generalizability.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>RL Configuration Adjustment</strong></p>
+                </li>
+                </ul>
+                <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v111" tabindex="-1">v1.1.2</h2>
+                <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 14, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/c1eb268c16f529667e3bb3c71b6f1674c823cfc4" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Conditional Parallel Processing</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">A new mechanism within the <em style="font-weight: 600;">rev-env network</em> now allows for toggling between parallel and sequential processing of states. This capability is based on the current <code>dropout</code> configuration, resulting in a direct increase in computational speed.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Speed Improvement</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">The implementation of parallel processing leads to a noticeable speed boost in state generation within the <em style="font-weight: 600;">rev-env</em> network. This enhancement streamlines both the training and evaluation phases, making the overall process more efficient.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Algorithm Logic Bug Fix</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">A critical bug was corrected concerning the management of the <em style="font-weight: 600;">estimated_value</em> tensor. Previously, this tensor was not detached before being passed to <em style="font-weight: 600;">self.revEnv</em> for generating the <em style="font-weight: 600;">recurred_state</em>, leading to potential issues with inadvertent backpropagation. This fix ensures that the computational graph is properly managed, enhancing the algorithm's reliability and performance.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>RL Configuration Adjustment</strong></p>
+                </li>
+                </ul>
+                <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v111" tabindex="-1">v1.1.1</h2>
+                <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 13, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/a7b5073c350b4c1586c06c3f1f95d94ef48ca9d1" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Parallel Processing Enhancements and Hyperparameter Tuning</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Parallel Processing with TorchScript:
+
+                    Integrated TorchScript's asynchronous execution capabilities for parallelizing the computation of <em style="font-weight: 600;";>reversed_state</em> and <em style="font-weight: 600;";>recurred_state</em> within the <em style="font-weight: 600;";>RevEnv</em> module.
+                    Utilizes <em style="font-weight: 600;";>torch.jit.fork</em> and <em style="font-weight: 600;";>torch.jit.wait</em> for concurrent execution, drastically reducing processing time and boosting system efficiency.
+                    Ensures <em style="font-weight: 600;";>RevEnv</em> module and its methods are TorchScript compatible to enable effective parallel processing.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Hyperparameter Adjustments</strong></p>
+                </li>
+                </ul>
+                <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v106" tabindex="-1">v1.1.0 </h2>
+                <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 13, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/f907328571754201645bd1a29f37943d012c1c23" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Optimized Gym Environment Setting</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Extensive benchmarks on four games(<em>HalfCheetah, Hopper, Walker2D, Ant</em>) with an optimized single setting. </p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Learning Rate Adjustment</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Adjustments to the default learning rate setting for optimal performance across benchmarks.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Environment-Specific Optimization</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Adjustments to gamma values in <em>Ant</em> and <em>Hopper</em> environments to optimize performance, demonstrating the model's adaptive capabilities.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Masked Exploration Improvement</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Logic improvements and a linear increase in padding length for exploration sampling.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>MLAgent Environment Fix</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Fix for running issues in <em>mlagent environments</em>, optimizing control of exploration padding lengths and adjusting <code>max_sample_weight</code> for improved exploitation towards training end.</p>
+                </li>
+                </ul>
+                <br>
+                <hr>
+                <br>
+
+            <h2 data-line="47" class="code-line" dir="auto" id="v105" tabindex="-1">v1.0.5</h2>
+                <ul data-line="49" class="code-line" dir="auto">
+                <li data-line="49" class="code-line" dir="auto">
+                <p data-line="49" class="code-line" dir="auto"><em>Released on Feb 2, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/74ad4e5bd16fff94c3cc26b43acbb8112aab187e" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="50" class="code-line" dir="auto">
+                <p data-line="50" class="code-line" dir="auto"><strong>Refactor for Enhanced Loss Reduction and Boltzmann Exploration Adjustments</strong></p>
+                <p data-line="52" class="code-line" dir="auto">Updated loss reduction method: To "<em style="font-weight: 600;">cross</em>" from "<em style="font-weight: 600;">batch</em>", combining batch and sequence dimension reductions each normalized by dividing by 2.</p>
+                <p data-line="54" class="code-line" dir="auto">Boltzmann Exploration parameters revised:
+                Initial temperature (<code>tau</code>): Set to 1.0.</p>
+                <p data-line="57" class="code-line" dir="auto">Minimum temperature (<code>min_temperature</code>): Adjusted to <em style="font-weight: 600;">0.01</em>.</p>
+                <p data-line="59" class="code-line" dir="auto">This update ensures robust initial exploration and balances learning, improving model adaptability and performance consistency across unseen environments.</p>
+                </li>
+                </ul>
+                <br>
+
+            <h2 data-line="34" class="code-line" dir="auto" id="v104" tabindex="-1">v1.0.4</h2>
+                <ul data-line="36" class="code-line" dir="auto">
+                <li data-line="36" class="code-line" dir="auto">
+                <p data-line="36" class="code-line" dir="auto"><em>Released on Feb 1, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/82d29679033aadbe2f7ea8af8518a4de4a7e35b8" target="_blank">view on GitHub</a></em></p>
+                <p data-line="38" class="code-line" dir="auto">Adjusted RL and Boltzmann Exploration settings for enhanced compatibility with general gym environments.</p>
+                <p data-line="40" class="code-line" dir="auto">Updated discount_factor (gamma): From <em style="font-weight: 600;">0.993</em> to <em style="font-weight: 600;">0.99</em>.</p>
+                <p data-line="42" class="code-line" dir="auto">Removed gradient clipping limit: Adjusted <code>clip_grad_range</code> from <em style="font-weight: 600;">1.0</em> to <em style="font-weight: 600;">2.0</em>.</p>
+                <p data-line="44" class="code-line" dir="auto">Fine-tuned Boltzmann Exploration: Adjusted tau from <em style="font-weight: 600;">1.0</em> to <em style="font-weight: 600;">0.05</em> and reduced <code>min_temperature</code> from <em style="font-weight: 600;">0.1</em> to <em style="font-weight: 600;">0.005</em>.</p>
+                </li>
+                </ul>
+                <br>
+
+            <h2 data-line="23" class="code-line" dir="auto" id="v103" tabindex="-1">v1.0.3 </h2>
+                <ul data-line="25" class="code-line" dir="auto">
+                <li data-line="25" class="code-line" dir="auto">
+                <p data-line="25" class="code-line" dir="auto"><em>Released on Jan 31, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/e1603702fb62a7f06390ddc62aae4751ebe62c61" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="26" class="code-line" dir="auto">
+                <p data-line="26" class="code-line" dir="auto"><strong>Update: Uniform Parameter Tuning Across All Gym Environments</strong></p>
+                <p data-line="28" class="code-line" dir="auto">Advantage Normalization Adjusted: Transitioned from L1_norm to None for broader compatibility.</p>
+                <p data-line="30" class="code-line" dir="auto"><code>Min Exploration Temperature</code> Increased: From <em style="font-weight: 600;">0.01</em> to <em style="font-weight: 600;">0.1</em> to enhance exploration stability.</p>
+                </li>
+                </ul>
+                <br>
+
+            <h2 data-line="23" class="code-line" dir="auto" id="v103" tabindex="-1">v1.0.2 </h2>
+                <ul data-line="25" class="code-line" dir="auto">
+                <li data-line="25" class="code-line" dir="auto">
+                <p data-line="25" class="code-line" dir="auto"><em>Released on Jan 31, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/29722129ff177bfced6500e35b7c4f70b8c7a5b9" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="26" class="code-line" dir="auto">
+                <p data-line="26" class="code-line" dir="auto"><strong>Exploration Decay Mechanism Enhancements</strong></p>
+                <p data-line="28" class="code-line" dir="auto">Linear Scheduler for Exploration Decay: Transitioned to exclusively using a linear scheduler for exploration decay, streamlining the process for a more consistent and simplified exploration strategy.</p>
+                <p data-line="28" class="code-line" dir="auto">Removal of Exponential Decay: Previously integrated exponential decay within the <em>BoltzmannExploration</em> class has been removed due to observed training instability issues caused by rapid decay from the combined exploration rate and temperature exponential decay. Only linear exploration decay will be utilized to ensure stability and effectiveness in training.</p>
+                <p data-line="28" class="code-line" dir="auto">This update focuses on refining the exploration decay mechanisms to enhance the stability and performance of the Causal RL framework.</p>
+                </li>
+                </ul>
+                <br>
+                
             <h2 data-line="9" class="code-line" dir="auto" id="v101" tabindex="-1">v1.0.1 </h2>
-            <ul data-line="11" class="code-line" dir="auto">
-            <li data-line="11" class="code-line" dir="auto">
-            <p data-line="11" class="code-line" dir="auto"><em>Released on Jan 31, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/409f04da3e414a93bfc43f29d230c992caa1a4c2" target="_blank">view on GitHub</a></em></p>
-            </li>
-            <li data-line="12" class="code-line" dir="auto">
-            <p data-line="12" class="code-line" dir="auto"><strong>Minor Patch Update</strong></p>
-            <p data-line="14" class="code-line" dir="auto">Adjustments to Library Settings: Fine-tuning for more effective reinforcement learning with GPT models.</p>
-            <p data-line="16" class="code-line" dir="auto"><code>clip_grad_range</code>: Adjusted from None to <em style="font-weight: 600;">1.0</em> to ensure a more stable gradient clipping mechanism.</p>
-            <p data-line="18" class="code-line" dir="auto"><code>min_temperature</code>: Increased from <em style="font-weight: 600;">0.01</em> to <em style="font-weight: 600;">0.02</em> for Boltzmann exploration, shifting slightly more towards exploitation in sequence length sampling for GPT inputs.</p>
-            <p data-line="20" class="code-line" dir="auto">Aimed at improving the stability and performance of causal-rl models across various environments.</p>
-            </li>
-            </ul>
-            <br>
+                <ul data-line="11" class="code-line" dir="auto">
+                <li data-line="11" class="code-line" dir="auto">
+                <p data-line="11" class="code-line" dir="auto"><em>Released on Jan 31, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/409f04da3e414a93bfc43f29d230c992caa1a4c2" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="12" class="code-line" dir="auto">
+                <p data-line="12" class="code-line" dir="auto"><strong>Minor Patch Update</strong></p>
+                <p data-line="14" class="code-line" dir="auto">Adjustments to Library Settings: Fine-tuning for more effective reinforcement learning with GPT models.</p>
+                <p data-line="16" class="code-line" dir="auto"><code>clip_grad_range</code>: Adjusted from None to <em style="font-weight: 600;">1.0</em> to ensure a more stable gradient clipping mechanism.</p>
+                <p data-line="18" class="code-line" dir="auto"><code>min_temperature</code>: Increased from <em style="font-weight: 600;">0.01</em> to <em style="font-weight: 600;">0.02</em> for Boltzmann exploration, shifting slightly more towards exploitation in sequence length sampling for GPT inputs.</p>
+                <p data-line="20" class="code-line" dir="auto">Aimed at improving the stability and performance of causal-rl models across various environments.</p>
+                </li>
+                </ul>
+                <br>
 
             <h2 data-line="2" class="code-line" dir="auto" id="v100" tabindex="-1">v1.0.0 </h2>
-            <ul data-line="4" class="code-line" dir="auto">
-            <li data-line="4" class="code-line" dir="auto">
-            <p data-line="4" class="code-line" dir="auto"><em>Released on Jan 31, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/83a7ef2f1f6aca701b3345ca0208398474a3aa9d" target="_blank">view on GitHub</a></em></p>
-            <p data-line="6" class="code-line" dir="auto"><strong>Initial release of the Causal RL library.</strong></p>
-            </li>
-            </ul>    
-            <br>
+                <ul data-line="4" class="code-line" dir="auto">
+                <li data-line="4" class="code-line" dir="auto">
+                <p data-line="4" class="code-line" dir="auto"><em>Released on Jan 31, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/83a7ef2f1f6aca701b3345ca0208398474a3aa9d" target="_blank">view on GitHub</a></em></p>
+                <p data-line="6" class="code-line" dir="auto"><strong>Initial release of the Causal RL library.</strong></p>
+                </li>
+                </ul>    
+                <br>
 
             <hr>
             <div align="left" style="padding-bottom: 10px;">
