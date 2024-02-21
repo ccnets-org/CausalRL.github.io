@@ -56,8 +56,8 @@
             <a href="../API.html">API</a>
             <ul>
             <li><a href="../API.html#class-rltune">CausalRL</a></li>
+            <li><a href="../API.html#class-rl-params">RLParameters </a></li>
             <li><a href="../API.html#class-causalrl">CausalTrainer</a></li>
-            <li><a href="../API.html#class-rl-params">RLConfig </a></li>
             </ul>
         </li>
         <li>
@@ -341,8 +341,22 @@ rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</s
                             This tutorial was created to introduce users interested in CausalRL to this methodology and provide guidance on basic parameter tuning methods. 
                             For this purpose, the maximum number of steps (<code>max_steps</code>) was set to <em style="font-weight:600;">70,000</em>. 
                             However, it is anticipated that increasing the maximum step count and making finer adjustments to the detailed parameters could yield more stable and efficient learning outcomes.</p>
-
                 <br>
+
+                <h2>Conclusion</h2>
+                        <p>In this tutorial, we have learned the following:</p>
+                            <ul>
+                                <li>How to set up an environment needed for training in <em style="font-weight:600">CausalRL</em>.</li>
+                                <li>How to assign models to each metwork.</li>
+                                <li>How to customize <em style="font-weight:600">RLParameters</em>.</li>
+                                <li>How to train with <em style="font-weight:600">CausalRL</em>.</li>
+                            </ul>
+                        <p>Furthermore, if you want to conduct experiments applying what was taught in this tutorial, consider the following:</p>
+                            <ul>
+                                <li>Setting <code>use_graphics = True</code> in <em style="font-weight:600;">causal_rl.train</em> allows you to observe the agent's learning process.</li>
+                                <li>To achieve more stable training, you can adjust parameters such as <code>num_layers</code>, <code>d_model</code> and <code>gpt_seq_length</code>. However, be mindful of the risk of overfitting when using more complex models.</li>
+                                <li>If you want to review more experimental data, check out the <a href="https://wandb.ai/causal-rl/causal-rl?workspace" target="_blank">W&B workspace of CausalRL</a>.</li>
+                            </ul>
                 <br>
                 <hr>
                 <div align="left" style="padding-bottom: 10px;">
@@ -591,8 +605,22 @@ rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</s
                             이 튜토리얼은 CausalRL에 관심이 있는 사용자들에게 이 방법론을 소개하고, 기본적인 파라미터 튜닝 방법에 대한 지침을 제공하기 위해 작성되었습니다. 
                             이를 위해 최대 스텝 수(<code>max_steps</code>)를 <em>70,000</em>으로 제한하여 설정했지만, 최대 스텝 수를 증가시키고 세부적인 파라미터들을 더욱 미세하게 조정한다면, 
                             더욱 안정적이며 효율적인 학습 결과를 얻을 수 있을 것으로 기대됩니다.</p>
-
                 <br>
+
+                <h2>Conclusion</h2>
+                <p>In this tutorial, we have learned the following:</p>
+                    <ul>
+                        <li><em style="font-weight:600">CausalRL</em>에서 학습에 필요한 환경을 어떻게 설정하는지.</li>
+                        <li>각 네트워크에 모델을 어떻게 할당하는지.</li>
+                        <li><em style="font-weight:600">RLParameters</em>를 어떻게 커스터마이즈하는지.</li>
+                        <li><em style="font-weight:600">CausalRL</em>로 어떻게 훈련시키는지.</li>
+                    </ul>
+                <p>더 나아가, 이번 튜토리얼을 응용한 실험을 진행하고 싶다면, 다음의 사항들을 고려해보세요:</p>
+                    <ul>
+                        <li><em style="font-weight:600;">causal_rl.train</em>에서 <code>use_graphics = True</code>로 설정하면, 에이전트가 학습하는 과정을 확인할 수 있습니다..</li>
+                        <li>더 안정적인 학습을 위해, <code>num_layers</code>, <code>d_model</code> and <code>gpt_seq_length</code> 등과 같은 parameters를 조정할 수 있습니다. 하지만, 복잡한 모델을 사용할수록 과적합의 위험을 주의해야 합니다.</li>
+                        <li>더 많은 실험 데이터를 확인하고 싶다면, <a href="https://wandb.ai/causal-rl/causal-rl?workspace" target="_blank">W&B workspace of CausalRL</a>를 확인해보세요.</li>
+                    </ul>
                 <br>
                 <hr>
                 <div align="left" style="padding-bottom: 10px;">
