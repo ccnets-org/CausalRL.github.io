@@ -114,6 +114,29 @@
             <h1 data-line="0" class="code-line" dir="auto" id="release-note" tabindex="-1">Release Notes</h1>
             <br>
             
+            <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.1.9</h2>
+            <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 22, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/bf8352f64f8aaa6745133436515479b415a3dc9c" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Refined Trajectory Sequences</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">The TD computation in our GPT-based RL model has been fine-tuned for better accuracy and efficiency. Previously, trajectories were sampled at 1.5 times the <em style="font-weight:600;">GPT sequence length</em>. In this update, we've adopted a more precise approach by adding an extra quarter to the original sequence length. This adjustment allows for a strategic division between causal training segments and TD computation, enhancing the model's capability to process extended sequences more effectively.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Enhancing Buffer System</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">We have replaced the probability-based sampling method with a deterministic index selection method. This change is designed to address and mitigate issues related to non-repeatability that were observed with the previous sampling approach.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Enhanced Reproducibility and Consistency</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">The shift to a deterministic method significantly improves the reproducibility of results across different training runs. This ensures that model behavior remains stable and predictable, which is crucial for research and development projects requiring consistent outcomes.</p>
+                </li>
+                <li>
+                    <p data-line="65" class="code-line" dir="auto"><strong>Parameter Adjustments for Enhanced Learning</strong></p>
+                </li>
+            </ul>
+            <br>
+
             <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.1.8</h2>
             <ul data-line="64" class="code-line" dir="auto">
                 <li data-line="64" class="code-line" dir="auto">
