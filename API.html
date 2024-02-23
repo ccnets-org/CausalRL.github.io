@@ -16,7 +16,8 @@
         <link rel="stylesheet" href="./style/style.css">
         <link rel="icon" href="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/2573d62b-0ea3-4ca7-ab78-df785b6f51f3" type="image/png">
         <link rel="shortcut icon" href="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/2573d62b-0ea3-4ca7-ab78-df785b6f51f3" type="image/png">
-    </head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+     </head>
     <body class="vscode-body vscode-light">
         <div data-line="0" class="code-line" dir="auto"></div>
 <nav class="navbar">
@@ -108,9 +109,22 @@
     <h2 data-line="91" class="class-causalrl" dir="auto" id="class-causalrl" tabindex="-1">Class CausalRL</h2>
     <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/causal_rl.py" target="_blank" style="font-weight: 600; margin-left: 10px; margin-bottom:10px; font-size: 10px; font-size: smaller;">[source]</a>
   </div>
-  <pre><code data-line="66" class="code-line language-python" dir="auto"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CausalRL</span>:
-      <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, rl_params: RLParameters, device, use_print=<span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">False</span></span>):
-  </code></pre>
+  <div class="code-container">
+    <pre><code data-line="66" class="python" dir="auto" id="codeBlock"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CausalRL</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, rl_params: RLParameters, device, use_print=<span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">False</span></span>):
+    update_env_config(rl_params, env_config = rl_params.env_config)
+    print_rl_params('<span class="hljs-literal">causal_rl</span>', rl_params)
+    
+    self.step = 0
+    self.device = device
+    self.max_steps = rl_params.max_steps
+    self.train_env, self.eval_env, self.test_env, self.memory = None, None, None, None
+    self.trainer = <span class="hljs-title class_">CausalTrainer</span>(rl_params, device)
+    self.helper = <span class="hljs-title class_">CausalRLHelper</span>(self, rl_params, use_print, use_wandb)
+    </code></pre>
+    <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+  </div>
+  <div id="copyAlert">Copied!</div>
   <p data-line="70" class="code-line" dir="auto">The CausalRL class is designed for tuning and training reinforcement learning models, using a specified trainer.</p>
   <h3 data-line="72" class="code-line" dir="auto" id="parameters" tabindex="-1">Parameters:</h3>
   <ul data-line="73" class="code-line" dir="auto">
@@ -255,9 +269,34 @@
     <h2 data-line="91" class="class-causaltrainer" dir="auto" id="class-causaltrainer" tabindex="-1">Class CausalTrainer</h2>
     <a href="https://github.com/ccnets-team/rl-tune/blob/beta-causal-rl/training/causal_trainer.py" target="_blank" style="font-weight: 600; margin-left: 10px; margin-bottom:10px; font-size: 10px; font-size: smaller;">[source]</a>
   </div>
-  <pre><code data-line="126" class="code-line language-python" dir="auto"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CausalRL</span>(<span class="hljs-title class_ inherited__">BaseTrainer</span>):
+  <div class="code-container">
+    <pre><code data-line="126" class="code-line language-python" dir="auto" id="codeBlock"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CausalRL</span>(<span class="hljs-title class_ inherited__">BaseTrainer</span>):
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, rl_params, device</span>):
-  </code></pre>
+    <span>self.trainer_name</span> = <span class="hljs-literal">'causal_rl'</span>
+    <span>self.network_names</span> = [<span class="hljs-literal">"critic", "actor", "rev_env"</span>]
+    <span>critic_network</span> = rl_params.network.critic_network
+    <span>actor_network</span> = rl_params.network.actor_network
+    <span>rev_env_network</span> = rl_params.network.rev_env_network
+    <span>self.critic_params</span> = rl_params.critic_params
+    <span>self.actor_params</span> = rl_params.actor_params
+    <span>self.rev_env_params</span> = rl_params.rev_env_params
+    <span>env_config</span> = rl_params.env_config
+
+    self.critic = <span class="hljs-title class_">SingleInputCritic</span>(critic_network, env_config, rl_params.critic_params).to(device)
+    self.actor = <span class="hljs-title class_">DualInputActor</span>(actor_network, env_config, rl_params.use_deterministic, rl_params.actor_params).to(device)
+    self.revEnv = <span class="hljs-title class_">RevEnv</span>(rev_env_network, env_config, rl_params.rev_env_params).to(device)
+    self.target_critic = <span class="hljs-title class_">copy</span>.deepcopy(self.critic) 
+
+    <span class="hljs-title class_">super</span>(CausalTrainer, self).__init__(env_config, rl_params, 
+                                    networks = [self.critic, self.actor, self.revEnv], \
+                                    target_networks =[self.target_critic, None, None], \
+                                    device = device
+                                    )      
+    <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+    </code></pre>
+  </div>
+  <div id="copyAlert">Copied!</div>
+
   <p data-line="131" class="code-line" dir="auto">This class is specialized trainer for reinforcement learning. It initailizes with RLparameters('rl_params'), and the computational device('device').
     And the class sets up three key networks: Critic, Actor, Reverse-Environment networks, each configured based on the provided RL parameters.</p>
     <h3 data-line="134" class="code-line" dir="auto" id="funtions" tabindex="-1">Method Overview</h3>

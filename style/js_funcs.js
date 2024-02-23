@@ -211,3 +211,29 @@ document.querySelectorAll('.language-switcher button').forEach(button => {
       
   });
 });
+
+
+function copyCode(buttonElement) {
+    var container = buttonElement.closest('.code-container');
+    var codeBlock = container.querySelector('pre code');
+
+    var range = document.createRange();
+    range.selectNodeContents(codeBlock);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+  
+    try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Copy command was ' + msg);
+        var copyAlert = document.getElementById('copyAlert');
+        copyAlert.style.opacity = "1"; //show msg
+        setTimeout(function() {
+            copyAlert.style.opacity  = "0"; //dissapear msg
+        }, 2000); // 2 sec
+        } catch (err) {
+        console.log('Oops, unable to copy');
+    }
+    window.getSelection().removeAllRanges();
+}
+  
