@@ -56,6 +56,7 @@
       <li><a href="API.html#class-causalrl">CausalRL</a></li>
       <li><a href="API.html#class-rl-config">RLParameters</a></li>
       <li><a href="API.html#class-causaltrainer">CausalTrainer</a></li>
+      <li><a href="./Networks.html">Networks</a></li>
     </ul>
   </li>
   <li>
@@ -113,23 +114,24 @@
     <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/3df9cf0a-2f88-4e86-b161-708a6c87f32a" alt="Description" width="700">
   </div>
 <h1 data-line="72" class="code-line" dir="auto" id="introduction" tabindex="-1">Introduction</h1>
-<pre data-line="74" class="code-line" dir="auto"><code>Causal RL is an innovative Reinforcement Learning framework that utilizes three networks: Actor, Critic, and Reverse Environment, to learn the causal relationships between states, actions, and values while maximizing cumulative rewards. This introduction describes key features for understanding Causal RL.
-</code></pre>
+<p style="font-size:17px; padding-left: 20px; border-left: 3px solid #000; margin: 20px;"><strong>Causal RL</strong> is an innovative Reinforcement Learning framework that utilizes three networks: Actor, Critic, and Reverse Environment, to learn the causal relationships between states, actions, and values while maximizing cumulative rewards. This introduction describes key features for understanding Causal RL.</p>
+<br>
+<br>
 <h1 data-line="76" class="code-line" dir="auto" id="basic-usage" tabindex="-1">Basic Usage</h1>
 
 <div class="code-container">
   <pre><code data-line="78" class="code-line language-python" dir="auto" id="codeBlock"><span class="hljs-comment"># main.ipynb</span>
-  <span class="hljs-keyword">import</span> torch
-  <span class="hljs-keyword">from</span> utils.setting.env_settings <span class="hljs-keyword">import</span> analyze_env
-  <span class="hljs-keyword">from</span> causal_rl <span class="hljs-keyword">import</span> CausalRL
+  <span class="function-return">import</span> <span class="hljs-title class_">torch</span>
+  <span class="function-return">from</span> <span class="hljs-title class_">utils.setting.env_settings</span> <span class="function-return">import</span> <span class="function-names">analyze_env</span>
+  <span class="function-return">from</span> <span class="hljs-title class_">causal_rl</span> <span class="function-return">import</span> <span class="hljs-title class_">CausalRL</span>
 
-  device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hljs-keyword">if</span> (torch.cuda.is_available() <span class="hljs-keyword">and</span> ngpu &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">else</span> <span class="hljs-string">"cpu"</span>)
+  device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="function-return">if</span> (torch.cuda.is_available() <span class="function-return">and</span> ngpu &gt; <span class="hljs-number">0</span>) <span class="function-return">else</span> <span class="hljs-string">"cpu"</span>)
 
-  rl_params = analyze_env(env_name = <span class="hljs-string">"HalfCheetah-v4"</span>)
+  rl_params = <span class="function-names">analyze_env</span>(env_name = <span class="hljs-string">"HalfCheetah-v4"</span>)
 
-  <span class="hljs-keyword">with</span> CausalRL(rl_params, device, use_print = <span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">False</span>) <span class="hljs-keyword">as</span> causal_rl:
-      causal_rl.train(resume_training = <span class="hljs-literal">False</span>, use_eval = <span class="hljs-literal">True</span>, use_graphics = <span class="hljs-literal">False</span>)
-      causal_rl.test(max_episode = <span class="hljs-literal">100</span>, use_graphics = <span class="hljs-literal">False</span>)
+  <span class="function-return">with</span> <span class="hljs-title class_">CausalRL</span>(rl_params, device, use_print = <span class="hljs-literal">False</span>, use_wandb = <span class="hljs-literal">False</span>) <span class="function-return">as</span> causal_rl:
+      causal_rl.<span class="function-names">train</span>(resume_training = <span class="hljs-literal">False</span>, use_eval = <span class="hljs-literal">True</span>, use_graphics = <span class="hljs-literal">False</span>)
+      causal_rl.<span class="function-names">test</span>(max_episode = <span class="hljs-literal">100</span>, use_graphics = <span class="hljs-literal">False</span>)
   <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
   </code></pre>
 </div>

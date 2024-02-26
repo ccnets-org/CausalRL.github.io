@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="../style/style.css">
         <link rel="icon" href="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/2573d62b-0ea3-4ca7-ab78-df785b6f51f3" type="image/png">
         <link rel="shortcut icon" href="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/2573d62b-0ea3-4ca7-ab78-df785b6f51f3" type="image/png">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </head>
     <body class="vscode-body vscode-light">
         <div data-line="0" class="code-line" dir="auto"></div>
@@ -58,6 +58,7 @@
             <li><a href="../API.html#class-rltune">CausalRL</a></li>
             <li><a href="../API.html#class-rl-params">RLParameters </a></li>
             <li><a href="../API.html#class-causalrl">CausalTrainer</a></li>
+            <li><a href="../Networks.html">Networks</a></li>
             </ul>
         </li>
         <li>
@@ -123,7 +124,8 @@
                     but for the sake of understanding, this tutorial will use a relatively simple <em style="font-weight: 600;">SuperNet</em> model and <em style="font-weight: 600;">Unity MLAgent</em> environment to demonstrate the learning process of CausalRL and a simple method of setting Parameters.</p>
                 <br>
                 <h2 data-line="21" class="code-line" dir="auto" id="dependency" tabindex="-1">Dependency</h2>
-<pre><code data-line="23" class="code-line language-bash" dir="auto">conda create -name crl python=3.9.18
+                <div class="code-container">
+<pre><code data-line="23" class="code-line language-bash" dir="auto" id="codeBlock">conda create -name crl python=3.9.18
 conda activate crl
 conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
 pip install mlagents==0.30
@@ -131,24 +133,35 @@ pip install protobuf==3.20
 pip install jupyter
 pip install transformers==4.34.1
 </code></pre>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                </div>
+                <div id="copyAlert">Copied!</div>
+
                 <h3 data-line="33" class="code-line" dir="auto" id="clone-the-repository" tabindex="-1">Clone the repository:</h3>
-                <pre><code data-line="35" class="code-line language-bash" dir="auto">git <span class="hljs-built_in">clone</span> https://github.com/ccnets-team/causal-rl.git
-                </code></pre>
+                <div class="code-container">
+                    <pre><code data-line="35" class="code-line language-bash" dir="auto" id="">git <span class="hljs-built_in">clone</span> https://github.com/ccnets-team/causal-rl.git
+                    </code></pre>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+
+                </div>    
                 <br>
         
                 <h2 data-line="39" class="code-line" dir="auto" id="import-library" tabindex="-1">Import Library</h2>
-<pre><code data-line="41" class="code-line language-python" dir="auto">
-<span class="hljs-keyword">from</span> __future__ <span class="hljs-keyword">import</span> print_function
-<span class="hljs-keyword">from</span> utils.setting.env_settings <span class="hljs-keyword">import</span> analyze_env
-<span class="hljs-keyword">from</span> utils.init <span class="hljs-keyword">import</span> set_seed
-<span class="hljs-keyword">from</span> torch.utils.tensorboard <span class="hljs-keyword">import</span> SummaryWriter
-<span class="hljs-keyword">import</span> torch
+                <div class="code-container">
+<pre><code data-line="41" class="code-line language-python" dir="auto" id="">
+<span class="function-return">from</span> <span class="hljs-title class_">__future__</span> <span class="function-return">import</span> <span class="hljs-title class_">print_function</span>
+<span class="function-return">from</span> <span class="hljs-title class_">utils.setting.env_settings</span> <span class="function-return">import</span> <span class="hljs-title class_">analyze_env</span>
+<span class="function-return">from</span> <span class="hljs-title class_">utils.init</span> <span class="function-return">import</span> <span class="hljs-title class_">set_seed</span>
+<span class="function-return">from</span> <span class="hljs-title class_">torch.utils.tensorboard</span> <span class="function-return">import</span> <span class="hljs-title class_">SummaryWriter</span>
+<span class="function-return">import</span> <span class="hljs-title class_">torch</span>
 
 set_seed()
 ngpu = <span class="hljs-number">2</span> <span class="hljs-comment"># Number of GPUs in use</span>
 
-device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hljs-keyword">if</span> (torch.cuda.is_available() <span class="hljs-keyword">and</span> ngpu &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">else</span> <span class="hljs-string">"cpu"</span>)
+device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="function-return">if</span> (torch.cuda.is_available() <span class="function-return">and</span> ngpu &gt; <span class="hljs-number">0</span>) <span class="function-return">else</span> <span class="hljs-string">"cpu"</span>)
 </code></pre>
+<button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+</div>
                 <ul data-line="54" class="code-line" dir="auto">
                 <p>First, let's import the necessary libraries and modules.</p>    
                 <li data-line="54" class="code-line" dir="auto"><code>set_seed()</code>: This function fixes the seed values for various libraries such as <code>random</code>, <code>numpy</code>, and <code>torch</code> to control randomness, making the experiment stable and reproducible.</li>
@@ -170,8 +183,12 @@ device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hlj
 <p data-line="74" class="code-line" dir="auto">
     In the <strong>Unity MLAgent 3DBallHard</strong> environment, the agent (cube) has 45 state values to maintain balance of the ball on its head, achieving this through two continuous rotational actions along the X and Z axes. In this decision-making process, the agent selects the optimal action at each step based on the given state information.</p>
     <p data-line="76" class="code-line" dir="auto">For more detailed information about the 3DBallHard environment, please refer to the<a href="https://unity-technologies.github.io/ml-agents/Learning-Environment-Examples/#3dball-3d-balance-ball" data-href="https://unity-technologies.github.io/ml-agents/Learning-Environment-Examples/#3dball-3d-balance-ball" target="_blank"><strong> MLAgent Docs</strong></a></p>
-                <pre><code data-line="67" class="code-line language-python" dir="auto">rl_params = analyze_env(env_name = <span class="hljs-string">"3DBallHard"</span>)
-                </code></pre>
+                
+    <div class="code-container">
+        <pre><code data-line="67" class="code-line language-python" dir="auto">rl_params = <span class="function-names">analyze_env</span>(env_name = <span class="hljs-string">"3DBallHard"</span>)
+        </code></pre>
+        <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+    </div>
                 <ul data-line="71" class="code-line" dir="auto">
                 <li data-line="71" class="code-line" dir="auto">The <code>analyze_env()</code> function analyzes and configures an environment named <code>3DBallHard</code>. This function is one of the core functions of the <strong>CausalRL</strong> framework, taking the user-defined environment name(<code>env_name</code>) and assigning the necessary environment settings and training parameters to the <code>rl_params</code> variable.</li>
                 </ul>
@@ -205,14 +222,16 @@ device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hlj
     <p data-line="89" class="code-line" dir="auto"><code>SuperNet</code>: The <em style="font-weight: 600;">SuperNet</em> class is a neural network model composed of multiple <em style="font-weight: 600;">SuperNetBlock</em> layers connected sequentially. This model is based on the number of layers (<code>num_layer</code>) and the size of each layer (<code>hidden_size</code>) specified in the Initializer. Through the forward method, input data sequentially passes through several <em style="font-weight: 600;">SuperNetBlock</em> layers, making it a neural network capable of learning complex patterns through the learning of dynamic weights (<code>arch_weights</code>) at each layer.</p>
     </li>
     </ul>
+    <div class="code-container">
 <pre>
-<code data-line="109" class="code-line language-python" dir="auto"><span class="hljs-keyword">import</span> torch</code> 
-<code data-line="110" class="code-line language-python" dir="auto"><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn</code>
-<code data-line="111" class="code-line language-python" dir="auto"><span class="hljs-keyword">import</span> torch.nn.functional <span class="hljs-keyword">as</span> F</code>
-<code>
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">SuperNetBlock</span>(nn.Module):
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, input_size, output_size</span>):
-        <span class="hljs-built_in">super</span>(SuperNetBlock, self).__init__()
+<code data-line="109" class="code-line language-python" dir="auto"><span class="function-return">import</span> <span class="hljs-title class_">torch</span>
+<span class="function-return">import</span> <span class="hljs-title class_">torch.nn</span> <span class="function-return">as</span> <span class="hljs-title class_">nn</span>
+<span class="function-return">import</span> <span class="hljs-title class_">torch.nn.functional</span> <span class="function-return">as</span> <span class="hljs-title class_">F</span>
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SuperNetBlock</span>(<span class="hljs-title class_">nn.Module</span>):
+    <span class="hljs-keyword">def</span> <span class="function-names">__init__</span>(<span class="hljs-params">self, input_size, output_size</span>):
+        <span class="hljs-title class_">super</span>(<span class="hljs-title class_">SuperNetBlock</span>, self).<span class="function-names">__init__()</span>
         self.linear1 = nn.Linear(input_size, output_size)
         self.linear2 = nn.Linear(input_size, output_size)
         self.relu = nn.ReLU()
@@ -222,34 +241,34 @@ device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hlj
         weights = F.softmax(self.arch_weights, dim=-1)
         out = weights[0] * self.linear1(x) + weights[1] * self.linear2(x)
         out = self.relu(out)
-        <span class="hljs-keyword">return</span> out
+        <span class="function-return">return</span> out
 
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">SuperNet</span>(nn.Module):
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, num_layer, hidden_size, dropout = 0.0</span>):
-        <span class="hljs-built_in">super</span>(SuperNet, self).__init__()
-        super(SuperNet, self).__init__()
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SuperNet</span>(<span class="hljs-title class_">nn.Module</span>):
+    <span class="hljs-keyword">def</span> <span class="function-names">__init__</span>(<span class="hljs-params">self, num_layer, hidden_size, dropout = 0.0</span>):
+        <span class="hljs-title class_">super</span>(<span class="hljs-title class_">SuperNet</span>, self).<span class="function-names">__init__()</span>
         self.num_layer = num_layer
 
         layers = []
         for i in range(self.num_layer):
-            layers.append(SuperNetBlock(hidden_size, hidden_size))
+            layers.append(<span class="hljs-title class_">SuperNetBlock</span>(hidden_size, hidden_size))
         self.net = nn.Sequential(*layers)
     
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x, mask = <span class="hljs-literal">None</span></span>):
         out = self.layers(x)
-        <span class="hljs-keyword">return</span> self.net(x)
+        <span class="function-return">return</span> self.net(x)
     </code></pre>
-
+    <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+    </div>
                 <br>
                 <h2 data-line="73" class="code-line" dir="auto" id="set-parameters" tabindex="-1">Set Parameters</h2>
-<pre><code data-line="75" class="code-line language-python" dir="auto"><span class="hljs-keyword">from</span> utils.setting.rl_config <span class="hljs-keyword">import</span> TrainingParameters, AlgorithmParameters, NetworkParameters
-<span class="hljs-keyword">from</span> nn.gpt <span class="hljs-keyword">import</span> GPT
+<pre><code data-line="75" class="code-line language-python" dir="auto"><span class="function-return">from</span> <span class="hljs-title class_">utils.setting.rl_config</span> <span class="function-return">import</span> <span class="hljs-title class_">TrainingParameters, AlgorithmParameters, NetworkParameters</span>
+<span class="function-return">from</span> <span class="hljs-title class_">nn.gpt</span> <span class="function-return">import</span> <span class="hljs-title class_">GPT</span>
 
-rl_params.training = TrainingParameters(batch_size=<span class="hljs-number">64</span>, replay_ratio=<span class="hljs-number">1</span>, max_steps=<span class="hljs-number">70000</span>, buffer_size=<span class="hljs-number">256000</span>)
+rl_params.training = <span class="hljs-title class_">TrainingParameters</span>(batch_size=<span class="hljs-number">64</span>, replay_ratio=<span class="hljs-number">1</span>, max_steps=<span class="hljs-number">70000</span>, buffer_size=<span class="hljs-number">256000</span>)
 
-rl_params.algorithm = AlgorithmParameters(gpt_seq_length=<span class="hljs-number">16</span>, discount_factor=<span class="hljs-number">0.99</span>)
+rl_params.algorithm = <span class="hljs-title class_">AlgorithmParameters</span>(gpt_seq_length=<span class="hljs-number">16</span>, discount_factor=<span class="hljs-number">0.99</span>)
 
-rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</span>, d_model=<span class="hljs-number">128</span>, dropout=<span class="hljs-number">0.02</span>, network_type=SuperNet)
+rl_params.network =  <span class="hljs-title class_">NetworkParameters</span>(num_layers=<span class="hljs-number">5</span>, d_model=<span class="hljs-number">128</span>, dropout=<span class="hljs-number">0.02</span>, network_type=<span class="hljs-title class_">SuperNet</span>)
 </code></pre>
                 <ul data-line="86" class="code-line" dir="auto">
                 <li data-line="86" class="code-line" dir="auto">
@@ -315,11 +334,11 @@ rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</s
                 <br>
 
                 <h2 data-line="131" class="code-line" dir="auto" id="training" tabindex="-1">Training</h2>
-<pre><code data-line="133" class="code-line language-python" dir="auto"><span class="hljs-keyword">from</span> causal_rl <span class="hljs-keyword">import</span> CausalRL
+<pre><code data-line="133" class="code-line language-python" dir="auto"><span class="function-return">from</span> <span class="hljs-title class_">causal_rl</span> <span class="function-return">import</span> <span class="hljs-title class_">CausalRL</span>
     
-    <span class="hljs-keyword">with</span> CausalRL(rl_params, device, use_print = <span class="hljs-literal">True</span>, use_wandb = <span class="hljs-literal">False</span>) <span class="hljs-keyword">as</span> causal_rl:
-    causal_rl.train(resume_training = <span class="hljs-literal">False</span>, use_eval = <span class="hljs-literal">False</span>, use_graphics = <span class="hljs-literal">False</span>)
-    causal_rl.test(max_episodes = <span class="hljs-number">100</span>, use_graphics = <span class="hljs-literal">False</span>)
+    <span class="function-return">with</span> <span class="hljs-title class_">CausalRL</span>(rl_params, device, use_print = <span class="hljs-literal">True</span>, use_wandb = <span class="hljs-literal">False</span>) <span class="function-return">as</span> causal_rl:
+    causal_rl.<span class="function-names">train</span>(resume_training = <span class="hljs-literal">False</span>, use_eval = <span class="hljs-literal">False</span>, use_graphics = <span class="hljs-literal">False</span>)
+    causal_rl.<span class="function-names">test</span>(max_episodes = <span class="hljs-number">100</span>, use_graphics = <span class="hljs-literal">False</span>)
 </code></pre>
                 
                 <h2 data-line="131" class="code-line" dir="auto" id="training" tabindex="-1">Result</h2>
@@ -398,11 +417,11 @@ pip install transformers==4.34.1
         
                 <h2 data-line="39" class="code-line" dir="auto" id="import-library" tabindex="-1">Import Library</h2>
 <pre><code data-line="41" class="code-line language-python" dir="auto">
-<span class="hljs-keyword">from</span> __future__ <span class="hljs-keyword">import</span> print_function
-<span class="hljs-keyword">from</span> utils.setting.env_settings <span class="hljs-keyword">import</span> analyze_env
-<span class="hljs-keyword">from</span> utils.init <span class="hljs-keyword">import</span> set_seed
-<span class="hljs-keyword">from</span> torch.utils.tensorboard <span class="hljs-keyword">import</span> SummaryWriter
-<span class="hljs-keyword">import</span> torch
+<span class="function-return">from</span> <span class="hljs-title class_">__future__</span> <span class="function-return">import</span> <span class="hljs-title class_">print_function</span>
+<span class="function-return">from</span> <span class="hljs-title class_">utils.setting.env_settings</span> <span class="function-return">import</span> <span class="hljs-title class_">analyze_env</span>
+<span class="function-return">from</span> <span class="hljs-title class_">utils.init</span> <span class="function-return">import</span> <span class="hljs-title class_">set_seed</span>
+<span class="function-return">from</span> <span class="hljs-title class_">torch.utils.tensorboard</span> <span class="function-return">import</span> <span class="hljs-title class_">SummaryWriter</span>
+<span class="function-return">import</span> <span class="hljs-title class_">torch</span>
 
 set_seed()
 ngpu = <span class="hljs-number">2</span> <span class="hljs-comment"># 사용중인 GPU의 수</span>
@@ -430,7 +449,7 @@ device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hlj
 <p data-line="74" class="code-line" dir="auto">
     <strong>Unity MLAgent 3DBallHard</strong> 환경에서 에이전트(큐브)는 머리 위에 공을 균형 유지하기 위한 45개의 상태 값을 가지며, X축과 Z축을 따른 두 가지 연속적인 회전 동작을 통해 이를 달성합니다. 이러한 행동 결정 과정에서, 에이전트는 주어진 상태 정보를 기반으로 각 단계마다 최적의 행동을 선택합니다. </p>
     <p data-line="76" class="code-line" dir="auto">3DBallHard 환경에 대한 보다 자세한 정보는 <a href="https://unity-technologies.github.io/ml-agents/Learning-Environment-Examples/#3dball-3d-balance-ball" data-href="https://unity-technologies.github.io/ml-agents/Learning-Environment-Examples/#3dball-3d-balance-ball" target="_blank"><strong>MLAgent Docs</strong></a>를 참조해 주세요.</p>
-                <pre><code data-line="67" class="code-line language-python" dir="auto">rl_params = analyze_env(env_name = <span class="hljs-string">"3DBallHard"</span>)
+                <pre><code data-line="67" class="code-line language-python" dir="auto">rl_params = <span class="function-names">analyze_env</span>(env_name = <span class="hljs-string">"3DBallHard"</span>)
                 </code></pre>
                 <ul data-line="71" class="code-line" dir="auto">
                 <li data-line="71" class="code-line" dir="auto"><code>analyze_env()</code> 함수는 <code>3DBallHard</code>라는 이름의 환경을 분석하고 설정합니다. 이 함수는 <strong>CausalRL</strong> 프레임워크의 핵심 함수 중 하나로, 사용자가 정의한 환경 이름(<code>env_name</code>)을 받아 필요한 환경 설정과 학습 매개변수를 <code>rl_params</code> 변수에 할당합니다. </li>
@@ -467,13 +486,13 @@ device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hlj
     </li>
     </ul>
 <pre>
-<code data-line="109" class="code-line language-python" dir="auto"><span class="hljs-keyword">import</span> torch</code> 
-<code data-line="110" class="code-line language-python" dir="auto"><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn</code>
-<code data-line="111" class="code-line language-python" dir="auto"><span class="hljs-keyword">import</span> torch.nn.functional <span class="hljs-keyword">as</span> F</code>
-<code>
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">SuperNetBlock</span>(nn.Module):
+<code data-line="109" class="code-line language-python" dir="auto"><span class="function-return">import</span> <span class="hljs-title class_">torch</span>
+<span class="function-return">import</span> <span class="hljs-title class_">torch.nn</span> <span class="function-return">as</span> <span class="hljs-title class_">nn</span>
+<span class="function-return">import</span> <span class="hljs-title class_">torch.nn.functional</span> <span class="function-return">as</span> <span class="hljs-title class_">F</span>
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SuperNetBlock</span>(<span class="hljs-title class_">nn.Module</span>):
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, input_size, output_size</span>):
-        <span class="hljs-built_in">super</span>(SuperNetBlock, self).__init__()
+        <span class="hljs-title class_">super</span>(<span class="hljs-title class_">SuperNetBlock</span>, self).<span class="function-names">__init__()</span>
         self.linear1 = nn.Linear(input_size, output_size)
         self.linear2 = nn.Linear(input_size, output_size)
         self.relu = nn.ReLU()
@@ -483,34 +502,33 @@ device = torch.device(<span class="hljs-string">"cuda:0"</span> <span class="hlj
         weights = F.softmax(self.arch_weights, dim=-1)
         out = weights[0] * self.linear1(x) + weights[1] * self.linear2(x)
         out = self.relu(out)
-        <span class="hljs-keyword">return</span> out
+        <span class="function-return">return</span> out
 
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">SuperNet</span>(nn.Module):
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, num_layer, hidden_size, dropout = 0.0</span>):
-        <span class="hljs-built_in">super</span>(SuperNet, self).__init__()
-        super(SuperNet, self).__init__()
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SuperNet</span>(<span class="hljs-title class_">nn.Module</span>):
+    <span class="hljs-keyword">def</span> <span class="function-names">__init__</span>(<span class="hljs-params">self, num_layer, hidden_size, dropout = 0.0</span>):
+        <span class="hljs-title class_">super</span>(<span class="hljs-title class_">SuperNet</span>, self).<span class="function-names">__init__()</span>
         self.num_layer = num_layer
 
         layers = []
         for i in range(self.num_layer):
-            layers.append(SuperNetBlock(hidden_size, hidden_size))
+            layers.append(<span class="hljs-title class_">SuperNetBlock</span>(hidden_size, hidden_size))
         self.net = nn.Sequential(*layers)
     
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x, mask = <span class="hljs-literal">None</span></span>):
         out = self.layers(x)
-        <span class="hljs-keyword">return</span> self.net(x)
+        <span class="function-return">return</span> self.net(x)
     </code></pre>
 
                 <br>
                 <h2 data-line="73" class="code-line" dir="auto" id="set-parameters" tabindex="-1">Set Parameters</h2>
-<pre><code data-line="75" class="code-line language-python" dir="auto"><span class="hljs-keyword">from</span> utils.setting.rl_config <span class="hljs-keyword">import</span> TrainingParameters, AlgorithmParameters, NetworkParameters
-<span class="hljs-keyword">from</span> nn.gpt <span class="hljs-keyword">import</span> GPT
+<pre><code data-line="75" class="code-line language-python" dir="auto"><span class="function-return">from</span> <span class="hljs-title class_">utils.setting.rl_config</span> <span class="function-return">import</span> <span class="hljs-title class_">TrainingParameters, AlgorithmParameters, NetworkParameters</span>
+<span class="function-return">from</span> <span class="hljs-title class_">nn.gpt</span> <span class="function-return">import</span> <span class="hljs-title class_">GPT</span>
 
-rl_params.training = TrainingParameters(batch_size=<span class="hljs-number">64</span>, replay_ratio=<span class="hljs-number">1</span>, max_steps=<span class="hljs-number">70000</span>, buffer_size=<span class="hljs-number">256000</span>)
+rl_params.training = <span class="hljs-title class_">TrainingParameters</span>(batch_size=<span class="hljs-number">64</span>, replay_ratio=<span class="hljs-number">1</span>, max_steps=<span class="hljs-number">70000</span>, buffer_size=<span class="hljs-number">256000</span>)
 
-rl_params.algorithm = AlgorithmParameters(gpt_seq_length=<span class="hljs-number">16</span>, discount_factor=<span class="hljs-number">0.99</span>)
+rl_params.algorithm = <span class="hljs-title class_">AlgorithmParameters</span>(gpt_seq_length=<span class="hljs-number">16</span>, discount_factor=<span class="hljs-number">0.99</span>)
 
-rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</span>, d_model=<span class="hljs-number">128</span>, dropout=<span class="hljs-number">0.02</span>, network_type=SuperNet)
+rl_params.network =  <span class="hljs-title class_">NetworkParameters</span>(num_layers=<span class="hljs-number">5</span>, d_model=<span class="hljs-number">128</span>, dropout=<span class="hljs-number">0.02</span>, network_type=<span class="hljs-title class_">SuperNet</span>)
 </code></pre>
                 <ul data-line="86" class="code-line" dir="auto">
                 <li data-line="86" class="code-line" dir="auto">
@@ -578,11 +596,11 @@ rl_params.network =  NetworkParameters(num_layers=<span class="hljs-number">5</s
                 <br>
 
                 <h2 data-line="131" class="code-line" dir="auto" id="training" tabindex="-1">Training</h2>
-<pre><code data-line="133" class="code-line language-python" dir="auto"><span class="hljs-keyword">from</span> causal_rl <span class="hljs-keyword">import</span> CausalRL
+<pre><code data-line="133" class="code-line language-python" dir="auto"><span class="function-return">from</span> <span class="hljs-title class_">causal_rl</span> <span class="function-return">import</span> <span class="hljs-title class_">CausalRL</span>
     
-    <span class="hljs-keyword">with</span> CausalRL(rl_params, device, use_print = <span class="hljs-literal">True</span>, use_wandb = <span class="hljs-literal">False</span>) <span class="hljs-keyword">as</span> causal_rl:
-    causal_rl.train(resume_training = <span class="hljs-literal">False</span>, use_eval = <span class="hljs-literal">False</span>, use_graphics = <span class="hljs-literal">False</span>)
-    causal_rl.test(max_episodes = <span class="hljs-number">100</span>, use_graphics = <span class="hljs-literal">False</span>)
+    <span class="function-return">with</span> <span class="hljs-title class_">CausalRL</span>(rl_params, device, use_print = <span class="hljs-literal">True</span>, use_wandb = <span class="hljs-literal">False</span>) <span class="function-return">as</span> causal_rl:
+    causal_rl.<span class="function-names">train</span>(resume_training = <span class="hljs-literal">False</span>, use_eval = <span class="hljs-literal">False</span>, use_graphics = <span class="hljs-literal">False</span>)
+    causal_rl.<span class="function-names">test</span>(max_episodes = <span class="hljs-number">100</span>, use_graphics = <span class="hljs-literal">False</span>)
 </code></pre>
                 
                 <h2 data-line="131" class="code-line" dir="auto" id="training" tabindex="-1">Result</h2>

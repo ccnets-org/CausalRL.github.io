@@ -53,6 +53,7 @@
         <li><a href="./API.html#class-causalrl">CausalRL</a></li>
         <li><a href="./API.html#class-rl-config">RLParameters</a></li>
         <li><a href="./API.html#class-causaltrainer">CausalTrainer</a></li>
+        <li><a href="./Networks.html">Networks</a></li>
       </ul>
     </li>
     <li>
@@ -120,17 +121,14 @@
     ...
   </code></pre> -->
   <pre><code data-line="78" class="code-line language-python" dir="auto"><span class="hljs-comment"># main.ipynb</span>
-  rl_params = <a href="./analyze_env.html">analyze_env</a>(env_name = <span class="hljs-string">"HalfCheetah-v4"</span>)
+  rl_params = <a href="./analyze_env.html" target="_blank"><span class="function-names">analyze_env</span></a>(env_name = <span class="hljs-string">"HalfCheetah-v4"</span>)
   </code></pre>
+  <p data-line="82" class="main-text" dir="auto">While most of the environment and parameters are automatically configured based on the environment name set by the user, the primary parameters that users can manually set are as follows:</p>
   <ul data-line="82" class="code-line" dir="auto">
-  <li data-line="82" class="code-line" dir="auto">
-  <p data-line="82" class="code-line" dir="auto">While most of the environment and parameters are automatically configured based on the environment name set by the user, the primary parameters that users can manually set are as follows:</p>
   <ul data-line="84" class="code-line" dir="auto">
   <li data-line="84" class="code-line" dir="auto"><code>use_graphics</code>: To monitor the model training process in real-time through video, Set <code>use_graphics = True</code>. (<em>default: False</em>)</li>
   <li data-line="85" class="code-line" dir="auto"><code>seed</code>:  To control the randomness in the environment, ensuring reproducibility by initializing the environment in the same way</li>
-  
   </ul>
-  </li>
   </ul>
   <p data-line="88" class="code-line" dir="auto">To visit <strong>Gymnasium Official Page</strong> for more details, Click <a href="https://gymnasium.farama.org" data-href="https://gymnasium.farama.org/api/wrappers/" target="_blank"><strong>here</strong></a>.</p>
   <button id="toggleButton" onclick="toggleGrid()">Close Env Images</button>
@@ -168,11 +166,10 @@
     ...
   </code></pre> -->
   <pre><code data-line="103" class="code-line language-python" dir="auto"><span class="hljs-comment"># main.ipynb</span>
-  rl_params = <a href="./analyze_env.html">analyze_env</a>(env_name = <span class="hljs-string">"3DBallHard"</span>)
+  rl_params = <a href="./analyze_env.html" target="_blank"><span class="function-names">analyze_env</span></a>(env_name = <span class="hljs-string">"3DBallHard"</span>)
   </code></pre>
+  <p data-line="107" class="main-text" dir="auto">While most of the environment and parameters are automatically configured based on the environment name set by the user, the primary parameters that users can manually set are as follows:</p>
   <ul data-line="107" class="code-line" dir="auto">
-  <li data-line="107" class="code-line" dir="auto">
-  <p data-line="107" class="code-line" dir="auto">While most of the environment and parameters are automatically configured based on the environment name set by the user, the primary parameters that users can manually set are as follows:</p>
   <ul data-line="109" class="code-line" dir="auto">
   <li data-line="109" class="code-line" dir="auto"><code>use_graphics</code>: To monitor the model training process in real-time through video, Set <code>use_graphics = True</code>. (default: False)</li>
   <li data-line="110" class="code-line" dir="auto"><code>seed</code>:  To control the randomness in the environment, ensuring reproducibility by initializing the environment in the same way</li>

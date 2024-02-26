@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>CausalRL Documentation | Networks</title>
+        <link rel="stylesheet" href="./style/style.css">
+        <link rel="icon" href="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/2573d62b-0ea3-4ca7-ab78-df785b6f51f3" type="image/png">
+        <link rel="shortcut icon" href="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/2573d62b-0ea3-4ca7-ab78-df785b6f51f3" type="image/png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    </head>
+    <body class="vscode-body vscode-light">
+        <div data-line="0" class="code-line" dir="auto"></div>
+        <div data-line="2" class="code-line" dir="auto"></div>
+        <nav class="navbar">
+        <div  data-line="4" class="code-line" dir="auto"></div>
+        <a class="header-link" href="./index.html">  
+            <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/6db8e929-637b-4d9c-9a61-20910e878d53" alt="CCNets Logo" class="logo">
+            <!-- <h1 class="page-name">CausalRL Documentation</h1> -->
+        </a>
+        <div data-line="7" class="code-line" dir="auto"></div>
+        <div class="social-links">
+            <a href="https://ccnets.org/" target="_blank">
+                <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/42f10f53-0262-4203-9c6f-618e4841adb2" alt="Website" style="width: 20px; height: 20px;">
+            </a>
+            <a href="https://github.com/ccnets-team/rl-tune" target="_blank">
+                <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/5183f887-1263-408b-8c2f-9eeefafbce48" alt="GitHub" style="width: 20px; height: 20px;">
+            </a>
+            <a href="https://www.linkedin.com/company/ccnets/" target="_blank">
+                <img src="https://github.com/ccnets-team/rl-tune/assets/95277008/fe1f76f2-a407-4f58-ad28-92a9ac9efa3f" alt="LinkedIn" style="width: 20px; height: 20px;">
+            </a>
+        </div>
+        </nav>
+        <div data-line="9" class="code-line" dir="auto"></div>
+        <div class="sidebar">
+        <ul>
+        <li>
+            <a href="./index.html">INTRODUCTION</a>
+            <ul>
+            <li><a href="./index.html#basic-usage">Basic Usage</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="./API.html">API</a>
+            <ul>
+            <li><a href="./API.html#class-rltune">CausalRL</a></li>
+            <li><a href="./API.html#class-rl-params">RLParameters </a></li>
+            <li><a href="./API.html#class-causalrl">CausalTrainer</a></li>
+            <li><a href="./Networks.html">Networks</a></li>
+            </ul>
+        </li>
+        <li>
+            <a>ENVIRONMENTS</a>
+            <ul>
+                <li><a href="./analyze_env.html">Analyze_env</a></li>
+                <li><a href="./Env Wrapper.html#gym-wrapper">OpenAI Gymnasium</a></li>
+                <li><a href="./Env Wrapper.html#unity-mlagent-wrapper">Unity MLAgents</a></li>
+            </ul>
+        </li>
+        <li>
+            <a>TUTORIAL</a>
+            <ul>
+                <li class="dropdown-menu">
+                    <a class="dropbtn" href="#">Basic <span class="dropdown-arrow">&#9660;</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="./tutorials/Tutorial_Supernet_EN.html">CausalRL Start Off</a></li>
+                        <!-- <li><a href="#">Day 2</a></li> -->
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a>DEVELOPMENT</a>
+            <ul>
+                <li>
+                    <a href="https://github.com/ccnets-team/rl-tune" target="_blank">
+                    Github    
+                    <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/9f93117b-8082-4b92-ac77-245b2e13eeba" alt="Github" style="height:10px; width:10px;">
+                    </a>
+                </li>
+                <li><a href="https://wandb.ai/rl_tune/rl-tune-gym/?workspace" target="_blank">
+                    W&amp;B
+                    <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/9f93117b-8082-4b92-ac77-245b2e13eeba" alt="W&B" style="height:10px; width:10px;">
+                    </a>
+                </li>
+                <li><a href="./release_note.html">
+                    CausalRL Release Notes
+                    </a>
+                </li>
+            </ul>
+        </li>
+        </ul>
+        </div>
+        <div class="toc">
+            <h3>INDEX</h3>
+            <ul id="toc-list"></ul>
+          </div>
+        <div class="main-content" id="main-content">
+            <h1 data-line="92" class="code-line" dir="auto" id="networks" tabindex="-1">Networks</h2>
+            <div data-line="94" class="code-line" dir="auto"></div>
+            <p class="main-text">The networks of <strong>CausalRL</strong> incorporate a unique component known as the <strong>Reverse-Environment</strong> (Rev-env) into the common reinforcement learning algorithm structure of the Actor-Critic method. 
+                The <strong>Rev-env</strong> network plays a role in predicting the outcomes of actions and evaluating whether these outcomes are reversible. 
+                The introduction of the <strong>Rev-env</strong> network is a key element that distinguishes CausalRL from other reinforcement learning approaches. 
+                Below, we will examine the details of each network.</p>
+            <br>
+            <div style="text-align: center;">
+                <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/9fe09609-e296-4578-9f4a-0248bb98517b" alt="CausalRL-Diagram" style="width: 700px;">
+            </div>
+            <!-- <p data-line="98" class="code-line" dir="auto"><strong>Network Description:</strong></p> -->
+                <h2>Critic</h2>
+                <li><strong>Role:</strong>
+                    <p class="main-text">The <em style="font-weight: 400;"> Sampled State</em> is taken as input to produce the <em style="font-weight: 400;">Estimated Value</em>. This is an interpretation of the <em style="font-weight: 400;">Sampled State</em> by the <strong>Critic</strong>. The <em style="font-weight: 400;">Estimated Value</em> is then conveyed to both the <strong>Actor</strong> and the <strong>Rev-Env</strong>, where it is utilized to assess the quality of the <em style="font-weight: 400;">Sampled State</em> and its long-term outcomes.</p>
+                </li>
+                    <br>
+                    <div class="img-latex-container">
+                        <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/50bc7c10-2607-4fa1-91bf-0383ad791f85" alt="Critic-Diagram">
+                        <div class="latex-container">
+                            <p class="net_formula">$$\text{Input}: (S_t)$$</p>
+                            <p class="net_formula">$$\text{Output}: (\overline{v}_t)$$</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="code-container">
+                            <pre><code class="code-line language-python">
+<span class="hljs-keyword"></span> <span class="hljs-title class_">SingleInputCritic</span>(<span class="hljs-title class_">BaseCritic</span>):
+    <span class="hljs-keyword">def</span> <span class="function-names">__init__</span>(self, net, env_config, critic_params):
+        <span class="hljs-title class_">super</span>(SingleInputCritic, self).<span class="function-names">__init__</span>(net, env_config, critic_params, env_config.state_size)
+        self.apply(init_weights)
+
+    <span class="hljs-keyword">def</span> <span class="function-names">forward</span>(self, state, mask = None):
+        _state = self.embedding_layer(state)
+        <span class="function-return">return</span> self._compute_forward_pass(_state, mask)
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DualInputCritic</span>(<span class="hljs-title class_">BaseCritic</span>):
+    <span class="hljs-keyword">def</span> <span class="function-names">__init__</span>(self, net, env_config, critic_params):
+        <span class="hljs-title class_">super</span>(DualInputCritic, self).<span class="function-names">__init__</span>(net, env_config, critic_params, env_config.state_size + env_config.action_size)
+        self.apply(init_weights)
+
+    <span class="hljs-keyword">def</span> <span class="function-names">forward</span>(self, state, action, mask = None):
+        <span class="function-return">if</span> not self.use_discrete:
+            action = torch.tanh(action)
+        _state = self.embedding_layer(torch.cat([state, action], dim = -1))
+        value = self._compute_forward_pass(_state, mask)
+        <span class="function-return">return</span> value
+                                <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>                                
+                            </code></pre>
+                        </div>
+                <h2>Actor</h2>
+                <li><strong>Role:</strong>
+                    <p class="main-text">Receiving the <strong>Critic</strong>'s <em style="font-weight: 400;">Estimated Value</em> and the <em style="font-weight:400;">Sampled State</em> as inputs, it predicts the agent's next action (<em style="font-weight: 400;">Predicted Action</em>), focusing on action prediction based on the <em style="font-weight: 400;">Current State</em>.</p>
+                </li>    
+                    <br>
+                    <div class="img-latex-container">
+                        <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/91908901-ade5-4bf6-9006-92dd164a92d7" alt="Actor-Diagram">
+                        <div class="latex-container">
+                            <p class="net_formula">$$\text{Input}: \left( S_t, \overline{v}_t \right)$$</p></p>
+                            <p class="net_formula">$$\text{Output}: (\vec{a}_t)$$</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="code-container">
+                        <pre><code data-line="126" class="code-line language-python" dir="auto" id="codeBlock">
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DualInputActor(_BaseActor)</span>:
+    <span class="hljs-keyword">def</span> <span class="function-names">__init__</span>(<span class="function-script">self, net, env_config, use_deterministic, network_params</span>):
+        <span class="function-script">value_size</span> = 1
+        <span class="hljs-title class_">super()</span>.<span class="function-names">__init__</span>(net, env_config, use_deterministic, network_params, env_config.state_size + value_size)
+        <span class="function-script">self</span>.apply(init_weights)
+
+    <span class="hljs-keyword">def</span> <span class="function-names">forward</span>(self, state, value, mask = None):
+        <span class="function-return">if</span> self.use_deterministic:
+            <span class="function-return">return</span> self.select_action(state, value, mask)
+        z = self.embedding_layer(torch.cat([state, value], dim =-1))
+        mean, std = self._compute_forward_pass(z, mask)
+        <span class="function-return">return</span> Normal(mean, std).rsample()
+
+    <span class="hljs-keyword">def</span> <span class="function-names">compute_mean_std</span>(self, state, value, mask = None):
+        z = self.embedding_layer(torch.cat([state, value], dim =-1))
+        mean, std = self._compute_forward_pass(z, mask)
+        <span class="function-return">return</span> mean, std
+
+    <span class="hljs-keyword">def</span> <span class="function-names">predict_action</span>(self, state, value, mask = None):
+        mean, _ = self.compute_mean_std(state, value, mask)
+        action = self._predict_action(mean)
+        <span class="function-return">return</span> action
+
+    <span class="hljs-keyword">def</span> <span class="function-names">sample_action</span>(self, state, value, mask = None):
+        mean, std = self.compute_mean_std(state, value, mask)
+        action = self._sample_action(mean, std)
+        <span class="function-return">return</span> action
+    
+    <span class="hljs-keyword">def</span> <span class="function-names">select_action</span>(self, state, value, mask = None):
+        mean, _ = self.compute_mean_std(state, value, mask)
+        action = self._select_action(mean)
+        <span class="function-return">return</span> action
+                            </code></pre>
+                        </div>
+                <h2>Reverse Environment</h2>
+                <li><strong>Role:</strong>
+                    <p class="main-text">Taking as inputs the <strong>Critic</strong>'s <em style="font: weight 400px;">Estimated Value</em>, the <strong>Actor</strong>'s <em style="font: weight 400px;">Predicted Action</em>, the actual taken action by the agent known as the <em style="font: weight 400px;">Sampled Action</em>, and the <em style="font: weight 400px;">Next State</em>, it infers and generates the <em style="font: weight 400px;">Recurred State</em> and the <em style="font: weight 400px;">Reversed State</em> from these inputs.</p>
+                </li>    
+                    <div>
+                    <br>
+                            <div class="img-latex-container">
+                                <img src="https://github.com/ccnets-org/CausalRL.github.io/assets/95277008/43a1530a-4308-441f-992b-efaca20d190a" alt="Rev-env-Diagram">
+                                <div class="latex-container">
+                                    <p class="net_formula">$$\text{Input}: \left(S_{t+1}, \vec{a}_t, a_t, \overline{v}_t \right)$$</p>
+                                    <p class="net_formula">$$\text{Output}: \left(\check{S}_t, \overleftarrow{S}_t \right)$$</p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="code-container">
+                            <pre><code>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">RevEnv</span>(<span class="hljs-title class_">nn.Module</span>):
+    <span class="hljs-keyword">def</span> <span class="function-names">__init__</span>(self, net, env_config, rev_env_params):
+        <span class="hljs-title class_">super</span>(<span class="hljs-title class_">RevEnv, self</span>).<span class="function-names">__init__()</span>
+        self.use_discrete = env_config.use_discrete
+        self.state_size = env_config.state_size
+        self.action_size = env_config.action_size
+        self.d_model = rev_env_params.d_model
+        self.num_layers = rev_env_params.num_layers
+        self.relu = nn.ReLU()
+        self.value_size = 1
+            
+        self.embedding_layer = ContinuousFeatureEmbeddingLayer(self.state_size + self.action_size \
+            + self.value_size, self.d_model)
+        self.final_layer = create_layer(self.d_model, self.state_size, "none")        
+        self.net = net(self.num_layers, self.d_model, dropout = rev_env_params.dropout)
+        self.apply(init_weights)
+
+    <span class="hljs-keyword">def</span> <span class="function-names">forward</span>(self, next_state, action, value, mask=None):
+        action = torch.tanh(action) <span class="function-return">if</span> not self.use_discrete else action
+              
+        padding_mask = mask.flip(dims=[1]) <span class="function-return">if</span> mask is not None else None
+
+        embedded_input = self._embed_and_process(next_state, action, value)
+        processed_output = self.net(embedded_input, mask=padding_mask)
+
+        reversed_output = processed_output.flip(dims=[1])
+        reversed_output = self.relu(reversed_output)
+        <span class="function-return">return</span> self.final_layer(reversed_output)
+
+    <span class="hljs-keyword">def</span> <span class="function-names">_embed_and_process</span>(self, next_state, action, value):
+        z = self.embedding_layer(torch.cat([next_state, action, value], dim=-1))
+        <span class="function-return">return</span> z.flip(dims=[1])
+        <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                            </code></pre>
+                        </div>
+                            <br>
+                        </div>
+
+            <br>
+       
+            
+            <br>
+            <hr>
+            <div id="copyAlert">Copied!</div>
+            <div align="left" style="padding-bottom: 10px;">
+                Copyright © 2024 CCNets
+            </div>    
+        </div>
+        <!-- Content End-->
+
+        <!-- css -->
+        
+          <script src="./style/js_funcs.js"></script>
+          <script src="./style/script.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+          <script>
+            window.MathJax = {
+                tex: {
+                    tags: 'ams', 
+                },
+                options: {
+                    renderActions: {
+                        addClasses: [0, () => {}, ''],
+                        addStyles: [0, () => {}, ''],
+                        wrapper: [0, (doc, math, wrapper) => {
+                            const display = math.root.attributes.get('display');
+                            if (display === 'block') {
+                                wrapper.style.textAlign = 'left'; 
+                            }
+                        }, '']
+                    }
+                }
+            };
+            
+          </script>
+
+    </body>
+  </html>
