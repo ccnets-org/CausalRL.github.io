@@ -115,6 +115,207 @@
             <h1 data-line="0" class="code-line" dir="auto" id="release-note" tabindex="-1">Release Notes</h1>
             <br>
             
+            <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.2.4</h2>
+            <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Mar 3, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/1fb69f3faa2d0526541f9b0d133ed41c3ff559e9" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>TD End Value Computation Enhanced</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Improved the calculation of the terminal value in <em style="font-weight: 600;">Temporal Difference (TD)</em> updates, particularly for trajectories that terminate early.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Adjustment in Learnable TD Weights</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Modified the weighting in the <em style="font-weight: 600;">LearnableTD</em> class, granting gamma parameters ten times the learning weight of lambda parameters. This adjustment prioritizes the optimization of discount factors, reflecting their critical role in the model's decision-making process and overall learning efficiency.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Refined Gradient Clipping Strategy</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Implemented a specialized gradient clipping approach for <em style="font-weight: 600;">LearnableTD</em> instances, applying clipping ranges exclusively to this class. This targeted strategy ensures optimal regularization of gradients, preserving model stability and facilitating nuanced control over the learning dynamics of critical parameters.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Model Saving Functionality Improved</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Resolved issues with the automatic best model saving mechanism during training. Models are now retained post-training completion, ensuring valuable progress is not lost and facilitating subsequent evaluation or continued training sessions.</p>
+                </li>
+            </ul>
+            <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.2.3</h2>
+            <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Mar 3, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/03945f1178e73e4ab84621e185a5bc69467cdb1d" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Normalization and Weighting Adjustment</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Addressed an issue with the weighting of normalized sum rewards. Previously, the sequence weighting was divided by the <code>TD_sequence_length</code>(default 20), which exceeds the <code>GPT_sequence_length</code>(default 16), leading to diminished value loss or advantage and impeding learning motivation. This fix ensures rewards are appropriately weighted to motivate effective learning.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Learnable TD Class Update</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Adapted to use a lambda array aligned with the <code>GPT_sequence_length</code> (default 16) instead of the longer <code>TD_sequence_length</code> (20). This key change synchronizes lambda parameters with the sequence length in model predictions, enhancing Temporal Difference (TD) calculation accuracy by ensuring proper weighting of normalized sum reward sequences.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Sum Rewards Normalization Adjustments</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Refined the sum rewards normalization to concentrate on the <code>GPT_sequence_length</code>, moving away from the broader <code>TD_sequence_length</code>. This adjustment makes normalization directly relevant to the segments critical for TD updates, improving the consistency and relevance of normalized rewards.</p>
+                </li>
+            </ul>
+            <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.2.2</h2>
+            <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Mar 3, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/8162df7070206ffdfa5ce9d99d0a2a6f9de04848" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Enhanced TD Return Calculations and Streamlined Computation</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Ensured dimensional consistency between <em style="font-weight: 600;">expected_value (n+1)</em> and <em style="font-weight: 600;">sum_rewards (n)</em>, significantly improving the accuracy of subsequent operations. Furthermore, we've streamlined the computation process of expected values and sum of rewards. This includes refining the logic for trimming <em style="font-weight: 600;">expected_value</em> to precisely match the sequence length of <em style="font-weight: 600;">sum_rewards</em> and enhancing the clarity of our code through more concise commenting.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Flexible TD Sequence Lengths</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">The introduction of <code>td_seq_length</code> enables precise calculations of TD returns, allowing for a more adaptable adjustment of sequence lengths for value estimation. This flexibility supports a dynamic range of temporal dependencies, optimizing the learning capabilities of the model.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Reverted Compensation Weights</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">To address gradient deflation issues associated with padding, compensation weights in the masked_tensor_reduction function have been reverted. </p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Optimized Trajectory Adjustments</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">By focusing on the differential segment (<code>td_seq_length</code> - <code>gpt_seq_length</code>), we've streamlined trajectory adjustments for TD calculations. This approach ensures accurate lambda returns calculation over the crucial end segment of the trajectory, enhancing both efficiency and precision.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Corrected Iteration Logic</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">An essential correction has been made in the iteration logic for lambda returns calculation, ensuring it properly starts from the end of the sequence. This change addresses a crucial indexing mistake, enhancing the model's fidelity to TD principles.</p>
+                </li>
+            </ul>
+            <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.2.1</h2>
+            <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Mar 2, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/9fda34e153438505b18e1aa1475837b7e6949ebc" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Improved Backpropagation accuracy for learnable TD</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">This enhancement allows for a more refined adjustment of these crucial parameters during learning.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Optimized Learnable TD Updates</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">The learnable TD's update frequency has been modified to every <em>10 iterations</em>. This optimization aims to enhance the efficiency of the training process without compromising the quality of learning.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Expanded Lambda Variable</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">The lambda variable has been expanded to match a GPT sequence length, enabling individual optimization of each lambda value within the sequence. This allows for a more granular level of optimization, while gamma remains a singular value to maintain consistency across updates.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Flexible Learning Rate Adjustment</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Replaced the learning rate decaying system's min_lr with <code>decay_rate_100k</code>, offering a more intuitive and flexible approach to learning rate adjustment over training.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Gradient Consistency Improvements</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Removed compensation weights in <em>masked_tensor_reduction</em> function to address gradient deflation issues associated with padding parts. This change ensures the total tensor receives consistent gradients each step without artificially compensating for lessened weights of some states.</p>
+                </li>
+            </ul>
+            <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.2.0</h2>
+            <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Mar 1, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/5319b657c67b60931133497d902da0897cef1bca" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <p>This release marks a significant milestone for the Causal-RL project, introducing the much-anticipated feature of auto-learning for the gamma and lambda parameters. With <strong>v1.2.0</strong>, we are proud to unveil our "<em>One Click Causal RL</em>" capability, streamlining the reinforcement learning process and enhancing adaptability across various environments.</p>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Auto-Learning Gamma and Lambda</strong></p>
+                    <p data-line="67" class="code-line" dir="auto"> Implement dynamic adjustment of the discount factor (<em style="font-weight: 600;">gamma</em>) and the trade-off parameter (<em style="font-weight: 600;">lambda</em>) through a learnable mechanism. This advancement allows for automatic tuning of these crucial parameters, optimizing performance without manual intervention.</p>
+                </li>
+            </ul>
+            <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.1.14</h2>
+            <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 29, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/ad8ae26ce518a586eb62da09fddfaa5ecfa694d5" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Improved Cooperative Error Calculations</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Adjustments have been made to halve the cooperative error calculations, addressing gradient scaling issues linked to double transitions minus one detached transition. This refinement ensures a more accurate balance between causal loss and value loss.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Refactored Value Computation</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">The compute_values function has been divided into <code>compute_expected_value</code> and <code>compute_advantage</code>, clarifying the separation of logic and streamlining the calculation process.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Streamlined Advantage Normalization</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">The previous advantage normalizer has been removed from the default implementation, simplifying the framework. Additionally, we've introduced <em style="font-weight: 600;">Running_mean_sqrt</em> as an optional <code>advantage_normalizer</code> to improve training stability.</p>
+                </li>
+            </ul>
+            <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.1.13</h2>
+            <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 27, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/cc370b6c0b3b9dc44d4a0a76aaece91a30874edd" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Updated the advantage normalizer settings</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Set <em style="font-weight: 600;">min_abs_mean</em> and <em style="font-weight: 600;">min_square_mean</em> to 1.0 to ensure a stable normalization baseline.</p>
+                    <p data-line="67" class="code-line" dir="auto">Removed upper limits (<em style="font-weight: 600;">max_abs_mean</em> and <em style="font-weight: 600;">max_square_mean</em>) by setting them to <em style="font-weight: 600;">None</em>, allowing for dynamic adjustment based on encountered data.</p>
+                </li>
+            </ul>
+            <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.1.12</h2>
+            <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 26, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/c94f78aad7a6fd9bd2980da6d45b97027280e224" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Dynamic Lambda Adjustment</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">To boost learning efficiency, we've implemented a dynamic adjustment of the lambda parameter, which aligns to <em style="font-weight: 600;">0.99</em> as exploration diminishes. This change ensures a more effective balance between exploration and exploitation, directly enhancing the learning process.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Refined RunningAbsMean Settings</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Optimized our normalization settings, adjusting the <code>Running_abs_mean</code> from a range of <em style="font-weight: 600;">min_abs_mean=0.1, max_abs_mean=1.0</em> to an optimized range of <em style="font-weight: 600;">min_abs_mean=0.5, max_abs_mean=2.0</em>. This refinement allows for a more responsive adaptation to environmental feedback, improving the overall learning effectiveness.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Being achieved in successful benchmarks in gym environments</strong></p>
+                </li>
+            </ul>
+            <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.1.11</h2>
+            <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 25, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/26a5167a65c62a37d71142f5245c6d258dac3035" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Refined Reduction Strategy</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Refactored <code>masked_tensor_reduction</code> function to enhance flexibility and efficiency in handling different types of reductions: <em style="font-weight:600;">"batch", "seq", "cross"</em>, and <em style="font-weight:600;">"all"</em>. The function now accurately adjusts mean calculations based on the ratio of unmasked elements to total batch size for <em style="font-weight:600;">"batch"</em> and <em style="font-weight:600;">"seq"</em> reductions. For <em style="font-weight:600;">"cross"</em> reduction, it ensures equal weighting of batch-wise and sequence-wise reductions, facilitating consistent learning signals across dimensions. The use of GradScaler has been optimized to adjust gradients appropriately, maintaining balanced contributions and equivalent learning impacts across reduction types.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Standardized Exploration Decay</strong></p>
+                    <p data-line="67" class="code-line" dir="auto"> With the introduction of <code>DECAY_UNIT_STEPS</code>, we've standardized the exploration decay across different <code>max_steps</code>, ensuring uniform probability changes in padding mask sampling and maintaining proportional impact in varying training regimes.</p>
+                </li>
+            </ul>
+            <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.1.10</h2>
+            <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Feb 23, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/d93b33f18cea1e1165e91c16a07720ad7a9a289c" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Transition to "Cross" Reduction</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Transitioned the loss reduction strategy from <em style="font-weight:600;">"batch"</em> to <em style="font-weight:600;">"cross"</em> reduction for loss, optimizing rewards more effectively across batch and sequence dimensions.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>GradScaler Integration</strong></p>
+                    <p data-line="67" class="code-line" dir="auto"> To address potential gradient reduction with <em style="font-weight:600;">"cross"</em> reduction, we've integrated GradScaler with a scale_factor of <strong>1</strong>, preserving gradient magnitude and preventing loss during optimization.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Normalization Technique Adjustments</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Moving beyond the default <code>running_absolute_mean</code>, we're experimenting with <code>running_mean_std</code> for advantage normalization. We've also adjusted the update decay rate to 1e-3 for better balance and stability.</p>
+                </li>
+            </ul>
+            <br>
+
             <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.1.9</h2>
             <ul data-line="64" class="code-line" dir="auto">
                 <li data-line="64" class="code-line" dir="auto">
