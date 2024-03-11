@@ -115,6 +115,50 @@
             <h1 data-line="0" class="code-line" dir="auto" id="release-note" tabindex="-1">Release Notes</h1>
             <br>
             
+            <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.2.6</h2>
+            <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Mar 5, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/e3b75a25bbf9f76f08d9349336174f8b4f350826" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>State Norm Scale</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Reduced from <em style="font-weight: 600;">2</em> to <em style="font-weight: 600;">1</em>. This modification ensures that the cooperative errors—crucial in reconstructing the current states through both forward and reverse transitions—are now computed on a smaller scale.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Cooperative Error Handling</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Eliminated halving of cooperative errors, balancing the effect of the reduced state norm scale and simplifying error logic without sacrificing accuracy.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Transformation Matrix Update</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Revamped `create_transformation_matrix` to use structured, discrete weight conversions, ensuring equitable distribution and replacing randomness with predictability.</p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Removal of reduction in error functions</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">The cost function continues to benefit from dimensionality reduction, while the modification to the error function logic—removing the previous reduction after error computation thus keeping the input tensor shape.</p>
+                </li>
+            </ul>
+            <br>
+
+            <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.2.5</h2>
+            <ul data-line="64" class="code-line" dir="auto">
+                <li data-line="64" class="code-line" dir="auto">
+                    <p data-line="64" class="code-line" dir="auto"><em>Released on Mar 4, 2024 <a style="font-size: small;" href="https://github.com/ccnets-team/causal-rl/commit/d1a854a05f311fa06bb888fd98a8673bc4f8bb10" target="_blank">view on GitHub</a></em></p>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Dimensionality Reduction for Cost and Error</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Introducing transformation matrices that apply dimensionality reduction to cost and error computations. This includes:</p>
+                        <ul>
+                            <li>A <em style="font-weight:600">Cost Transformation Matrix</em> that pre-processes inputs with a dimensionality reduction matrix to enhance computational efficiency.</li>
+                            <li>An <em style="font-weight:600">Error Transformation Matrix</em> that post-processes errors, refining the signal for a more focused backpropagation.</li>
+                        </ul>
+                </li>
+                <li data-line="65" class="code-line" dir="auto">
+                    <p data-line="65" class="code-line" dir="auto"><strong>Gradient Scale Factor Adjustment</strong></p>
+                    <p data-line="67" class="code-line" dir="auto">Updated the <code>LAMBDA_GRAD_SCALE_FACTOR</code> from <em style="font-weight: 600;">0.1</em> to <em style="font-weight: 600;">1.0</em>, ensuring the gradient magnitude matches the scale used for learnable TD(λ) gamma, thus improving the learning process.</p>
+                </li>
+            </ul>
+            <br>
+            
             <h2 data-line="62" class="code-line" dir="auto" id="v1118" tabindex="-1">v1.2.4</h2>
             <ul data-line="64" class="code-line" dir="auto">
                 <li data-line="64" class="code-line" dir="auto">
